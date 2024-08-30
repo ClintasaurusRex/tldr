@@ -1,5 +1,5 @@
 import './Popup.scss';
-import config from '../config';
+// import config from '../config';
 import Summarizer from '../components/Api';
 console.log(config);
 

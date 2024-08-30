@@ -5,7 +5,6 @@
   "description": "Chrome extension boilerplate using React",
   "action": {
     "default_title": "React Chrome Extension",
-    "default_popup": "popup/popup.html",
     "default_icon": "images/tldr_icon.png"
   },
   "icons": {
@@ -29,6 +28,12 @@
     "notifications",
     "search",
     "storage",
-    "tabs"
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "*://*/*"
   ]
+
 }
