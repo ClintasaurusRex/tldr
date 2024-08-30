@@ -1,11 +1,15 @@
 import './Popup.scss';
-import icon from '../static/images/react-icon.png';
+import config from '../config';
+console.log(config);
 
 const Popup = () => {
+
   return (
     <div className="Popup">
-      <img src={icon} />
-    </div>
+
+      <h1>Popup</h1>
+      <h2>Popups popups</h2>
+    </div >
   );
 };
 

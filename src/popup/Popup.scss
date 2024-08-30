@@ -2,4 +2,14 @@ $background-color: lightsteelblue;
 
 .Popup {
   background-color: $background-color;
+  width: 800px;
+  height: 100vh;
+
+}
+  h2 {
+    background-color: red;
+  }
+
+body {
+  background-color: purple;
 }
