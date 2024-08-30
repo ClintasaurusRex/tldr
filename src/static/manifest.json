@@ -5,6 +5,7 @@
   "description": "Chrome extension boilerplate using React",
   "action": {
     "default_title": "React Chrome Extension",
+    "default_popup": "popup/popup.html",
     "default_icon": "images/tldr_icon.png"
   },
   "icons": {

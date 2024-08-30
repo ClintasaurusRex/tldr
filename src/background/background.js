@@ -7,17 +7,13 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.action.onClicked.addListener((tab) => {
   console.log("ICON CLICKED!!!!!!!");
-  // chrome.scripting.executeScript({
-  //   target: { tabId: tab.id },
-  //   func: summarizeContent,
-  // });
   summarizeContent();
 });
 
 async function summarizeContent() {
   console.log("HEEEEEELLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
   const apiKey = "";
-  const text = "Random Text for u";
+  const text = "i have a love for the color hot pink";
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -26,7 +22,7 @@ async function summarizeContent() {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
