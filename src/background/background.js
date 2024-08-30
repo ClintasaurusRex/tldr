@@ -1,1 +1,1 @@
-console.log('inside the background file');
+console.log("inside the background file");
