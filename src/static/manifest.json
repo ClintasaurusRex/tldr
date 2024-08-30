@@ -6,7 +6,7 @@
   "action": {
     "default_title": "React Chrome Extension",
     "default_popup": "popup/popup.html",
-    "default_icon": "images/react-icon.png"
+    "default_icon": "images/tldr_icon.png"
   },
   "icons": {
     "16": "images/tldr_icon.png",
