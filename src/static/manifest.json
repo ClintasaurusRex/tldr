@@ -9,9 +9,9 @@
     "default_icon": "images/react-icon.png"
   },
   "icons": {
-    "16": "images/react-icon.png",
-    "48": "images/react-icon.png",
-    "128": "images/react-icon.png"
+    "16": "images/tldr_icon.png",
+    "48": "images/tldr_icon.png",
+    "128": "images/tldr_icon.png"
   },
   "options_page": "options/options.html",
   "background": {
