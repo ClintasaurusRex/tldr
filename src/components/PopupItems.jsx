@@ -9,7 +9,7 @@ const PopupItems = function () {
       <main class="main-content">
         <section class="summary-container" aria-labelledby="summary-heading">
           <h2 id="summary-heading">Summary</h2>
-          <p id="summary-text">I love the color hot pink but its actually salmon.</p>
+          <p id="summary-text">The other difference between them is that objects have property names so those have to be used in the destructuring part. Since array values are numerically ordered and without names, the order that we destructure is tied to what value we get -- in other words, first is the first variable in the destructure so it gets the first value of the array..</p>
         </section>
         <section class="buttons">
           <button id="rewrite-btn">Re-Write</button>
