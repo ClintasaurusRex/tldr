@@ -12,7 +12,7 @@ chrome.action.onClicked.addListener((tab) => {
 
 async function summarizeContent() {
   console.log("HEEEEEELLLLLLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-  const apiKey = "";
+  const apiKey = "No api key here";
   const text = "i have a love for the color hot pink";
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
