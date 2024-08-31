@@ -7,3 +7,6 @@ document.addEventListener("mouseup", function () {
     chrome.runtime.sendMessage({ type: "TEXT_SELECTED", text: selectedText });
   }
 });
+
+
+// aliababa
