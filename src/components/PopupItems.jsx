@@ -13,7 +13,7 @@ const PopupItems = function () {
         </section>
         <section class="buttons">
           <button id="rewrite-btn">Re-Write</button>
-          <button id="summarize-btn">Summary</button>
+          <button id="summarize-btn" >Summary</button>
           <button id="copy-btn">Copy</button>
         </section>
         <section class="text-area">

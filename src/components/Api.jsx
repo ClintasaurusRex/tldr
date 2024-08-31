@@ -3,7 +3,9 @@ import axios from 'axios';
 import config from '../config';
 import { set } from 'lodash';
 
-const Summarizer = () => {
+const Summarizer = (props) => {
+
+
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
   const [rewrite, setRewrite] = useState(false);
