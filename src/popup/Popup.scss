@@ -30,6 +30,7 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 .summary-container {
@@ -70,7 +71,7 @@ body {
 }
 
 .text-area textarea {
-  width: 100%;
+  width: 98%;
   height: 50px;
   background-color: #333;
   color: #fff;
@@ -96,4 +97,9 @@ body {
 
 textarea {
   resize: none;
+}
+
+.main-content {
+  background-color: black;
+  height: 100vh;
 }

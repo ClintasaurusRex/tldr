@@ -9,11 +9,9 @@ const Popup = () => {
   return (
     <div className="Popup">
 
-      <h1>Popup</h1>
-      <h2>Popups popups</h2>
-      <Summarizer />
+      {/* <Summarizer /> */}
       <PopupItems />
-      <Api />
+      {/* <Api /> */}
     </div >
   );
 };
