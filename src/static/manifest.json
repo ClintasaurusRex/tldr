@@ -1,17 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "React Chrome Extension",
+  "name": "T.L.D.R",
   "version": "1.0.0",
-  "description": "Chrome extension boilerplate using React",
+  "description": "Summarize any article with a click of a button",
   "action": {
-    "default_title": "React Chrome Extension",
-    "default_popup": "popup/popup.html",
-    "default_icon": "images/tldr_icon.png"
+   "default_title": "T.L.D.R",
+   "default_popup": "popup/popup.html",
+   "default_icon": "images/tldr-icon.png"
   },
   "icons": {
-    "16": "images/tldr_icon.png",
-    "48": "images/tldr_icon.png",
-    "128": "images/tldr_icon.png"
+    "16": "images/tldr-icon.png",
+    "48": "images/tldr-icon.png",
+    "128": "images/tldr-icon.png"
   },
   "options_page": "options/options.html",
   "background": {
