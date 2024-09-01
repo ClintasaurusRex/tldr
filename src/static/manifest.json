@@ -30,7 +30,8 @@
     "search",
     "storage",
     "tabs",
-    "scripting"
+    "scripting",
+    "activeTab"
   ],
   "host_permissions": [
     "https://api.openai.com/*",
