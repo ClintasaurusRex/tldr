@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../config';
-import { set } from 'lodash';
+import { handleRewrite, handleSummarize, handleCopy } from '../helpers/helpers';
 
 const Summarizer = (props) => {
 
@@ -47,20 +47,20 @@ const Summarizer = (props) => {
     }
   };
 
-  function handleRewrite() {
-    setRewrite(true);
-    const text = document.body.innerText;
-    summarizeContent(summary, true);
-  }
-  const handleSummarize = () => {
-    const text = document.body.innerText; // Extract text from the page
-    summarizeContent(text);
-  };
+  // function handleRewrite() {
+  //   setRewrite(true);
+  //   const text = document.body.innerText;
+  //   summarizeContent(summary, true);
+  // }
+  // const handleSummarize = () => {
+  //   const text = document.body.innerText; // Extract text from the page
+  //   summarizeContent(text);
+  // };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(summary);
-    setCopyMessage('Copied to clipboard!');
-  };
+  // const handleCopy = () => {
+  //   navigator.clipboard.writeText(summary);
+  //   setCopyMessage('Copied to clipboard!');
+  // };
 
   return (
 
