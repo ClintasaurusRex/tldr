@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import config from '../config';
 import { set } from 'lodash';
@@ -9,6 +9,7 @@ const Summarizer = (props) => {
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
   const [rewrite, setRewrite] = useState(false);
+  const [copyMessage, setCopyMessage] = useState('');
 
   const summarizeContent = async (text) => {
     setLoading(true);
@@ -58,10 +59,13 @@ const Summarizer = (props) => {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(summary);
-
+    setCopyMessage('Copied to clipboard!');
   };
 
   return (
+
+
+
     <div>
       <button onClick={handleSummarize} disabled={loading}>
         {loading ? 'Summarizing...' : 'Summarize Page'}
@@ -78,6 +82,7 @@ const Summarizer = (props) => {
             onClick={handleCopy}>
             Copy to Clipboard
           </button>
+          {copyMessage && <p>{copyMessage}</p>}
         </div>
       )}
     </div>
