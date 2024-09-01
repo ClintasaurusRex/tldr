@@ -72,11 +72,11 @@ const Summarizer = (props) => {
           <p>{summary}</p>
           <button
             onClick={handleRewrite} disabled={loading}>
-            Copy to Clipboard
+            {loading ? 'Rewriting...' : 'Rewrite'}
           </button>
           <button
-            onClick={handleCopy} disabled={loading}>
-            {loading ? 'Rewriting...' : 'Rewrite'}
+            onClick={handleCopy}>
+            Copy to Clipboard
           </button>
         </div>
       )}
