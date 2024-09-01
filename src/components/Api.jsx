@@ -56,6 +56,11 @@ const Summarizer = (props) => {
     summarizeContent(text);
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(summary);
+
+  };
+
   return (
     <div>
       <button onClick={handleSummarize} disabled={loading}>
@@ -67,6 +72,10 @@ const Summarizer = (props) => {
           <p>{summary}</p>
           <button
             onClick={handleRewrite} disabled={loading}>
+            Copy to Clipboard
+          </button>
+          <button
+            onClick={handleCopy} disabled={loading}>
             {loading ? 'Rewriting...' : 'Rewrite'}
           </button>
         </div>
