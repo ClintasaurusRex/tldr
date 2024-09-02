@@ -76,6 +76,7 @@ const Summarizer = () => {
               role: 'user',
               content: prompt,
             },
+
           ],
           max_tokens: 150,
         },
@@ -109,18 +110,7 @@ const Summarizer = () => {
 
   return (
     <div>
-      <div>
-        <textarea
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Enter your prompt here"
-          rows="5"
-          cols="50"
-        />
-        <button onClick={handleUserInput} disabled={loading || !userInput}>
-          {loading ? 'Processing...' : 'Send Prompt'}
-        </button>
-      </div>
+
 
       <button onClick={handleSummarize} disabled={loading}>
         {loading ? 'Summarizing...' : 'Summarize Page'}
@@ -129,6 +119,7 @@ const Summarizer = () => {
       {summary && (
         <div>
           <h2>Summary</h2>
+          <br />
           <p>{summary}</p>
           <button onClick={() => handleRewrite()} disabled={loading}>
             {loading ? 'Rewriting...' : 'Rewrite'}
@@ -149,7 +140,20 @@ const Summarizer = () => {
           {copyMessage && <p>{copyMessage}</p>}
         </div>
       )}
+      <section className='text-area'>
+        <textarea id="text-input"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Enter your prompt here"
+          rows="5"
+          cols="50"
+        />
+        <button onClick={handleUserInput} disabled={loading || !userInput}>
+          {loading ? 'Processing...' : 'Send Prompt'}
+        </button>
+      </section>
     </div>
+
   );
 };
 
