@@ -54,3 +54,26 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse({ text: selectedText });
   }
 });
+
+
+
+// Right click
+
+chrome.runtime.onInstalled.addListener(() => {
+chrome.contextMenus.create({
+    id: "sendToChatGPT",
+    title: "Send to the extension",
+    contexts: ["selection"],
+  });
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId === "sendToChatGPT") {
+    chrome.storage.local.set(
+      { selectedTextForChatGPT: info.selectionText },
+      () => {
+        chrome.action.openPopup();
+      }
+    );
+  }
+});

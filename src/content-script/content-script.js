@@ -8,3 +8,11 @@ document.addEventListener("mouseup", function () {
 });
 
 
+//Right click 
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.type === "SEND_TO_CHATGPT") {
+    // Call your function to send the text to ChatGPT
+    sendPromptToChatGPT(request.text);
+  }
+});
