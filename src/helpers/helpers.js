@@ -14,4 +14,4 @@ const handleCopy = () => {
   setCopyMessage("Copied to clipboard!");
 };
 
-export default { handleRewrite, handleSummarize, handleCopy };
+// export default { handleRewrite, handleSummarize, handleCopy };
