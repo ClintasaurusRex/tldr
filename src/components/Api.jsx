@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import useOpenAISummarizer from './useOpenAISummarizer';
-import { copyToClipboard, executeScriptInTab } from './helpers';
+import useOpenAISummarizer from '../helpers/aiSummarizer.js'; // Adjust the path based on where the file is located
+import { copyToClipboard, executeScriptInTab } from '../helpers/colinho.js';
+
 
 const Summarizer = () => {
   const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } = useOpenAISummarizer();
@@ -14,28 +15,16 @@ const Summarizer = () => {
     summarizeContent(summary);
   };
 
-  // Handle summarization of the entire page content
-  const handleSummarizeEntirePage = () => {
+  // Handle summarization of the entire page content (Renamed this function to avoid conflict)
+  const handleSummarizePageContent = () => {
     executeScriptInTab(
       () => document.body.innerText,
       (text) => summarizeContent(text)
     );
   };
 
-  // Handle user input for sending a prompt
-  const handleUserInput = () => {
-    sendPromptToChatGPT(userInput);
-  };
-
-  // Function to copy summary or response text to clipboard
-  const handleCopy = (text) => {
-    navigator.clipboard.writeText(text);
-    setCopyMessage("Copied to clipboard!");
-    setTimeout(() => setCopyMessage(''), 2000);  // Clear the copy message after 2 seconds
-  };
-
-  // Function to summarize the entire page content (New Button)
-  const handleSummarizeEntirePage = () => {
+  // Function to summarize the entire page content using Chrome APIs (Renamed to avoid conflict)
+  const handleSummarizeEntirePageWithChrome = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.scripting.executeScript(
         {
@@ -51,6 +40,11 @@ const Summarizer = () => {
     });
   };
 
+  // Handle user input for sending a prompt
+  const handleUserInput = () => {
+    sendPromptToChatGPT(userInput);
+  };
+
   return (
     <div>
       {/* Original Summarize Button */}
@@ -59,7 +53,7 @@ const Summarizer = () => {
       </button>
 
       {/* New Button to Summarize the Entire Page */}
-      <button onClick={handleSummarizeEntirePage} disabled={loading}>
+      <button onClick={handleSummarizeEntirePageWithChrome} disabled={loading}>
         {loading ? 'Summarizing Entire Page...' : 'Summarize Entire Page'}
       </button>
 
