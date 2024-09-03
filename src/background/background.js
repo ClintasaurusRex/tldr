@@ -82,7 +82,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "saveSummary") {
     chrome.storage.local.set({ [request.url]: request.summary }, () => {
       console.log("Summary saved");
-      sendResponse({ success: true });
+      sendResponse({ success: true, summary: request.summary });
     });
   }
   return true;

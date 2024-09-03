@@ -38,6 +38,23 @@ const Summarizer = () => {
         }
       );
 
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        let currentUrl = tabs[0].url;
+        console.log(currentUrl);
+
+        chrome.runtime.sendMessage({
+          action: 'saveSummary',
+          url: currentUrl,
+          summary: response.data.choices[0].message.content
+        }, function (response) {
+          if (response.success) {
+            console.log('Summary saved successfully', response);
+          } else {
+            console.log('Failed to save summary');
+          }
+        });
+      });
+
       setSummary(response.data.choices[0].message.content);
     } catch (error) {
       console.error('Error fetching the summary:', error);

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+// import { Logger } from "sass";
 
 function SaveSummary() {
-  const [summaryText, setSummaryText] = useState("");
+  const [summaryText, setSummaryText] = useState("THIS IS A TEST");
 
 
   const handleSaveSummary = () => {
@@ -15,13 +16,15 @@ function SaveSummary() {
         summary: summaryText
       }, function (response) {
         if (response.success) {
-          console.log('Summary saved successfully', setSummaryText);
+          console.log('Summary saved successfully', response);
         } else {
           console.log('Failed to save summary');
         }
       });
     });
   };
+
+
 
   return (
     <div>
