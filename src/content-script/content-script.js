@@ -13,5 +13,3 @@ chrome.runtime.onMessage.addListener((request) => {
     sendPromptToChatGPT(request.text);
   }
 });
-
-// storage

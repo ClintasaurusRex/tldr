@@ -105,7 +105,7 @@ const Summarizer = () => {
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
     setCopyMessage("Copied to clipboard!");
-    setTimeout(() => setCopyMessage(''), 2000);
+    console.log("Copied to clipboard", text);
   };
 
   return (
