@@ -97,6 +97,5 @@ const Summarizer = () => {
     </div>
   );
 };
-// test
 
 export default Summarizer;
