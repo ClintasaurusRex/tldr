@@ -10,6 +10,10 @@ const Summarizer = () => {
   const [userInput, setUserInput] = useState('');  // State to hold user input
 
   // Handle the rewrite action
+  // Function to summarize text from the page or user input
+
+
+  // Function to handle the rewrite action
   const handleRewrite = () => {
     setRewrite(true);
     summarizeContent(summary);
