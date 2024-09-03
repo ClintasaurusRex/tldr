@@ -76,6 +76,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 });
 
+// storage
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "saveSummary") {
     chrome.storage.local.set({ [request.url]: request.summary }, () => {

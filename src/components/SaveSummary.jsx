@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function SaveSummary() {
-
   const [summaryText, setSummaryText] = useState("");
 
 
@@ -16,26 +15,21 @@ function SaveSummary() {
         summary: summaryText
       }, function (response) {
         if (response.success) {
-          console.log('Summary saved successfully');
-          // You could update the component state here to indicate successful save
+          console.log('Summary saved successfully', setSummaryText);
         } else {
           console.log('Failed to save summary');
-          // You could update the component state here to indicate failed save
         }
       });
     });
   };
 
-
   return (
     <div>
-      <button onClick={handleSaveSummary} >
+      <button onClick={handleSaveSummary}>
         Save Summary
       </button>
     </div>
-
   );
 }
-
 
 export default SaveSummary;
