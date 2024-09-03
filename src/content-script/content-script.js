@@ -1,5 +1,3 @@
-
-
 document.addEventListener("mouseup", function () {
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
@@ -7,8 +5,7 @@ document.addEventListener("mouseup", function () {
   }
 });
 
-
-//Right click 
+//Right click
 
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === "SEND_TO_CHATGPT") {

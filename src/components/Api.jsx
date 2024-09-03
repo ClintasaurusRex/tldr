@@ -105,7 +105,7 @@ const Summarizer = () => {
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
     setCopyMessage("Copied to clipboard!");
-    setTimeout(() => setCopyMessage(''), 2000);  // Clear the copy message after 2 seconds
+    console.log("Copied to clipboard", text);
   };
 
   // Function to summarize the entire page content (New Button)
