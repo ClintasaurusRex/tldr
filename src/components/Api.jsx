@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import useOpenAISummarizer from '../helpers/aiSummarizer.js'; // Adjust the path based on where the file is located
+import useOpenAISummarizer from '../helpers/aiSummarizer.js';
 import { copyToClipboard, executeScriptInTab } from '../helpers/colinho.js';
-
 
 const Summarizer = () => {
   const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } = useOpenAISummarizer();
@@ -15,15 +14,27 @@ const Summarizer = () => {
     summarizeContent(summary);
   };
 
-  // Handle summarization of the entire page content (Renamed this function to avoid conflict)
-  const handleSummarizePageContent = () => {
-    executeScriptInTab(
-      () => document.body.innerText,
-      (text) => summarizeContent(text)
+ // Handle summarization of the highlighted text
+const handleSummarizeSelection = () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.scripting.executeScript(
+      {
+        target: { tabId: tabs[0].id },
+        func: () => window.getSelection().toString().trim(), // Get the highlighted text
+      },
+      (results) => {
+        if (results && results[0] && results[0].result) {
+          summarizeContent(results[0].result); // Summarize the highlighted text
+        } else {
+          console.error('No text selected.');
+        }
+      }
     );
-  };
+  });
+};
 
-  // Function to summarize the entire page content using Chrome APIs (Renamed to avoid conflict)
+
+  // Function to summarize the entire page content using Chrome APIs
   const handleSummarizeEntirePageWithChrome = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       chrome.scripting.executeScript(
@@ -47,12 +58,12 @@ const Summarizer = () => {
 
   return (
     <div>
-      {/* Original Summarize Button */}
-      <button onClick={handleRewrite} disabled={loading}>
-        {loading ? 'Summarizing...' : 'Summarize Page'}
+      {/* Button to Summarize Highlighted Text */}
+      <button onClick={handleSummarizeSelection} disabled={loading}>
+        {loading ? 'Summarizing Selection...' : 'Summarize Selection'}
       </button>
 
-      {/* New Button to Summarize the Entire Page */}
+      {/* Button to Summarize the Entire Page */}
       <button onClick={handleSummarizeEntirePageWithChrome} disabled={loading}>
         {loading ? 'Summarizing Entire Page...' : 'Summarize Entire Page'}
       </button>
@@ -81,6 +92,7 @@ const Summarizer = () => {
           {copyMessage && <p>{copyMessage}</p>}
         </div>
       )}
+
       <section className='text-area'>
         <textarea
           id="text-input"
