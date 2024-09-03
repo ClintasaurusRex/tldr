@@ -53,26 +53,10 @@ const Summarizer = () => {
     summarizeContent(summary);
   };
 
-  // Function to summarize the entire page content
-  const handleSummarizePage = () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      chrome.scripting.executeScript(
-        {
-          target: { tabId: tabs[0].id },
-          func: () => document.body.innerText, // Extract text from the page
-        },
-        (results) => {
-          if (results && results[0] && results[0].result) {
-            summarizeContent(results[0].result); // Summarize the extracted text
-          }
-        }
-      );
-    });
-  };
-
-  // Function to summarize user-provided input
-  const handleSummarizeInput = () => {
-    summarizeContent(userInput); // Summarize the text from the input field
+  // Function to summarize the highlighted content
+  const handleSummarize = () => {
+    const text = document.body.innerText; // Extract text from the page
+    summarizeContent(text);
   };
 
   // Function to send a custom prompt to ChatGPT
@@ -124,31 +108,35 @@ const Summarizer = () => {
     setTimeout(() => setCopyMessage(''), 2000);  // Clear the copy message after 2 seconds
   };
 
+  // Function to summarize the entire page content (New Button)
+  const handleSummarizeEntirePage = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.scripting.executeScript(
+        {
+          target: { tabId: tabs[0].id },
+          func: () => document.body.innerText, // Extract text from the page
+        },
+        (results) => {
+          if (results && results[0] && results[0].result) {
+            summarizeContent(results[0].result); // Summarize the extracted text
+          }
+        }
+      );
+    });
+  };
+
   return (
     <div>
-      {/* Button to Summarize User-Provided Input */}
-      <section className='text-area'>
-        <textarea id="text-input"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Enter text to summarize"
-          rows="5"
-          cols="50"
-        />
-        <button onClick={handleSummarizeInput} disabled={loading || !userInput}>
-          {loading ? 'Processing...' : 'Summarize Input'}
-        </button>
-        <button onClick={handleUserInput} disabled={loading || !userInput}>
-          {loading ? 'Processing...' : 'Send Prompt'}
-        </button>
-      </section>
-
-      {/* Button to Summarize the Entire Page */}
-      <button onClick={handleSummarizePage} disabled={loading}>
-        {loading ? 'Summarizing Page...' : 'Summarize Entire Page'}
+      {/* Original Summarize Button */}
+      <button onClick={handleSummarize} disabled={loading}>
+        {loading ? 'Summarizing...' : 'Summarize Page'}
       </button>
 
-      {/* Display Summary and Provide Copy and Rewrite Options */}
+      {/* New Button to Summarize the Entire Page */}
+      <button onClick={handleSummarizeEntirePage} disabled={loading}>
+        {loading ? 'Summarizing Entire Page...' : 'Summarize Entire Page'}
+      </button>
+
       {summary && (
         <div>
           <h2>Summary</h2>
@@ -163,7 +151,6 @@ const Summarizer = () => {
         </div>
       )}
 
-      {/* Display any additional response text */}
       {responseText && (
         <div>
           <h2>Response</h2>
@@ -174,6 +161,18 @@ const Summarizer = () => {
           {copyMessage && <p>{copyMessage}</p>}
         </div>
       )}
+      <section className='text-area'>
+        <textarea id="text-input"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Enter your prompt here"
+          rows="5"
+          cols="50"
+        />
+        <button onClick={handleUserInput} disabled={loading || !userInput}>
+          {loading ? 'Processing...' : 'Send Prompt'}
+        </button>
+      </section>
     </div>
   );
 };
