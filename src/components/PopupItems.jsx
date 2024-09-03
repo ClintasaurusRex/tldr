@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SaveSummary from './SaveSummary';
 import Summarizer from "./Api";
 
 const PopupItems = function () {
@@ -24,7 +23,6 @@ const PopupItems = function () {
         <section className="buttons">
           <Summarizer />
         </section>
-        <SaveSummary />
         {/* <section className="text-area">
           <textarea id="text-input" placeholder="Text Area" aria-label="Text Area"></textarea>
         </section> */}
