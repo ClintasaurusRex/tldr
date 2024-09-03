@@ -41,7 +41,7 @@ async function summarizeContent() {
   console.log("Summary: ", data);
 }
 
-let selectedText = "";
+let selectedText = ""; // this needs to change
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "TEXT_SELECTED") {
@@ -55,12 +55,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-
-
 // Right click
 
 chrome.runtime.onInstalled.addListener(() => {
-chrome.contextMenus.create({
+  chrome.contextMenus.create({
     id: "sendToChatGPT",
     title: "Send to the extension",
     contexts: ["selection"],
@@ -76,4 +74,14 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
       }
     );
   }
+});
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "saveSummary") {
+    chrome.storage.local.set({ [request.url]: request.summary }, () => {
+      console.log("Summary saved");
+      sendResponse({ success: true });
+    });
+  }
+  return true;
 });
