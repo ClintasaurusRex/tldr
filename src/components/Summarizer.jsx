@@ -79,6 +79,7 @@ const Summarizer = () => {
           <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
             Copy to Clipboard
           </button>
+          {copyMessage && <div className="copy-message">{copyMessage}</div>}
         </div>
       )}
 
@@ -89,7 +90,6 @@ const Summarizer = () => {
           <button onClick={() => copyToClipboard(responseText, setCopyMessage)}>
             Copy to Clipboard
           </button>
-          {copyMessage && <p>{copyMessage}</p>}
         </div>
       )}
 

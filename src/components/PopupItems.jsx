@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Summarizer from "./Api";
+import Summarizer from "./Summarizer";
 
 const PopupItems = function () {
   const [selectedText, setSelectedText] = useState('');
