@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useOpenAISummarizer from '../helpers/aiSummarizer.js';
 import { copyToClipboard, executeScriptInTab } from '../helpers/colinho.js';
+import SummarizeBtns from './SummarizeBtns.jsx';
 
 const Summarizer = () => {
   const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } = useOpenAISummarizer();
@@ -58,15 +59,11 @@ const Summarizer = () => {
 
   return (
     <div>
-      {/* Button to Summarize Highlighted Text */}
-      <button onClick={handleSummarizeSelection} disabled={loading}>
-        {loading ? 'Summarizing Selection...' : 'Summarize Selection'}
-      </button>
-
-      {/* Button to Summarize the Entire Page */}
-      <button onClick={handleSummarizeEntirePageWithChrome} disabled={loading}>
-        {loading ? 'Summarizing Entire Page...' : 'Summarize Entire Page'}
-      </button>
+      <SummarizeBtns
+        handleSummarizeSelection={handleSummarizeSelection}
+        handleSummarizeEntirePageWithChrome={handleSummarizeEntirePageWithChrome}
+        loading={loading}
+      />
 
       {summary && (
         <div>
