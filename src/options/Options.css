@@ -1,8 +1,17 @@
-html {
-  background-color: black;
-  color: white;
+body {
+  font-family: Arial, sans-serif;
+  color: aliceblue;
 }
 
-.Options {
-  color: blue;
+h2 {
+  color: aliceblue;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+}
+
+html {
+  background-color: #666;
 }
