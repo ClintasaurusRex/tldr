@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import useOpenAISummarizer from '../helpers/aiSummarizer.js';
 import { copyToClipboard, executeScriptInTab } from '../helpers/colinho.js';
 import SummarizeBtns from './SummarizeBtns.jsx';
+import DisplaySummary from './DisplaySummary.jsx';
+import UserInput from './UserInput.jsx';
+import ResponseApi from './ResponseApi.jsx';
 
 const Summarizer = () => {
   const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } = useOpenAISummarizer();
@@ -64,45 +67,26 @@ const Summarizer = () => {
         handleSummarizeEntirePageWithChrome={handleSummarizeEntirePageWithChrome}
         loading={loading}
       />
-
       {summary && (
-        <div>
-          <h2>Summary</h2>
-          <br />
-          <p>{summary}</p>
-          <button onClick={handleRewrite} disabled={loading}>
-            {loading ? 'Rewriting...' : 'Rewrite'}
-          </button>
-          <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
-            Copy to Clipboard
-          </button>
-          {copyMessage && <div className="copy-message">{copyMessage}</div>}
-        </div>
-      )}
-
-      {responseText && (
-        <div>
-          <h2>Response</h2>
-          <p>{responseText}</p>
-          <button onClick={() => copyToClipboard(responseText, setCopyMessage)}>
-            Copy to Clipboard
-          </button>
-        </div>
-      )}
-
-      <section className='text-area'>
-        <textarea
-          id="text-input"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Dont forget to hit that donate button"
-          rows="5"
-          cols="50"
+        <DisplaySummary
+          summary={summary}
+          handleRewrite={handleRewrite}
+          loading={loading}
+          copyMessage={copyMessage}
+          setCopyMessage={setCopyMessage}
         />
-        <button onClick={handleUserInput} disabled={loading || !userInput}>
-          {loading ? 'Processing...' : 'Send Prompt'}
-        </button>
-      </section>
+      )}
+      {responseText && (
+        <ResponseApi
+          responseText={responseText}
+        />
+      )}
+      <UserInput
+        userInput={userInput}
+        setUserInput={setUserInput}
+        handleUserInput={handleUserInput}
+        loading={loading}
+      />
     </div>
   );
 };
