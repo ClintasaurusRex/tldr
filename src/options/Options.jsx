@@ -12,7 +12,7 @@ const Options = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h2>Options</h2>
-      <p>This is your options page. You can add more settings here later.</p>
+      <p>Starting from the bottom, now we're here!</p>
     </div>
   );
 };
