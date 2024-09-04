@@ -1,3 +1,4 @@
+import './UserInput.scss';
 
 const UserInput = function (props) {
   const {
@@ -18,7 +19,7 @@ const UserInput = function (props) {
           rows="5"
           cols="50"
         />
-        <button onClick={handleUserInput} disabled={loading || !userInput}>
+        <button id="send-prompt" onClick={handleUserInput} disabled={loading || !userInput}>
           {loading ? 'Processing...' : 'Send Prompt'}
         </button>
       </section>

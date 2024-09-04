@@ -1,4 +1,4 @@
-
+import './SummarizeBtns.scss';
 
 
 const SummarizeBtns = function (props) {
@@ -9,7 +9,7 @@ const SummarizeBtns = function (props) {
   } = props;
 
   return (
-    <div>
+    <div className="summarize-btns">
       {/* Button to Summarize Highlighted Text */}
       <button onClick={handleSummarizeSelection} disabled={loading}>
         {loading ? 'Summarizing Selection...' : 'Summarize Selection'}

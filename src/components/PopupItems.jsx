@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Summarizer from "./Summarizer";
+import './PopupItems.scss';
 
 const PopupItems = function () {
   const [selectedText, setSelectedText] = useState('');
@@ -15,6 +16,11 @@ const PopupItems = function () {
       <div className="header">
         <h1>T.L.D.R.</h1>
       </div>
+      <div className="links-to">
+        <a href="#">Options</a>
+        <a href="#">About</a>
+        <a href="#">Donate</a>
+      </div>
       <main className="main-content">
         <section className="summary-container" aria-labelledby="summary-heading">
           <h2 id="summary-heading">Summary</h2>
@@ -24,11 +30,7 @@ const PopupItems = function () {
           <Summarizer />
         </section>
       </main>
-      <div className="footer">
-        <a href="#">Options</a>
-        <a href="#">About</a>
-        <a href="#">Donate</a>
-      </div>
+
     </div>
   );
 };
