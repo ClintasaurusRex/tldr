@@ -14,24 +14,24 @@ const Summarizer = () => {
     summarizeContent(summary);
   };
 
- // Handle summarization of the highlighted text
-const handleSummarizeSelection = () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.scripting.executeScript(
-      {
-        target: { tabId: tabs[0].id },
-        func: () => window.getSelection().toString().trim(), // Get the highlighted text
-      },
-      (results) => {
-        if (results && results[0] && results[0].result) {
-          summarizeContent(results[0].result); // Summarize the highlighted text
-        } else {
-          console.error('No text selected.');
+  // Handle summarization of the highlighted text
+  const handleSummarizeSelection = () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      chrome.scripting.executeScript(
+        {
+          target: { tabId: tabs[0].id },
+          func: () => window.getSelection().toString().trim(), // Get the highlighted text
+        },
+        (results) => {
+          if (results && results[0] && results[0].result) {
+            summarizeContent(results[0].result); // Summarize the highlighted text
+          } else {
+            console.error('No text selected.');
+          }
         }
-      }
-    );
-  });
-};
+      );
+    });
+  };
 
 
   // Function to summarize the entire page content using Chrome APIs
@@ -98,7 +98,7 @@ const handleSummarizeSelection = () => {
           id="text-input"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Enter your prompt here"
+          placeholder="Dont forget to hit that donate button"
           rows="5"
           cols="50"
         />
