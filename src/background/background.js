@@ -1,6 +1,7 @@
 /* eslint-disable func-style */
 
 (function () {
+  // this is an IIFE (google if needed)
   // Declare the variable to store selected text within the IIFE
   let selectedText = "";
 
