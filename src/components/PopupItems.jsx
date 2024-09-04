@@ -23,9 +23,6 @@ const PopupItems = function () {
         <section className="buttons">
           <Summarizer />
         </section>
-        {/* <section className="text-area">
-          <textarea id="text-input" placeholder="Text Area" aria-label="Text Area"></textarea>
-        </section> */}
       </main>
       <div className="footer">
         <a href="#">Options</a>
