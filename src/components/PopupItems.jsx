@@ -11,6 +11,11 @@ const PopupItems = function () {
     });
   }, []);
 
+  const openAboutPage = (e) => {
+    e.preventDefault();
+    chrome.tabs.create({ url: chrome.runtime.getURL('about.html') });
+  };
+
   return (
     <div className="container">
       <div className="header">
@@ -18,7 +23,7 @@ const PopupItems = function () {
       </div>
       <div className="links-to">
         <a href="#">Options</a>
-        <a href="#">About</a>
+        <a href="#" onClick={openAboutPage}>About</a>
         <a href="#">Donate</a>
       </div>
       <main className="main-content">
