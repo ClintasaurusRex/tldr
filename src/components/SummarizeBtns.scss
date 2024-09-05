@@ -1,16 +1,53 @@
-$border-color: #6d7f6e;
+/* Variables */
+$background-color: #2c2f33;
+$container-bg-color: #23272a;
+$text-color: #dcdcdc;
+$button-bg-color: #40444b;
+$button-hover-bg-color: lighten($button-bg-color, 10%);
+$button-disabled-bg-color: darken($button-bg-color, 10%);
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+$padding: 10px;
 
+/* Styling for the buttons container */
 .summarize-btns {
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
-}
-.summary-container {
-  height: 43vh;
-  border: 5px solid $border-color;
+  justify-content: space-around;
+  padding: $padding;
+  background-color: $container-bg-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  button {
+    background-color: $button-bg-color;
+    color: $text-color;
+    border: none;
+    border-radius: $border-radius;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.1em;
+    box-shadow: $box-shadow;
+
+    &:hover {
+      background-color: $button-hover-bg-color;
+    }
+
+    &:disabled {
+      background-color: $button-disabled-bg-color;
+      cursor: not-allowed;
+    }
+  }
 }
 
-.summary-container h2 {
-  margin-bottom: -22px;
-  font-size: 20px;
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .summarize-btns {
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      width: 100%;
+    }
+  }
 }

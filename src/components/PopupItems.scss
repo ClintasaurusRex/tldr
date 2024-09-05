@@ -1,13 +1,135 @@
+/* Variables for dark theme */
+$background-color: #2c2f33;
+$container-bg-color: #23272a;
+$text-color: #dcdcdc;
+$heading-color: #ffffff;
+$link-color: #7289da;
+$link-hover-color: lighten($link-color, 10%);
+$button-bg-color: #40444b;
+$button-hover-bg-color: lighten($button-bg-color, 10%);
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+/* General body and container styles */
+.container {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .extentsion-title {
+    color: $heading-color;
+    font-size: 2.5em;
+    margin-bottom: 0;
+  }
+}
+
 .links-to {
   display: flex;
-  justify-content: space-evenly;
-  /* color: black; */
-  font-size: 18px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: underline;
+    }
+  }
 }
 
-.text-area {
-  margin-top: 46px;
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  /* Fixed size for the summary container with min-height to prevent shrinking */
+  .summary-container {
+    background-color: $container-bg-color;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    min-height: 300px; /* Use min-height to ensure it never shrinks */
+    max-height: 300px; /* Set a maximum height to maintain the fixed size */
+    overflow-y: auto; /* Allow vertical scrolling if content exceeds */
+    
+    h2 {
+      color: $heading-color;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: $text-color;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+
+    button {
+      background-color: $button-bg-color;
+      color: $text-color;
+      border: none;
+      border-radius: $border-radius;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $button-hover-bg-color;
+      }
+    }
+  }
+
+  .saved-summaries {
+    background-color: $container-bg-color;
+    padding: 15px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+
+    h2 {
+      color: $heading-color;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: $text-color;
+    }
+  }
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    max-width: 100%;
+  }
 
+  .header .extentsion-title {
+    font-size: 2em;
+  }
 
+  .summary-container,
+  .saved-summaries {
+    padding: 10px;
+    min-height: 200px;
+    max-height: 200px; /* Maintain smaller fixed size on small screens */
+  }
+
+  .buttons button {
+    padding: 8px 16px;
+  }
+}

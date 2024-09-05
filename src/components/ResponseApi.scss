@@ -1,3 +1,49 @@
+/* Variables */
+$background-color: #2c2f33;
+$container-bg-color: #23272a;
+$text-color: #dcdcdc;
+$heading-color: #ffffff;
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+$padding: 15px;
+$font-size: 1.1em;
+
+/* Main container for the API response */
 .response-text {
-  padding: 10px;
+  background-color: $container-bg-color;
+  color: $text-color;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: left;
+
+  h2 {
+    color: $heading-color;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: $font-size;
+    color: $text-color;
+    line-height: 1.6;
+    padding: $padding;
+    background-color: $background-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .response-text {
+    padding: 10px;
+    max-width: 100%;
+
+    p {
+      font-size: 1em;
+      padding: 10px;
+    }
+  }
 }

@@ -7,9 +7,7 @@
 
 - As a user, I want to store summarized texts and have options to copy and paste them, so that I can use the summaries in other documents or applications. ✅
 
-- As a user, I want to bookmark or save articles, so that I can easily access them later for further reading or summarization
-
-- Popup stays open
+- As a user, I want to bookmark or save articles, so that I can easily access them later for further reading or summarization ✅
 
 - Right click copies from highlighted text to the extension ✅
 
