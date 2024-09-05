@@ -15,16 +15,37 @@
       sendResponse({ text: selectedText });
     } else if (message.action === "saveSummary") {
       // Save the summary to local storage with the URL as the key
-      chrome.storage.local.set({ [message.url]: message.summary }, () => {
-        console.log("Summary is Saved");
-        sendResponse({ success: true, summary: message.summary });
-      });
+      const newId = generateRandomId();
+      chrome.storage.local.set(
+        { [newId]: { summary: message.summary, id: newId, url: message.url } },
+        () => {
+          console.log("Summary is Saved");
+          sendResponse({ success: true, summary: message.summary });
+        }
+      );
     } else {
       // Handle unknown actions
       sendResponse({ success: false, message: "Unknown action" });
     }
     return true; // Indicates that the response will be sent asynchronously
   });
+
+  function generateRandomId() {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < 12; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
+  // Example usage
+  const randomId = generateRandomId(10); // Generates a random ID with a length of 10
+  console.log(randomId);
 
   // Listener for when the extension is installed
   chrome.runtime.onInstalled.addListener(() => {

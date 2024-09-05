@@ -10,6 +10,8 @@ export const getSummaries = () => {
     });
   });
 };
+// Passing null tells Chrome to get all items from the local storage.
+
 export const deleteSummary = (url) => {
   return new Promise((resolve, reject) => {
     chrome.storage.local.remove(url, () => {

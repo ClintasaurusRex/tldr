@@ -18,7 +18,9 @@ const SummaryList = () => {
 
   const fetchSummaries = () => {
     getSummaries().then((items) => {
-      setSummaries(items);
+      const copy = { ...items };
+      delete copy.selectedTextForAI;
+      setSummaries(copy);
     }).catch((error) => {
       console.error('Error retrieving summaries:', error);
     });
@@ -26,7 +28,7 @@ const SummaryList = () => {
 
   const handleDelete = (url) => {
     deleteSummary(url).then(() => {
-      fetchSummaries(); // Refresh the summaries after deletion
+      fetchSummaries();
     }).catch((error) => {
       console.error('Error deleting summary:', error);
     });
@@ -39,12 +41,12 @@ const SummaryList = () => {
         <h2>No summaries available.</h2>
       ) : (
         <ul>
-          {Object.entries(summaries).map(([url, summary]) => (
+          {Object.values(summaries).map(({ url, summary, id }) => (
             <li key={url}>
               <h3>{url}</h3>
               <p>{summary}</p>
               <div className='saved-summary-btns'>
-                <button onClick={() => handleDelete(url)}>Delete</button>
+                <button onClick={() => handleDelete(id)}>Delete</button>
                 <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
                   Copy to Clipboard
                 </button>

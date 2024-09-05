@@ -9,7 +9,7 @@
 
 ### Update `manifest.json`
 * The mainfest file can be found in `src/static`. This file will be copied to the `dist` directory when the extension is built.
-* Update your extension's name, version, description, title, and icons. 
+* Update your extension's name, version, description, title, and icons.
 * Update the `permissions` array as needed.
 * Remove content and/or background scripts if not needed.
 
@@ -22,3 +22,5 @@
 * The React and SCSS files for the popup and options pages are in `src/popup` and `src/options` respectively
 * Add background workers to `src/background/background.js`. These scripts will run in the background while the extension popup is closed.
 * Add webpage interaction to `src/content-script/content-script.js`. This script will have access to the DOM and will be able to read information and manipulate the webpage.
+
+npm install uuid
