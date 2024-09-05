@@ -15,7 +15,17 @@ const PopupItems = function () {
 
   const openAboutPage = (e) => {
     e.preventDefault();
-    chrome.tabs.create({ url: chrome.runtime.getURL('about.html') });
+    chrome.tabs.create({ url: chrome.runtime.getURL('about/about.html') });
+  };
+
+  const openOptionsPage = (e) => {
+    e.preventDefault();
+    chrome.runtime.openOptionsPage(); 
+  };
+
+  const openDonationsPage = (e) => {
+    e.preventDefault();
+    chrome.tabs.create({ url: chrome.runtime.getURL('donations/donations.html') });
   };
 
   return (
@@ -24,9 +34,9 @@ const PopupItems = function () {
         <h1 className='extentsion-title'>T.L.D.R.</h1>
       </div>
       <div className="links-to">
-        <a href="#">Options</a>
+        <a href="#" onClick={openOptionsPage}>Options</a>
         <a href="#" onClick={openAboutPage}>About</a>
-        <a href="#">Donate</a>
+        <a href="#" onClick={openDonationsPage}>Donate</a>
       </div>
       <main className="main-content">
         <section className="summary-container" aria-labelledby="summary-heading">

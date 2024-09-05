@@ -1,0 +1,98 @@
+
+$page-bg: #2c2f33;
+$container-bg: #23272a;
+$text-color: #dcdcdc;
+$heading-color: #ffffff;
+$paragraph-color: #c1c1c1;
+$input-bg: #40444b;
+$hover-bg: #7289da;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+
+html, body, #root {
+  background-color: $page-bg;
+  color: $text-color;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%; 
+  line-height: 1.6;
+}
+
+
+.options-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: $container-bg;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+
+  h1 {
+    color: $heading-color;
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .option-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $input-bg;
+      padding: 10px;
+      border-radius: 8px;
+      color: $text-color;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $hover-bg;
+        cursor: pointer;
+      }
+
+      label {
+        flex-grow: 1;
+        color: $text-color;
+      }
+
+      input, select {
+        background-color: $input-bg;
+        color: $text-color;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      input[type="checkbox"] {
+        transform: scale(1.5);
+        margin-left: 10px;
+      }
+
+      select {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .options-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .options-list .option-item {
+    font-size: 1em;
+  }
+}
