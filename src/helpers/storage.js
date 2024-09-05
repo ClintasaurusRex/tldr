@@ -24,26 +24,11 @@ export const deleteSummary = (url) => {
   });
 };
 
-// Listen for changes in the storage
-chrome.storage.onChanged.addListener((changes, areaName) => {
-  if (areaName === "local") {
-    for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
-      console.log(
-        `Storage key "${key}" in namespace "${areaName}" changed.`,
-        `Old value was "${oldValue}", new value is "${newValue}".`
-      );
-      // You can add additional logic here to update your extension's UI
-      // For example, you can call a function to refresh the displayed summaries
-      refreshSummaries();
+// New function to listen for storage changes
+export const onStorageChange = (callback) => {
+  chrome.storage.onChanged.addListener((changes, areaName) => {
+    if (areaName === "local") {
+      callback(changes);
     }
-  }
-});
-
-// Function to refresh summaries (you need to implement this based on your UI logic)
-function refreshSummaries() {
-  getSummaries().then((summaries) => {
-    // Update your UI with the new summaries
-    console.log("Updated summaries:", summaries);
-    // Add your UI update logic here
   });
-}
+};

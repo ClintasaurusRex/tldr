@@ -71,11 +71,11 @@ const useOpenAISummarizer = () => {
           messages: [
             {
               role: "system",
-              content: "You are a helpful assistant.",
+              content: "You are a helpful assistant that summarizes articles.",
             },
             {
               role: "user",
-              content: prompt,
+              content: `Please summarize the following text: ${prompt}`,
             },
           ],
           max_tokens: maxTokens,
@@ -89,7 +89,7 @@ const useOpenAISummarizer = () => {
       );
       setResponseText(response.data.choices[0].message.content);
     } catch (error) {
-      console.error("Error fetching the response:", error);
+      console.error("Error fetching the summary:", error);
     } finally {
       setLoading(false);
     }
@@ -103,5 +103,4 @@ const useOpenAISummarizer = () => {
     sendPromptToChatGPT,
   };
 };
-
 export default useOpenAISummarizer;

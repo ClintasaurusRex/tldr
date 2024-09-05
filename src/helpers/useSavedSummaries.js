@@ -1,8 +1,9 @@
-import { getSummaries, deleteSummary } from "./storage";
+import { getSummaries, deleteSummary, onStorageChange } from "./storage";
 import React, { useEffect, useState } from "react";
 
-const useSavedSummeries = function () {
+const useSavedSummaries = function () {
   const [summaries, setSummaries] = useState({});
+
   const fetchSummaries = () => {
     getSummaries()
       .then((items) => {
@@ -27,6 +28,9 @@ const useSavedSummeries = function () {
 
   useEffect(() => {
     fetchSummaries();
+    onStorageChange((changes) => {
+      fetchSummaries();
+    });
   }, []);
 
   return {
@@ -36,5 +40,4 @@ const useSavedSummeries = function () {
     fetchSummaries,
   };
 };
-
-export default useSavedSummeries;
+export default useSavedSummaries;
