@@ -1,10 +1,32 @@
-.rewrite-copybtns {
+// Variables
+$border-color: #6d7f6e;
+$padding: 10px;
+$font-size: 20px;
+
+// Mixin for flexbox
+@mixin flex-center($direction: row, $justify: space-around, $align: flex-start) {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-direction: row;
-  padding: 10px;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
-.display-summary{
-  border: 5px solid #6d7f6e;
+
+// Styles
+.rewrite-copybtns {
+  @include flex-center(row, space-around, flex-start);
+  padding: $padding;
+}
+
+.display-summary {
+  border: 5px solid $border-color;
+
+  #summary-response {
+    padding: $padding;
+    font-size: $font-size;
+  }
+}
+
+#summary-text {
+  padding: $padding;
+  font-size: $font-size;
 }

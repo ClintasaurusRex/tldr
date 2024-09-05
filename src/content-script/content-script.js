@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 document.addEventListener("mouseup", function () {
   const selectedText = window.getSelection().toString().trim();
   if (selectedText) {
@@ -12,4 +13,16 @@ chrome.runtime.onMessage.addListener((request) => {
     // Call your function to send the text to ChatGPT
     sendPromptToChatGPT(request.text);
   }
+});
+
+function injectContentScript(tabId) {
+  chrome.scripting.executeScript({
+    target: { tabId: tabId },
+    files: ["content-script.js"],
+  });
+}
+
+// Example usage
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+  injectContentScript(tabs[0].id);
 });

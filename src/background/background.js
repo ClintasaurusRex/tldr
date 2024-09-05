@@ -51,6 +51,20 @@
     }
   });
 
+  // Function to reload the background script
+  function reloadBackgroundScript() {
+    chrome.runtime.reload();
+  }
+
+  // Example of how to use the reload function
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === "RELOAD_BACKGROUND") {
+      reloadBackgroundScript();
+      sendResponse({ success: true });
+    }
+    return true; // Indicates that the response will be sent asynchronously
+  });
+
   // Function to clean up context menus and message listeners
   function cleanup() {
     chrome.contextMenus.removeAll();

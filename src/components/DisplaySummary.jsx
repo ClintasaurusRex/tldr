@@ -14,7 +14,7 @@ const DisplaySummary = function (props) {
     <div>
       <section className='display-summary'>
         <h2>Summary</h2>
-        <article>{summary}</article><br />
+        <article id='summary-response'>{summary}</article><br />
         <div className='rewrite-copybtns'>
           <button onClick={handleRewrite} disabled={loading}>
             {loading ? 'Rewriting...' : 'Rewrite'}
