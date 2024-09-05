@@ -1,4 +1,4 @@
-// Variables for color consistency
+
 $page-bg: #2c2f33;
 $container-bg: #23272a;
 $text-color: #dcdcdc;
@@ -8,18 +8,18 @@ $input-bg: #40444b;
 $hover-bg: #7289da;
 $box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 
-// Apply the dark background to the whole page, including html and body
+
 html, body, #root {
   background-color: $page-bg;
   color: $text-color;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  height: 100%; // Ensure it covers full viewport height
+  height: 100%; 
   line-height: 1.6;
 }
 
-// Options container styling
+
 .options-container {
   max-width: 800px;
   margin: 50px auto;
@@ -81,7 +81,7 @@ html, body, #root {
   }
 }
 
-// Media queries for responsiveness
+
 @media (max-width: 768px) {
   .options-container {
     margin: 20px;

@@ -21,6 +21,11 @@ const PopupItems = function () {
     chrome.runtime.openOptionsPage(); 
   };
 
+  const openDonationsPage = (e) => {
+    e.preventDefault();
+    chrome.tabs.create({ url: chrome.runtime.getURL('donations/donations.html') });
+  };
+
   return (
     <div className="container">
       <div className="header">
@@ -29,7 +34,7 @@ const PopupItems = function () {
       <div className="links-to">
         <a href="#" onClick={openOptionsPage}>Options</a>
         <a href="#" onClick={openAboutPage}>About</a>
-        <a href="#">Donate</a>
+        <a href="#" onClick={openDonationsPage}>Donate</a>
       </div>
       <main className="main-content">
         <section className="summary-container" aria-labelledby="summary-heading">
