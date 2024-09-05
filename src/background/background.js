@@ -43,7 +43,7 @@
     if (info.menuItemId === "sendToChatGPT") {
       // Store the selected text and open the extension popup
       chrome.storage.local.set(
-        { selectedTextForChatGPT: info.selectionText },
+        { selectedTextForAI: info.selectionText },
         () => {
           chrome.action.openPopup();
         }

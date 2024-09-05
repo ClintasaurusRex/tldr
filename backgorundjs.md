@@ -69,7 +69,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "sendToChatGPT") {
     chrome.storage.local.set(
-      { selectedTextForChatGPT: info.selectionText },
+      // { selectedTextForChatGPT: info.selectionText },
       () => {
         chrome.action.openPopup();
       }

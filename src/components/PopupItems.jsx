@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Summarizer from "./Summarizer";
 import SummaryList from "./SummaryList";
+
 import './PopupItems.scss';
 
 const PopupItems = function () {
@@ -29,7 +30,7 @@ const PopupItems = function () {
       </div>
       <main className="main-content">
         <section className="summary-container" aria-labelledby="summary-heading">
-          <h2 id="summary-heading">Summary</h2>
+          <h2 id="summary-heading">Summarizer</h2>
           <p id="summary-text">{selectedText}</p>
         </section>
         <section className="buttons">

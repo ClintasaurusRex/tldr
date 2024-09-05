@@ -10,3 +10,14 @@ export const getSummaries = () => {
     });
   });
 };
+export const deleteSummary = (url) => {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.remove(url, () => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
+      } else {
+        resolve();
+      }
+    });
+  });
+};
