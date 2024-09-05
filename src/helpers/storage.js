@@ -26,9 +26,16 @@ export const deleteSummary = (url) => {
 
 // New function to listen for storage changes
 export const onStorageChange = (callback) => {
-  chrome.storage.onChanged.addListener((changes, areaName) => {
+  const listener = (changes, areaName) => {
     if (areaName === "local") {
       callback(changes);
     }
-  });
+  };
+
+  chrome.storage.onChanged.addListener(listener);
+
+  // Return a function to remove the listener
+  return () => {
+    chrome.storage.onChanged.removeListener(listener);
+  };
 };
