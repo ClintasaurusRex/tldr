@@ -30,3 +30,16 @@ $font-size: 20px;
   padding: $padding;
   font-size: $font-size;
 }
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.extentsion-title {
+  display: inline-block;
+  animation: rotate 2s linear;
+}

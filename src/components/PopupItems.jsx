@@ -19,7 +19,7 @@ const PopupItems = function () {
   return (
     <div className="container">
       <div className="header">
-        <h1>T.L.D.R.</h1>
+        <h1 className='extentsion-title'>T.L.D.R.</h1>
       </div>
       <div className="links-to">
         <a href="#">Options</a>

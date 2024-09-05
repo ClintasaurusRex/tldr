@@ -1,3 +1,5 @@
+$border-color: #6d7f6e;
+
 .summarize-btns {
   display: flex;
   justify-content: space-evenly;
@@ -5,4 +7,10 @@
 }
 .summary-container {
   height: 43vh;
+  border: 5px solid $border-color;
+}
+
+.summary-container h2 {
+  margin-bottom: -22px;
+  font-size: 20px;
 }
