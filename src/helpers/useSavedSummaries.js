@@ -1,5 +1,4 @@
 import { getSummaries, deleteSummary } from "./storage";
-i;
 import React, { useEffect, useState } from "react";
 
 const useSavedSummeries = function () {

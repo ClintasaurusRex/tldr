@@ -5,7 +5,6 @@ import { copyToClipboard } from '../helpers/colinho';
 import './SummaryList.scss';
 
 const SummaryList = () => {
-
   const {
     handleDelete,
     summaries,

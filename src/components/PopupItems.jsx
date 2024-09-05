@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import Summarizer from "./Summarizer";
 import SummaryList from "./SummaryList";
 import usePages from '../helpers/usePages';
@@ -6,20 +6,13 @@ import usePages from '../helpers/usePages';
 import './PopupItems.scss';
 
 const PopupItems = function () {
-  const [selectedText, setSelectedText] = useState('');
 
   const {
     openAboutPage,
     openOptionsPage,
-    openDonationsPage
+    openDonationsPage,
+    selectedText,
   } = usePages();
-
-  useEffect(() => {
-    chrome.runtime.sendMessage({ type: 'GET_SELECTED_TEXT' }, (response) => {
-      setSelectedText(response.text);
-    });
-  }, []);
-
 
   return (
     <div className="container">
