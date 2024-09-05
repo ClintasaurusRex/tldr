@@ -15,7 +15,7 @@ const UserInput = function (props) {
           id="text-input"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
-          placeholder="Ask me to translate or look up the meaning to a work, I'm here to help"
+          placeholder="Ask me to translate or look up the meaning to a word, I'm here to help"
           rows="5"
           cols="50"
         />

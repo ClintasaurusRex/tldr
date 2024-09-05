@@ -88,4 +88,42 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
   return true;
 });
+
+{
+  url: summary
+}
+{
+  id: {id: id, url: url, summary: summary}
+}
+
+{
+  hisory: [{
+    id: id,
+    url: url,
+    summary: summary
+  }]
+}
+
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,38 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { getSummaries, deleteSummary } from '../helpers/storage';
+import useSavedSummeries from '../helpers/useSavedSummaries.js';
 import useSummarizer from '../helpers/useSummarizer.js';
 import { copyToClipboard } from '../helpers/colinho';
 import './SummaryList.scss';
 
 const SummaryList = () => {
-  const [summaries, setSummaries] = useState({});
+
+  const {
+    handleDelete,
+    summaries,
+  } = useSavedSummeries();
 
   const {
     copyMessage,
     setCopyMessage
   } = useSummarizer();
-
-  useEffect(() => {
-    fetchSummaries();
-  }, []);
-
-  const fetchSummaries = () => {
-    getSummaries().then((items) => {
-      const copy = { ...items };
-      delete copy.selectedTextForAI;
-      setSummaries(copy);
-    }).catch((error) => {
-      console.error('Error retrieving summaries:', error);
-    });
-  };
-
-  const handleDelete = (url) => {
-    deleteSummary(url).then(() => {
-      fetchSummaries();
-    }).catch((error) => {
-      console.error('Error deleting summary:', error);
-    });
-  };
 
   return (
     <div className="summary-list">
