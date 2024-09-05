@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Summarizer from "./Summarizer";
+import SummaryList from "./SummaryList";
 import './PopupItems.scss';
 
 const PopupItems = function () {
@@ -33,6 +34,9 @@ const PopupItems = function () {
         </section>
         <section className="buttons">
           <Summarizer />
+        </section>
+        <section className="saved-summaries">
+          <SummaryList />
         </section>
       </main>
 
