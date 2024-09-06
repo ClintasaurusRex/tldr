@@ -1,6 +1,8 @@
+$background-color: #292929;
+
 .saved-summary-btns {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
 }
 .copy-message {
   display: flex;
@@ -8,4 +10,24 @@
   flex-direction: row;
   margin-left: 12.1em;
   padding: 10px;
+}
+.summarized-content {
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+}
+ul {
+  padding: 7px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.saved-summaries {
+  background-color: $background-color;
 }

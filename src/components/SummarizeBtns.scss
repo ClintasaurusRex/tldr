@@ -2,8 +2,11 @@ $border-color: #6d7f6e;
 
 .summarize-btns {
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
+  flex-direction: column;
+
+ #summarize-entire-page{
+  margin-top: 10px;
+ }
 }
 .summary-container {
   height: 43vh;

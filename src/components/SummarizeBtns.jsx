@@ -16,7 +16,8 @@ const SummarizeBtns = function (props) {
       </button>
 
       {/* Button to Summarize the Entire Page */}
-      <button onClick={handleSummarizeEntirePageWithChrome} disabled={loading}>
+      <button id='summarize-entire-page'
+        onClick={handleSummarizeEntirePageWithChrome} disabled={loading}>
         {loading ? 'Summarizing Entire Page...' : 'Summarize Entire Page'}
       </button>
     </div>

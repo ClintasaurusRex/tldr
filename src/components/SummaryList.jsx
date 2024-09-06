@@ -23,7 +23,7 @@ const SummaryList = () => {
       ) : (
         <ul>
           {Object.values(summaries).map(({ url, summary, id }) => (
-            <li key={url}>
+            <li className='summarized-content' key={url}>
               <h3>{url}</h3>
               <p>{summary}</p>
               <div className='saved-summary-btns'>
