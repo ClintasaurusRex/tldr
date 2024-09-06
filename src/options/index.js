@@ -7,4 +7,4 @@ const rootDiv = document.createElement('div');
 document.body.appendChild(rootDiv);
 
 const root = ReactDOM.createRoot(rootDiv);
-root.render(<Options />);
+root.render(<Options/>);
