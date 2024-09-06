@@ -1,0 +1,12 @@
+.dark-mode {
+  --text: #e90b0b;
+  --background: #0d170e;
+  --primary: #0c916d;
+  --secondary: #0f281f;
+  --accent: #7be1cb;
+}
+
+body.dark-mode {
+  background-color: var(--background);
+  color: var(--text);
+}
