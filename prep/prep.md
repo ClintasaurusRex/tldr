@@ -25,9 +25,9 @@
 
 4 - As a user, I want to remove unnecessary elements from the webpage (like ads or images), so that I can focus solely on the text I want to summarize.
 
-5 - It can summarize pdf's 
+5 - It can summarize pdf's
 
-6 - As a user, I want to summarize texts in different languages, so that I can use the extension with non-English content. 
+6 - As a user, I want to summarize texts in different languages, so that I can use the extension with non-English content.
 
 7 - As a user, I want to export summarized texts to different formats (e.g., PDF, Word, plain text), so that I can save or share my summaries in a format that suits my needs.
 
@@ -47,7 +47,19 @@
 14 - As a developer, I want to assess the difficulty of making the extension compatible with both Chrome and Firefox, so that I can plan for cross-browser support.
 
 
-## Necessary Fixes 
+## Things do to
+
+. Options :
+- summary length,
+- dark mode
+- bullet points, paragraphs , headlines
+
+- Donations
+- Reading pdf's
+- Taking ads of the webpage
+- syncing with all google
+
+## Necessary Fixes
 
 - Cleaning/Refactoring code
 
