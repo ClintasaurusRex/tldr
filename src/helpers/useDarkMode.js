@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const useDarkMode = function () {
   const [darkMode, setDarkMode] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     chrome.storage.sync.get(["darkMode"], (result) => {
@@ -28,8 +27,8 @@ const useDarkMode = function () {
     }
   };
 
+  const [isDarkMode, setIsDarkMode] = useState(false);
   useEffect(() => {
-    // Retrieve the dark mode setting from chrome.storage
     chrome.storage.sync.get(["darkMode"], (result) => {
       setIsDarkMode(result.darkMode || false);
     });

@@ -1,4 +1,4 @@
-
+@import '../options/darkMode.scss';
 $page-bg: #2c2f33;
 $container-bg: #23272a;
 $text-color: #dcdcdc;
@@ -96,15 +96,15 @@ html, body, #root {
     font-size: 1em;
   }
 }
-.dark-mode {
-  --text: #e90b0b;
-  --background: #0d170e;
-  --primary: #0c916d;
-  --secondary: #0f281f;
-  --accent: #7be1cb;
-}
+// .dark-mode {
+//   --text: #e90b0b;
+//   --background: #0d170e;
+//   --primary: #0c916d;
+//   --secondary: #0f281f;
+//   --accent: #7be1cb;
+// }
 
-body.dark-mode {
-  background-color: var(--background);
-  color: var(--text);
-}
+// body.dark-mode {
+//   background-color: var(--background);
+//   color: var(--text);
+// }
