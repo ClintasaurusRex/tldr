@@ -25,6 +25,7 @@ const DisplaySummary = function (props) {
           {copyMessage && <div className="copy-message">{copyMessage}</div>}
         </div>
       </section>
+      <br />
     </div>
   );
 };

@@ -1,16 +1,22 @@
-$border-color: #6d7f6e;
+@import '../styles/base'; 
 
 .summarize-btns {
   display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
+  justify-content: space-evenly; 
+  padding: $padding; 
 }
+
 .summary-container {
   height: 43vh;
-  border: 5px solid $border-color;
+  border: 5px solid $border-color; 
+  padding: $padding; 
+  border-radius: $border-radius; 
+  background-color: $container-bg-color;
+  box-shadow: $box-shadow; 
 }
 
 .summary-container h2 {
   margin-bottom: -22px;
-  font-size: 20px;
+  font-size: $font-size-heading; 
+  color: $heading-color; 
 }

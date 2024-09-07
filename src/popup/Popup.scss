@@ -1,105 +1,76 @@
-$background-color: lightsteelblue;
+@import '../styles/base.scss';
+
+
 
 .Popup {
   background-color: $background-color;
   width: 627px;
   height: 100vh;
-
 }
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
-  color: #ffffff;
-}
-
-.container {
-  width: 95vw;
-  height: 500px;
-  padding: 10px;
-  border: 1px solid #666;
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-top: 40px;
+  height: 36px;
+  
+
+  h1 {
+    margin-top: 0px;
+    font-size: $font-size-heading;
+    color: $primary-color;
+  }
 }
 
-.header h1 {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  color: black;
-}
+// .summary-container {
+//   border: 1px solid $text-color;
+//   padding: $padding;
+//   border-radius: $border-radius;
+//   margin-bottom: 10px;
+//   height: 150px;
+//   overflow-y: auto;
+//   margin: 10px;
 
-.summary-container {
-  border: 1px solid #ffffff;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  height: 150px;
-  overflow-y: auto;
-}
-
-.summary-container h2 {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
+//   h2 {
+//     font-size: 14px;
+//     margin-bottom: 5px;
+//   }
+// }
 
 .buttons {
-  display: flex;
-  justify-content: space-around;
+  @include flex-center(row, space-around, center);
   margin-bottom: 10px;
-}
 
-.buttons button {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.buttons button:hover {
-  background-color: #555;
+  button {
+    @extend .button; // Use the button styles from base.scss
+   
+  }
 }
 
 .text-area {
   margin-bottom: 10px;
+  background-color: $background-color;
+
+  textarea {
+    width: 98%;
+    height: 50px;
+    background-color: $button-bg-color;
+    color: $text-color;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+  }
 }
 
-.text-area textarea {
-  width: 98%;
-  height: 50px;
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #666;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-around;
-  font-size: 12px;
-}
-
-.footer a {
-  color: #aaa;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-textarea {
-  resize: none;
-}
-
-.main-content {
-  background-color: black;
-  height: 136vh;
-}
+// .main-content {
+//   background-color: $container-bg-color;
+//   height: 136vh;
+// }

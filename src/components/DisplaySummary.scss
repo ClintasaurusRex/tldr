@@ -1,35 +1,28 @@
-// Variables
-$border-color: #6d7f6e;
-$padding: 10px;
-$font-size: 20px;
+@import '../styles/base'; 
 
-// Mixin for flexbox
-@mixin flex-center($direction: row, $justify: space-around, $align: flex-start) {
-  display: flex;
-  flex-direction: $direction;
-  justify-content: $justify;
-  align-items: $align;
-}
 
-// Styles
 .rewrite-copybtns {
   @include flex-center(row, space-around, flex-start);
-  padding: $padding;
+  padding: $padding; 
 }
 
-.display-summary {
-  border: 5px solid $border-color;
+// .display-summary {
+//   border: 5px solid $border-color; 
+//   padding: $padding; 
+//   border-radius: $border-radius; 
 
-  #summary-response {
-    padding: $padding;
-    font-size: $font-size;
-  }
-}
+//   #summary-response {
+//     padding: $padding; 
+//     font-size: $font-size-base;
+//   }
+// }
 
 #summary-text {
-  padding: $padding;
-  font-size: $font-size;
+  padding: $padding; 
+  font-size: $font-size-base; 
 }
+
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -39,8 +32,10 @@ $font-size: 20px;
   }
 }
 
+
 .extentsion-title {
   display: inline-block;
   animation: rotate 2s linear;
   animation-iteration-count: 1;
+  
 }
