@@ -1,4 +1,5 @@
 @import '../styles/base'; 
+@import "../options/darkMode.scss";
 
 .summary-list {
   background-color: $container-bg-color; 
@@ -50,23 +51,29 @@
         margin-top: 10px;
 
         button {
-          @extend .button; 
+          background-color: $button-bg-color;
+          color: $text-color;
+          border: none;
+          border-radius: 5px;
           padding: 8px 15px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
 
           &:hover {
-            background-color: $button-hover-bg-color; 
+            background-color: $button-hover-bg-color;
           }
         }
       }
 
       .copy-message {
         margin-top: 10px;
-        color: lighten($text-color, 15%); 
+        color: lighten($text-color, 15%);
         font-size: 0.9em;
       }
     }
   }
 }
+
 
 @media (max-width: 768px) {
   .summary-list {

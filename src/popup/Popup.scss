@@ -1,3 +1,5 @@
+@import '../options/darkMode.scss';
+
 @import '../styles/base.scss';
 
 
@@ -58,19 +60,37 @@ body {
   margin-bottom: 10px;
   background-color: $background-color;
 
-  textarea {
-    width: 98%;
-    height: 50px;
-    background-color: $button-bg-color;
-    color: $text-color;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    padding: 5px;
-    resize: none;
-  }
+.text-area textarea {
+  width: 98%;
+  height: 50px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-// .main-content {
-//   background-color: $container-bg-color;
-//   height: 136vh;
-// }
+.footer {
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.footer a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+textarea {
+  resize: none;
+}
+
+.main-content {
+  background-color: black;
+  height: 136vh;
+}
+}

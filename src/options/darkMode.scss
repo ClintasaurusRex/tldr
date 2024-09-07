@@ -1,0 +1,44 @@
+.dark-mode {
+  --text: wheat;
+  --background: #292929;
+  --primary: #292929;
+  --secondary: #0f281f;
+  --accent: #f9f9f9;
+}
+
+body.dark-mode {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.dark-mode .options-container {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+.dark-mode .option-item label {
+  color: var(--text);
+}
+
+.dark-mode .option-item input[type="checkbox"],
+.dark-mode .option-item select {
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+
+.dark-mode .option-item input[type="checkbox"]:checked,
+.dark-mode .option-item select:focus {
+  border-color: var(--accent);
+}
+
+.dark-mode button {
+  background-color: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+.dark-mode button:hover {
+  background-color: var(--accent);
+  color: var(--background);
+}

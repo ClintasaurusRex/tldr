@@ -1,3 +1,4 @@
+@import '../options/darkMode.scss';
 @import '../styles/base'; 
 
 .summarize-btns {
@@ -8,11 +9,7 @@
 
 .summary-container {
   height: 43vh;
-  border: 5px solid $border-color; 
-  padding: $padding; 
-  border-radius: $border-radius; 
-  background-color: $container-bg-color;
-  box-shadow: $box-shadow; 
+  border: 5px solid $border-color;
 }
 
 .summary-container h2 {
