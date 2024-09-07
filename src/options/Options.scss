@@ -1,4 +1,6 @@
 @import '../options/darkMode.scss';
+
+
 $page-bg: #2c2f33;
 $container-bg: #23272a;
 $text-color: #dcdcdc;
@@ -96,15 +98,35 @@ html, body, #root {
     font-size: 1em;
   }
 }
-// .dark-mode {
-//   --text: #e90b0b;
-//   --background: #0d170e;
-//   --primary: #0c916d;
-//   --secondary: #0f281f;
-//   --accent: #7be1cb;
-// }
+// Dark mode styles
+// body.dark-mode & {
+//   background-color: $dark-background;
+//   color: $dark-text;
 
-// body.dark-mode {
-//   background-color: var(--background);
-//   color: var(--text);
+//   .option-item label {
+//     color: $dark-text;
+//   }
+
+//   .option-item input[type="checkbox"],
+//   .option-item select {
+//     background-color: $dark-background;
+//     color: $dark-text;
+//     border: 1px solid $dark-primary;
+//   }
+
+//   .option-item input[type="checkbox"]:checked,
+//   .option-item select:focus {
+//     border-color: $dark-accent;
+//   }
+
+//   button {
+//     background-color: $dark-primary;
+//     color: $dark-text;
+//     border: 1px solid $dark-accent;
+//   }
+
+//   button:hover {
+//     background-color: $dark-accent;
+//     color: $dark-background;
+//   }
 // }
