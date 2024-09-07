@@ -1,5 +1,5 @@
 // Variables
-$border-color: #6d7f6e;
+$border-color: #7289da;
 $padding: 10px;
 $font-size: 20px;
 
@@ -18,11 +18,35 @@ $font-size: 20px;
 }
 
 .display-summary {
-  border: 5px solid $border-color;
+  border: 1px solid border-color;
+  padding: 10px;
+  border-radius: border-color;
+  margin-bottom: 10px;
+  height: 150px;
+  overflow-y: auto;
+  background-color: inherit;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+ 
+
+  h2 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: inherit;
+  };
 
   #summary-response {
-    padding: $padding;
-    font-size: $font-size;
+    border: 1px solid;
+    padding: 10px;
+    border-radius: $border-color;
+    margin-bottom: 10px;
+    height: 150px;
+    overflow-y: auto;
+    background-color: inherit;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -43,4 +67,5 @@ $font-size: 20px;
   display: inline-block;
   animation: rotate 2s linear;
   animation-iteration-count: 1;
+  margin-top: 30px;
 }

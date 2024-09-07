@@ -26,6 +26,18 @@ const useSavedSummaries = function () {
       });
   };
 
+  // Function to download a single summary
+  const downloadSummary = (url, summary) => {
+    // Create a Blob with the summary and the URL
+    const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], { type: 'text/plain' });
+
+    // Create a temporary anchor element to trigger the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'summary.txt'; // You can customize the file name if you want
+    link.click();
+  };
+
   useEffect(() => {
     fetchSummaries();
     onStorageChange((changes) => {
@@ -38,6 +50,7 @@ const useSavedSummaries = function () {
     setSummaries,
     handleDelete,
     fetchSummaries,
+    downloadSummary, // Return the new function
   };
 };
 export default useSavedSummaries;

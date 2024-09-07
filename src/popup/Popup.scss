@@ -1,105 +1,99 @@
-$background-color: lightsteelblue;
+/* Variables for dark theme */
+$background-color: #2c2f33;
+$container-bg-color: #23272a;
+$text-color: #dcdcdc;
+$heading-color: #ffffff;
+$button-bg-color: #40444b;
+$button-hover-bg-color: lighten($button-bg-color, 10%);
+$border-color: #666;
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 
+/* Popup container */
 .Popup {
   background-color: $background-color;
   width: 627px;
   height: 100vh;
-
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
-  color: #ffffff;
+  background-color: $background-color;
+  color: $text-color;
 }
 
-.container {
-  width: 95vw;
-  height: 500px;
-  padding: 10px;
-  border: 1px solid #666;
-}
+
 
 .header {
   text-align: center;
   margin-bottom: 10px;
+  margin-top: 30px;
+
+  h1 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: $heading-color;
+  }
 }
 
-.header h1 {
-  font-size: 16px;
-  margin: 0;
-  padding: 0;
-  color: black;
-}
-
+/* Summary container styling */
 .summary-container {
-  border: 1px solid #ffffff;
+  border: 1px solid;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: $border-radius;
   margin-bottom: 10px;
   height: 150px;
   overflow-y: auto;
+  background-color: $background-color;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+ 
+
+  h2 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: $heading-color;
+  }
 }
 
-.summary-container h2 {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
+/* Buttons styling */
 .buttons {
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
+
+  button {
+    background-color: $button-bg-color;
+    color: $text-color;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $button-hover-bg-color;
+    }
+  }
 }
 
-.buttons button {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.buttons button:hover {
-  background-color: #555;
-}
-
+/* Text area styling */
 .text-area {
   margin-bottom: 10px;
+
+  textarea {
+    width: 98%;
+    height: 50px;
+    background-color: $button-bg-color;
+    color: $text-color;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
+  }
 }
 
-.text-area textarea {
-  width: 98%;
-  height: 50px;
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #666;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.footer {
-  display: flex;
-  justify-content: space-around;
-  font-size: 12px;
-}
-
-.footer a {
-  color: #aaa;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-textarea {
-  resize: none;
-}
-
-.main-content {
-  background-color: black;
-  height: 136vh;
-}

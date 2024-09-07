@@ -1,8 +1,33 @@
+$background-color: #2c2f33;
+$container-bg-color: #23272a;
+$text-color: #dcdcdc;
+$link-color: #7289da; 
+$link-hover-color: lighten($link-color, 10%);
+$button-bg-color: #40444b;
+$button-hover-bg-color: lighten($button-bg-color, 10%);
+$border-radius: 10px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+
+
 .links-to {
   display: flex;
   justify-content: space-evenly;
-  /* color: black; */
   font-size: 18px;
+  color: $text-color;
+  margin-top: 20px;
+  font-size:small ;
+
+  a {
+    color: $link-color; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $link-hover-color; 
+      text-decoration: underline;
+    }
+  }
 }
 
 .text-area {
@@ -11,3 +36,16 @@
 
 
 
+.export-button {
+  background-color: #40444b;
+  color: #dcdcdc;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten(#40444b, 10%);
+  }
+}

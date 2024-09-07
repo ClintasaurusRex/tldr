@@ -9,8 +9,6 @@
 
 - As a user, I want to bookmark or save articles, so that I can easily access them later for further reading or summarization
 
-- Popup stays open
-
 - Right click copies from highlighted text to the extension ✅
 
 ## Stretch Goals
@@ -32,13 +30,13 @@
 7 - As a user, I want to export summarized texts to different formats (e.g., PDF, Word, plain text), so that I can save or share my summaries in a format that suits my needs.
 
 
-8 - As a user, I want to maintain a history of my summarized texts, so that I can revisit and reuse previous summaries when needed.
+8 - As a user, I want to maintain a history of my summarized texts, so that I can revisit and reuse previous summaries when needed. 
 
 9 - As a developer, I want to explore the possibility of syncing the extension with Google Docs, so that users can integrate their summaries with their document workflow.
 
 10 - As a user, I want to receive contextual insights such as related articles or definitions, so that I can gain a deeper understanding of the topics within the text.
 
-11 - As a user, I want to create, read, update, and delete notes related to my summaries, so that I can organize and manage my summarized content effectively (CRUD functionality).
+11 - As a user, I want to create, read, update, and delete notes related to my summaries, so that I can organize and manage my summarized content effectively (CRUD functionality). 
 
 12 - As a user, I want to authenticate myself in the extension, so that I can securely store and manage my summaries.
 
@@ -46,6 +44,24 @@
 
 14 - As a developer, I want to assess the difficulty of making the extension compatible with both Chrome and Firefox, so that I can plan for cross-browser support.
 
+
+8. Export Summaries to Text File
+Description: Add an option to export the saved summaries to a .txt file.
+UI Component: A button.
+Implementation: Use JavaScript to generate a text file with the saved summaries.
+html
+Copy code
+<button id="exportSummaries">Export Summaries to Text File</button>
+js
+Copy code
+document.getElementById('exportSummaries').addEventListener('click', function () {
+  const savedSummaries = localStorage.getItem('savedSummary'); // Example: Retrieve summaries from local storage
+  const blob = new Blob([savedSummaries], { type: 'text/plain' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'summaries.txt';
+  link.click();
+});
 
 ## Necessary Fixes 
 
@@ -56,3 +72,18 @@
 - Recurring error, on the beginning around ?service working?
 
 
+## Things do to 
+
+. Options : 
+- summary length, bullet points, paragraphs , headlines
+
+- dark mode 
+- font size
+- font 
+CSS 
+
+
+- Donations 
+- Reading pdf's
+- Taking ads of the webpage 
+- syncing with all google
