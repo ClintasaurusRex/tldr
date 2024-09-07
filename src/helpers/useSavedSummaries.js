@@ -26,6 +26,18 @@ const useSavedSummaries = function () {
       });
   };
 
+  
+  const downloadSummary = (url, summary) => {
+    
+    const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], { type: 'text/plain' });
+
+    
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'summary.txt'; // You can customize the file name if you want
+    link.click();
+  };
+
   useEffect(() => {
     fetchSummaries();
     onStorageChange((changes) => {
@@ -38,6 +50,7 @@ const useSavedSummaries = function () {
     setSummaries,
     handleDelete,
     fetchSummaries,
+    downloadSummary, 
   };
 };
 export default useSavedSummaries;

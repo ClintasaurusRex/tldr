@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useSavedSummeries from '../helpers/useSavedSummaries.js';
+import useSavedSummaries from '../helpers/useSavedSummaries.js';
 import useSummarizer from '../helpers/useSummarizer.js';
 import { copyToClipboard } from '../helpers/colinho';
 import './SummaryList.scss';
@@ -8,7 +8,8 @@ const SummaryList = () => {
   const {
     handleDelete,
     summaries,
-  } = useSavedSummeries();
+    downloadSummary
+  } = useSavedSummaries(); // Import the new downloadSummary function
 
   const {
     copyMessage,
@@ -30,6 +31,9 @@ const SummaryList = () => {
                 <button onClick={() => handleDelete(id)}>Delete</button>
                 <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
                   Copy to Clipboard
+                </button>
+                <button onClick={() => downloadSummary(url, summary)}>
+                  Download
                 </button>
               </div>
               {copyMessage && <div className="copy-message">{copyMessage}</div>}
