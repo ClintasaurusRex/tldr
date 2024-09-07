@@ -1,3 +1,5 @@
+@import '../options/darkMode.scss';
+
 $background-color: lightsteelblue;
 
 .Popup {
@@ -102,4 +104,16 @@ textarea {
 .main-content {
   background-color: black;
   height: 136vh;
+}
+
+:root {
+  --button-bg: wheat;
+  --button-text: #000000;
+  --button-border: #6d7f6e;
+}
+
+[data-theme="dark"] {
+  --button-bg: #333333;
+  --button-text: #f43a3a;
+  --button-border: #555555;
 }

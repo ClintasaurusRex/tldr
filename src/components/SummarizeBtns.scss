@@ -4,10 +4,32 @@ $border-color: #6d7f6e;
   display: flex;
   justify-content: space-evenly;
   padding: 10px;
+
+  button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid var(--button-border);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+    &:hover {
+      background-color: var(--button-border);
+      color: var(--button-bg);
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      color: #666666;
+      cursor: not-allowed;
+    }
+  }
 }
+
 .summary-container {
   height: 43vh;
-  border: 5px solid $border-color;
+  border: 5px solid var(--button-border);
 }
 
 .summary-container h2 {
