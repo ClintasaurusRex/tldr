@@ -1,27 +1,15 @@
-@import '../styles/base'; 
+@import '../styles/base';
 
 
 .rewrite-copybtns {
   @include flex-center(row, space-around, flex-start);
-  padding: $padding; 
+  padding: $padding;
 }
-
-// .display-summary {
-//   border: 5px solid $border-color; 
-//   padding: $padding; 
-//   border-radius: $border-radius; 
-
-//   #summary-response {
-//     padding: $padding; 
-//     font-size: $font-size-base;
-//   }
-// }
 
 #summary-text {
-  padding: $padding; 
-  font-size: $font-size-base; 
+  padding: $padding;
+  font-size: $font-size-base;
 }
-
 
 @keyframes rotate {
   from {
@@ -32,10 +20,9 @@
   }
 }
 
-
 .extentsion-title {
   display: inline-block;
   animation: rotate 2s linear;
   animation-iteration-count: 1;
-  
+
 }

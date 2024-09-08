@@ -1,6 +1,6 @@
 .dark-mode {
   --text: wheat;
-  --background: #000000;///////////////////////////////////////////////
+  --background: #000000;
   --primary: #292929;
   --secondary: #292929;
   --accent: #f9f9f9;
@@ -13,7 +13,7 @@ body.dark-mode {
   color: var(--text);
 }
 
-// Apply dark mode styles to all text elements
+// Apply dark mode styles to all text elements this is cool
 .dark-mode p,
 .dark-mode h1,
 .dark-mode h2,
@@ -29,8 +29,6 @@ body.dark-mode {
   color: var(--text);
 }
 
-
-// Existing styles for options container and items
 .dark-mode .options-container {
   background-color: var(--secondary);
   color: var(--text);
@@ -60,22 +58,11 @@ body.dark-mode {
   border-radius: 5px;
 }
 
-// .dark-mode .summary-list-item {
-//   background-color: var(--background);
-//   color: var(--text);
-//   border-bottom: 1px solid var(--primary);
-//   padding: 5px;
-// }
-
-.dark-mode .summary-list-item:last-child {
-  border-bottom: none;
-}
 body.dark-mode {
   background-color: var(--background);
   color: var(--text);
-}///////////////////////////////////////////////////////
+}
 
-// Add this rule to make .container background black
 .dark-mode .container {
   background-color: var(--container-bg);
 }
