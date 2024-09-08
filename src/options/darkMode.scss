@@ -11,6 +11,39 @@ body.dark-mode {
   color: var(--text);
 }
 
+// Apply dark mode styles to all text elements
+.dark-mode p,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode h5,
+.dark-mode h6,
+.dark-mode label,
+.dark-mode span,
+.dark-mode a {
+  color: var(--text);
+}
+
+// Apply dark mode styles to all buttons
+.dark-mode button,
+.dark-mode input[type="Delete"],
+.dark-mode input[type="Copy to Clipboard"],
+.dark-mode input[type="Download"] {
+  background-color: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--accent);
+}
+
+.dark-mode button:hover,
+.dark-mode input[type="button"]:hover,
+.dark-mode input[type="submit"]:hover,
+.dark-mode input[type="reset"]:hover {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+// Existing styles for options container and items
 .dark-mode .options-container {
   background-color: var(--secondary);
   color: var(--text);
@@ -32,13 +65,21 @@ body.dark-mode {
   border-color: var(--accent);
 }
 
-.dark-mode button {
-  background-color: var(--primary);
+.dark-mode .summary-list {
+  background-color: var(--secondary);
   color: var(--text);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--primary);
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.dark-mode button:hover {
-  background-color: var(--accent);
-  color: var(--background);
+.dark-mode .summary-list-item {
+  background-color: var(--background);
+  color: var(--text);
+  border-bottom: 1px solid var(--primary);
+  padding: 5px;
+}
+
+.dark-mode .summary-list-item:last-child {
+  border-bottom: none;
 }

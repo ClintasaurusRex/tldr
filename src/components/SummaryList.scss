@@ -1,18 +1,18 @@
-@import '../styles/base'; 
+@import '../styles/base';
 @import "../options/darkMode.scss";
 
 .summary-list {
-  background-color: $container-bg-color; 
-  color: $text-color; 
-  padding: $padding; 
-  border-radius: $border-radius; 
-  box-shadow: $box-shadow; 
+  background-color: $container-bg-color;
+  color: $text-color;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
   max-width: 600px;
   margin: 20px auto;
   text-align: left;
 
   h2 {
-    color: $heading-color; 
+    color: $heading-color;
     margin-bottom: 20px;
     text-decoration: underline;
   }
@@ -22,26 +22,26 @@
     padding: 0;
 
     li {
-      background-color: $background-color; 
+      background-color: $background-color;
       padding: $padding;
-      margin-bottom: $padding; 
-      border-radius: $border-radius; 
-      border: 1px solid $border-color; 
-      box-shadow: $box-shadow; 
+      margin-bottom: $padding;
+      border-radius: $border-radius;
+      border: 1px solid $border-color;
+      box-shadow: $box-shadow;
       margin-top: 40px;
 
       &:not(:last-child) {
-        border-bottom: 2px solid $border-color; 
+        border-bottom: 2px solid $border-color;
       }
 
       h3 {
-        color: $heading-color; 
+        color: $heading-color;
         margin-bottom: 10px;
-        word-break: break-all; 
+        word-break: break-all;
       }
 
       p {
-        color: $text-color; 
+        color: wheat;
         margin-bottom: 10px;
       }
 
@@ -72,6 +72,42 @@
       }
     }
   }
+
+  &.dark-mode {
+    background-color: var(--background);
+    color: var(--text);
+
+    h2 {
+      color: var(--text);
+    }
+
+    li {
+      background-color: var(--secondary);
+      color: var(--text);
+    }
+
+    .saved-summary-btns button {
+      background-color: var(--primary);
+      color: var(--text);
+      border: 1px solid var(--accent);
+    }
+
+    .saved-summary-btns button:hover {
+      background-color: var(--accent);
+      color: var(--background);
+    }
+
+    .copy-message {
+      color: var(--text);
+    }
+  }
+  .summary-text {
+    color: var(--text);
+  }
+  #summary-url {
+    color: var(--text);
+
+   }
 }
 
 

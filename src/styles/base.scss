@@ -1,3 +1,5 @@
+@import "../options/darkMode.scss";
+
 // Colors
 $primary-color: #7289da;
 $secondary-color: #40444b;
@@ -16,8 +18,8 @@ $padding: 10px;
 $font-family: 'Arial', sans-serif;
 $font-size-base: 16px;
 $font-size-heading: 20px; // Adjusted heading size for consistency
-$container-width: 600px; 
-$container-height: 300px; 
+$container-width: 600px;
+$container-height: 300px;
 
 // Mixins
 @mixin flex-center($direction: row, $justify: center, $align: center) {
@@ -90,7 +92,7 @@ h1 {
 
 
 .center-content {
-  @include flex-center(column, center, center); 
+  @include flex-center(column, center, center);
 }
 
 // Responsive settings (if needed)

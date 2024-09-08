@@ -1,5 +1,6 @@
 import { copyToClipboard } from '../helpers/colinho';
 import './DisplaySummary.scss';
+// import "../options/darMode.scss";
 
 const DisplaySummary = function (props) {
 
