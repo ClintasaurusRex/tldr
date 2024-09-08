@@ -9,7 +9,6 @@ const UserInput = function (props) {
     loading
   } = props;
 
-
   return (
     <div>
       <section className='text-area'>
