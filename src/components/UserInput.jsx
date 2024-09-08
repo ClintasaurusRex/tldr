@@ -1,4 +1,5 @@
 import './UserInput.scss';
+import { useEffect } from "react";
 
 const UserInput = function (props) {
   const {
@@ -7,6 +8,7 @@ const UserInput = function (props) {
     handleUserInput,
     loading
   } = props;
+
 
   return (
     <div>

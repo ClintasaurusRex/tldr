@@ -1,5 +1,5 @@
 import useOpenAISummarizer from "./aiSummarizer.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const useSummarizer = function () {
   const {
@@ -59,6 +59,23 @@ const useSummarizer = function () {
   const handleUserInput = () => {
     sendPromptToChatGPT(userInput);
   };
+
+  // Event listener for Enter key press in the textarea
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter" && !event.shiftKey && !loading && userInput) {
+        event.preventDefault();
+        handleUserInput();
+      }
+    };
+
+    const textarea = document.getElementById("text-input");
+    textarea.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      textarea.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [loading, userInput, handleUserInput]);
 
   return {
     handleRewrite,

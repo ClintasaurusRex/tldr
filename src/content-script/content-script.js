@@ -15,14 +15,13 @@ chrome.runtime.onMessage.addListener((request) => {
   }
 });
 
-function injectContentScript(tabId) {
-  chrome.scripting.executeScript({
-    target: { tabId: tabId },
-    files: ["content-script.js"],
-  });
-}
+// function injectContentScript(tabId) {
+//   chrome.scripting.executeScript({
+//     target: { tabId: tabId },
+//     files: ["content-script.js"],
+//   });
+// }
 
-// Example usage
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-  injectContentScript(tabs[0].id);
-});
+// chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+//   injectContentScript(tabs[0].id);
+// });

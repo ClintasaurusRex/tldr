@@ -96,4 +96,15 @@
   chrome.runtime.onSuspend.addListener(() => {
     cleanup();
   });
+
+  function injectContentScript(tabId) {
+    chrome.scripting.executeScript({
+      target: { tabId: tabId },
+      files: ["content-script/content-script.js"],
+    });
+  }
+
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    injectContentScript(tabs[0].id);
+  });
 })();
