@@ -1,10 +1,10 @@
-@import '../options/darkMode.scss';
-@import '../styles/base'; 
+@import '../styles/darkMode.scss';
+@import '../styles/base';
 
 .summarize-btns {
   display: flex;
-  justify-content: space-evenly; 
-  padding: $padding; 
+  justify-content: space-evenly;
+  padding: $padding;
 }
 
 .summary-container {
@@ -14,6 +14,6 @@
 
 .summary-container h2 {
   margin-bottom: -22px;
-  font-size: $font-size-heading; 
-  color: $heading-color; 
+  font-size: $font-size-heading;
+  color: $heading-color;
 }
