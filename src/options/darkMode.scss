@@ -1,9 +1,10 @@
 .dark-mode {
   --text: wheat;
-  --background: #292929;
+  --background: #000000;///////////////////////////////////////////////
   --primary: #292929;
-  --secondary: #0f281f;
+  --secondary: #292929;
   --accent: #f9f9f9;
+  --container-bg: #000000; // Add this variable for container background
 }
 
 body.dark-mode {
@@ -21,27 +22,12 @@ body.dark-mode {
 .dark-mode h6,
 .dark-mode label,
 .dark-mode span,
-.dark-mode a {
+.dark-mode a,
+.dark-mode ul /////////////////////////////
+{
   color: var(--text);
 }
 
-// Apply dark mode styles to all buttons
-.dark-mode button,
-.dark-mode input[type="Delete"],
-.dark-mode input[type="Copy to Clipboard"],
-.dark-mode input[type="Download"] {
-  background-color: var(--primary);
-  color: var(--text);
-  border: 1px solid var(--accent);
-}
-
-.dark-mode button:hover,
-.dark-mode input[type="button"]:hover,
-.dark-mode input[type="submit"]:hover,
-.dark-mode input[type="reset"]:hover {
-  background-color: var(--accent);
-  color: var(--background);
-}
 
 // Existing styles for options container and items
 .dark-mode .options-container {
@@ -73,13 +59,36 @@ body.dark-mode {
   border-radius: 5px;
 }
 
-.dark-mode .summary-list-item {
-  background-color: var(--background);
-  color: var(--text);
-  border-bottom: 1px solid var(--primary);
-  padding: 5px;
-}
+// .dark-mode .summary-list-item {
+//   background-color: var(--background);
+//   color: var(--text);
+//   border-bottom: 1px solid var(--primary);
+//   padding: 5px;
+// }
 
 .dark-mode .summary-list-item:last-child {
   border-bottom: none;
 }
+body.dark-mode {
+  background-color: var(--background);
+  color: var(--text);
+}///////////////////////////////////////////////////////
+
+// Add this rule to make .container background black
+.dark-mode .container {
+  background-color: var(--container-bg);
+}
+.dark-mode .text-area {
+  background-color: var(--container-bg);
+}
+.dark-mode .summary-list {
+  background-color: var(--container-bg);
+}
+.dark-mode button {
+  background-color:  rgb(48, 48, 48);
+  color: var(--text);
+}
+.dark-mode .saved-summary-btns {
+        color: wheat;
+        margin-bottom: 10px;
+      }

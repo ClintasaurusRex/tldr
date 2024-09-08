@@ -22,7 +22,7 @@ body {
   text-align: center;
   margin-top: 40px;
   height: 36px;
-  
+
 
   h1 {
     margin-top: 0px;
@@ -52,7 +52,7 @@ body {
 
   button {
     @extend .button; // Use the button styles from base.scss
-   
+
   }
 }
 
@@ -90,7 +90,7 @@ textarea {
 }
 
 .main-content {
-  background-color: black;
+  // background-color: black;
   height: 136vh;
 }
 }
