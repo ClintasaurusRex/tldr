@@ -26,14 +26,17 @@ const SummaryList = () => {
         <ul>
           {Object.values(summaries).map(({ url, summary, id }) => (
             <li key={url}>
-              <h3>{url}</h3>
-              <p>{summary}</p>
-              <div className='saved-summary-btns'>
-                <button onClick={() => handleDelete(id)}>Delete</button>
-                <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
+              <h3 id='summary-url' >{url}</h3>
+              <p id='summary-value' >{summary}</p>
+              <div className="saved-summary-btns" >
+                <button
+                  id="summary-buttons" onClick={() => handleDelete(id)}>Delete</button>
+                <button
+                  id="summary-buttons" onClick={() => copyToClipboard(summary, setCopyMessage)}>
                   Copy to Clipboard
                 </button>
-                <button onClick={() => downloadSummary(url, summary)}>
+                <button
+                  id="summary-buttons" onClick={() => downloadSummary(url, summary)}>
                   Download
                 </button>
               </div>

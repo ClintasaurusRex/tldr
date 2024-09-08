@@ -92,3 +92,21 @@ body.dark-mode {
         color: wheat;
         margin-bottom: 10px;
       }
+// Add styles for the list items in SummaryList
+.dark-mode .summary-list li {
+  background-color: var(--background);
+  color: var(--text);
+  border-bottom: 1px solid var(--primary);
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.dark-mode #summary-url {
+  color: wheat;
+
+}
+.dark-mode #summary-value {
+  color: wheat;
+}
+.dark-mode #summary-buttons {
+  color: wheat;
+}
