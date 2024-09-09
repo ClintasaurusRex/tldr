@@ -1,26 +1,52 @@
-# React Chrome Extension Boilerplate
+# TLDR Chrome Extension
 
-### Getting Started
-1. Copy the repo using the `Use this template` button
-2. Clone the copy to your local machine
-3. Run `npm install` to install the dependencies
-4. Run `npm run build` to build the extension into the `dist` directory
-5. Inside Chrome, load the `dist` directory as an unpacked extension
+## Overview
 
-### Update `manifest.json`
-* The mainfest file can be found in `src/static`. This file will be copied to the `dist` directory when the extension is built.
-* Update your extension's name, version, description, title, and icons.
-* Update the `permissions` array as needed.
-* Remove content and/or background scripts if not needed.
+The TLDR Chrome Extension is a powerful tool designed to help users quickly understand and manage web content. With this extension, users can easily summarize selected text, store and manage their summaries, and access a variety of additional features to enhance their browsing experience.
 
-### Scripts
-* `start`: Run webpack in watch mode using the development configuration. Rebuilds the app when files are saved. Note: some changes will require the extension to be reloaded in Chrome.
-* `build`: Build the project to the `dist` directory using the production configuration.
+## Features
 
-### Customizing the Extension
-* Add static assets (images, icons, etc) to `src/static`
-* The React and SCSS files for the popup and options pages are in `src/popup` and `src/options` respectively
-* Add background workers to `src/background/background.js`. These scripts will run in the background while the extension popup is closed.
-* Add webpage interaction to `src/content-script/content-script.js`. This script will have access to the DOM and will be able to read information and manipulate the webpage.
+- **Text Summarization**: Quickly summarize selected text to grasp the main points without reading the entire content.
+- **Summarize Entire Web Pages**: Instantly summarize the entire content of any web page.
+- **Store Summaries**: Save summarized texts and have options to copy and paste them for use in other documents or applications.
+- **Bookmark Articles**: Save articles for easy access later.
+- **CRUD Functionality**: Create, read, update, and delete notes related to your summaries.
+- **Integrated Dictionary**: Look up definitions or meanings of specific terms within the text using A.I
+ (e.g., PDF, Word, plain text).
+- **History**: Maintain a history of your summarized texts for future reference.
+- Download summary as a text file
 
-npm install uuid
+### Installation
+
+1. Clone the repository to your local machine:
+    ```sh
+    git clone https://github.com/ClintasaurusRex/tldr-extension.git
+    cd tldr-extension
+    ```
+
+2. Install the dependencies:
+    ```sh
+    npm install
+    ```
+
+3. Build the extension:
+    ```sh
+    npm run build
+    ```
+
+
+4. Load the extension in Chrome:
+    - Open Chrome and navigate to `chrome://extensions/`.
+    - Enable "Developer mode" by clicking the toggle switch in the top right corner.
+    - Click the "Load unpacked" button and select the `dist` directory from your project.
+
+## Usage
+
+- Click the TLDR extension icon in the Chrome toolbar to open the popup.
+- Select text on any webpage and right-click to use the "Send to the extension" context menu option.
+- Manage your summaries, notes, and settings from the extension popup.
+
+## Options
+
+- **Summary Length**: Adjust the length of the summaries.
+- **Dark Mode**: Toggle dark mode for the extension interface.
