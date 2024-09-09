@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+
 import useSavedSummaries from '../helpers/useSavedSummaries.js';
-import useSummarizer from '../helpers/useSummarizer.js';
-import { copyToClipboard } from '../helpers/colinho';
 
 import './SummaryList.scss';
 
@@ -9,16 +7,11 @@ const SummaryList = () => {
   const {
     handleDelete,
     summaries,
-    downloadSummary
+    downloadSummary,
+    handleCopy,
+    copiedSummaryId,
   } = useSavedSummaries();
 
-  // Track which summary was copied
-  const [copiedSummaryId, setCopiedSummaryId] = useState(null);
-
-  const handleCopy = (summary, id) => {
-    copyToClipboard(summary, () => setCopiedSummaryId(id)); 
-    setTimeout(() => setCopiedSummaryId(null), 3000); 
-  };
 
   return (
     <div className="summary-list">
@@ -42,7 +35,7 @@ const SummaryList = () => {
                   Download
                 </button>
               </div>
-           
+
               {copiedSummaryId === id && <div className="copy-message">Copied!</div>}
             </li>
           ))}

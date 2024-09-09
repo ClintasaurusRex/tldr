@@ -1,5 +1,6 @@
 import { getSummaries, deleteSummary, onStorageChange } from "./storage";
 import React, { useEffect, useState } from "react";
+import { copyToClipboard } from "./colinho";
 
 const useSavedSummaries = function () {
   const [summaries, setSummaries] = useState({});
@@ -26,16 +27,23 @@ const useSavedSummaries = function () {
       });
   };
 
-  
   const downloadSummary = (url, summary) => {
-    
-    const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], { type: 'text/plain' });
+    const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], {
+      type: "text/plain",
+    });
 
-    
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = 'TLDRsummary.txt'; // We can customize the file name if you want
+    link.download = "TLDRsummary.txt"; // We can customize the file name if you want
     link.click();
+  };
+
+  // Track which summary was copied
+  const [copiedSummaryId, setCopiedSummaryId] = useState(null);
+
+  const handleCopy = (summary, id) => {
+    copyToClipboard(summary, () => setCopiedSummaryId(id));
+    setTimeout(() => setCopiedSummaryId(null), 3000);
   };
 
   useEffect(() => {
@@ -50,7 +58,9 @@ const useSavedSummaries = function () {
     setSummaries,
     handleDelete,
     fetchSummaries,
-    downloadSummary, 
+    downloadSummary,
+    handleCopy,
+    copiedSummaryId,
   };
 };
 export default useSavedSummaries;
