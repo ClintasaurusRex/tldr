@@ -19,7 +19,6 @@
       chrome.storage.local.set(
         { [newId]: { summary: message.summary, id: newId, url: message.url } },
         () => {
-          console.log("Summary is Saved");
           sendResponse({ success: true, summary: message.summary });
         }
       );

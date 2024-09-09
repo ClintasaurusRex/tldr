@@ -35,7 +35,7 @@ const useOpenAISummarizer = () => {
       );
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let currentUrl = tabs[0].url;
-        console.log(currentUrl);
+        // console.log(currentUrl);
 
         chrome.runtime.sendMessage(
           {
