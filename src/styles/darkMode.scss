@@ -24,7 +24,7 @@ body.dark-mode {
 .dark-mode label,
 .dark-mode span,
 .dark-mode a,
-.dark-mode ul /////////////////////////////
+.dark-mode ul
 {
   color: var(--text);
 }
@@ -103,10 +103,10 @@ body.dark-mode {
   background-color: var(--background-btn);
   color: var(--text);
 }
-.dark-mode .displayy-summary{
-  background-color: var(--background-btn);
-  color: var(--text);
-}
+// .dark-mode .display-summary{
+//   background-color: var(--background-btn);
+//   color: var(--text);
+// }
 .dark-mode #darkmode-on{
   color: var(--text);
   display: flex;
