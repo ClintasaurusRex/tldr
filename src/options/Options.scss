@@ -1,4 +1,5 @@
 @import '../styles/darkMode.scss';
+@import '../styles/base.scss';
 
 
 $page-bg: #2c2f33;
@@ -19,16 +20,18 @@ html, body, #root {
   padding: 0;
   height: 100%;
   line-height: 1.6;
+  
 }
 
 
 .options-container {
-  max-width: 800px;
+  width: 800px;
   margin: 50px auto;
   padding: 20px;
   background-color: $container-bg;
   border-radius: 10px;
   box-shadow: $box-shadow;
+  margin-bottom: 10px;
 
   h1 {
     color: $heading-color;

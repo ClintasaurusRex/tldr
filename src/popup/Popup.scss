@@ -20,7 +20,7 @@ body {
 
 .header {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 60px;
   height: 36px;
 
 
@@ -31,27 +31,13 @@ body {
   }
 }
 
-// .summary-container {
-//   border: 1px solid $text-color;
-//   padding: $padding;
-//   border-radius: $border-radius;
-//   margin-bottom: 10px;
-//   height: 150px;
-//   overflow-y: auto;
-//   margin: 10px;
-
-//   h2 {
-//     font-size: 14px;
-//     margin-bottom: 5px;
-//   }
-// }
 
 .buttons {
   @include flex-center(row, space-around, center);
   margin-bottom: 10px;
 
   button {
-    @extend .button; // Use the button styles from base.scss
+    @extend .button; 
 
   }
 }
@@ -90,7 +76,6 @@ textarea {
 }
 
 .main-content {
-  // background-color: black;
-  height: 136vh;
+ height: 136vh;
 }
 }

@@ -112,3 +112,12 @@ body.dark-mode {
   display: flex;
   justify-content: center;
 }
+
+.dark-mode .extentsion-title {
+  display: inline-block;
+  animation: rotate 2s linear;
+  animation-iteration-count: 1;
+  border: 2px solid wheat; 
+  border-radius: 8px;                
+  padding: 10px;
+}

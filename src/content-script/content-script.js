@@ -10,7 +10,7 @@ document.addEventListener("mouseup", function () {
 
 chrome.runtime.onMessage.addListener((request) => {
   if (request.type === "SEND_TO_CHATGPT") {
-    // Call your function to send the text to ChatGPT
+    // Call your function to send the text to summarizer
     sendPromptToChatGPT(request.text);
   }
 });
