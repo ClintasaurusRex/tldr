@@ -107,3 +107,8 @@ body.dark-mode {
   background-color: var(--background-btn);
   color: var(--text);
 }
+.dark-mode #darkmode-on{
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+}

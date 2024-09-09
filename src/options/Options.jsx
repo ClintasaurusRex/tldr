@@ -10,7 +10,7 @@ const Options = () => {
 
   return (
     <div className="options-container">
-      <h1>T.L.D.R. Options</h1>
+      <h1 id='tldr-options'>T.L.D.R. Options</h1>
       <div className="options-list">
         <div className="option-item">
           <label htmlFor="darkMode">Enable Dark Mode:</label>
@@ -43,6 +43,7 @@ const Options = () => {
           </select>
         </div>
       </div>
+      {darkMode && <h2 id='darkmode-on'>Dark Mode On</h2>}
     </div>
   );
 };
