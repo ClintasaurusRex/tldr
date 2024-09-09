@@ -31,7 +31,7 @@
   }
   
   h1, h2 {
-    color: var(--heading-color);
+    color: #38d6ad;
     margin-bottom: 20px;
     font-family: 'Trebuchet MS', sans-serif;
   }
