@@ -34,7 +34,7 @@ const useSavedSummaries = function () {
     
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'summary.txt'; // You can customize the file name if you want
+    link.download = 'TLDRsummary.txt'; // We can customize the file name if you want
     link.click();
   };
 
