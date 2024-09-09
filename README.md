@@ -16,6 +16,20 @@ The TLDR Chrome Extension is a powerful tool designed to help users quickly unde
 - **History**: Maintain a history of your summarized texts for future reference.
 - Download summary as a text file
 
+
+## Screenshots
+
+![Main Display without Anything](src/static/images/main_display_without_any_text.png)
+
+![Main Display with text](src/static/images/main_display_with_text_to_summarize.png)
+
+![Summary Display](src/static/images/Summary_display.png)
+
+![Chat GPT Prompt](src/static/images/chat_gpt_prompt_and_answer.png)
+
+![Saved Summaries](src/static/images/saved_summaries.png)
+
+
 ### Installation
 
 1. Clone the repository to your local machine:
