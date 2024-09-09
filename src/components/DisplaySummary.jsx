@@ -1,15 +1,20 @@
+import { useEffect } from 'react';
 import { copyToClipboard } from '../helpers/colinho';
 import './DisplaySummary.scss';
-// import "../options/darMode.scss";
 
 const DisplaySummary = function (props) {
+  const { summary, handleRewrite, loading, copyMessage, setCopyMessage } = props;
 
-  const { summary,
-    handleRewrite,
-    loading,
-    copyMessage,
-    setCopyMessage
-  } = props;
+  
+  useEffect(() => {
+    if (copyMessage) {
+      const timer = setTimeout(() => {
+        setCopyMessage('');
+      }, 2000); 
+
+      return () => clearTimeout(timer);
+    }
+  }, [copyMessage, setCopyMessage]);
 
   return (
     <div>
@@ -17,20 +22,22 @@ const DisplaySummary = function (props) {
         <h2>Summary</h2>
         <article id='summary-response'>{summary}</article><br />
         <div className='rewrite-copybtns'>
-          <button onClick={handleRewrite} disabled={loading}>
+          <button onClick={handleRewrite} disabled={loading} className="button">
             {loading ? 'Rewriting...' : 'Rewrite'}
           </button>
-          <button onClick={() => copyToClipboard(summary, setCopyMessage)}>
+          <button onClick={() => copyToClipboard(summary, setCopyMessage)} className="button">
             Copy to Clipboard
           </button>
-          {copyMessage && <div className="copy-message">{copyMessage}</div>}
+          {copyMessage && (
+            <div className={`copy-message ${copyMessage ? '' : 'hide'}`}>
+              {copyMessage}
+            </div>
+          )}
         </div>
       </section>
       <br />
     </div>
   );
 };
+
 export default DisplaySummary;
-
-
-

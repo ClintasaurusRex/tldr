@@ -1,6 +1,6 @@
 export const copyToClipboard = (text, setCopyMessage) => {
   navigator.clipboard.writeText(text);
-  setCopyMessage("Copied to clipboard!");
+  setCopyMessage("Copied to the clipboard !");
 };
 
 export const executeScriptInTab = (func, callback) => {

@@ -28,3 +28,27 @@
   border-radius: 8px;                
   padding: 10px;
 }
+
+
+
+.copy-message {
+  margin-top: 5px;
+  background-color: $button-bg-color;
+  color: $text-color;
+  padding: 5px 10px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  font-size: $font-size-base;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 130%; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.copy-message.hide {
+  opacity: 0;
+}
