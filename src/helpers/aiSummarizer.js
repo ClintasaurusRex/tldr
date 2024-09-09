@@ -7,7 +7,7 @@ const useOpenAISummarizer = () => {
   const [responseText, setResponseText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const summarizeContent = async (text, maxTokens = 150) => {
+  const summarizeContent = async (text, maxTokens = 1500) => {
     setLoading(true);
     try {
       const response = await axios.post(
