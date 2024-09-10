@@ -16,6 +16,8 @@ body {
   font-family: $font-family;
   background-color: $background-color;
   color: $text-color;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .header {
@@ -37,7 +39,7 @@ body {
   margin-bottom: 10px;
 
   button {
-    @extend .button; 
+    @extend .button;
 
   }
 }
@@ -47,7 +49,7 @@ body {
   background-color: $background-color;
 
 .text-area textarea {
-  width: 98%;
+  width: 97%;
   height: 50px;
   background-color: #333;
   color: #fff;
@@ -78,4 +80,17 @@ textarea {
 .main-content {
  height: 136vh;
 }
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 5px;
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background-color: #38d6ad;
+  border-radius: 2px;
+}
+
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+  background-color: $background-color;
 }

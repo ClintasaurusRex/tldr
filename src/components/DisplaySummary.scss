@@ -24,8 +24,8 @@
   display: inline-block;
   animation: rotate 2s linear;
   animation-iteration-count: 1;
-  border: 2px solid $primary-color; 
-  border-radius: 8px;                
+  border: 2px solid $primary-color;
+  border-radius: 8px;
   padding: 10px;
 }
 
@@ -43,7 +43,7 @@
   opacity: 1;
   transition: opacity 0.3s ease;
   position: absolute;
-  top: 130%; 
+  top: 130%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -51,4 +51,7 @@
 
 .message_copy.hide {
   opacity: 0;
+}
+.summary-container {
+  margin-left: 5px;
 }
