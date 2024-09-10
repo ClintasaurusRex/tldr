@@ -56,12 +56,25 @@
     color: $heading-color;
     margin-bottom: 5px;
     text-decoration: underline;
-
   }
 
   p {
     font-size: $font-size-base;
     color: $text-color;
+  }
+
+  
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color; 
+    border-radius: 2px; 
+     
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: rgb(0, 0, 0); 
   }
 }
 
