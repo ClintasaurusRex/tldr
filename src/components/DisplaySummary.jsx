@@ -29,7 +29,7 @@ const DisplaySummary = function (props) {
             Copy to Clipboard
           </button>
           {copyMessage && (
-            <div className={`copy-message ${copyMessage ? '' : 'hide'}`}>
+            <div className={`message_copy ${copyMessage ? '' : 'hide'}`}>
               {copyMessage}
             </div>
           )}

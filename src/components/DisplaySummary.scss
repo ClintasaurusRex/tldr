@@ -31,7 +31,7 @@
 
 
 
-.copy-message {
+.message_copy {
   margin-top: 5px;
   background-color: $button-bg-color;
   color: $text-color;
@@ -49,6 +49,6 @@
   z-index: 1;
 }
 
-.copy-message.hide {
+.message_copy.hide {
   opacity: 0;
 }
