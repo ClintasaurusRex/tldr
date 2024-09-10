@@ -1,3 +1,4 @@
+
 .dark-mode {
   --text: wheat;
   --background: #000000;
@@ -99,14 +100,27 @@ body.dark-mode {
   background-color: var(--background-btn);
   color: var(--text);
 }
-.dark-mode .summary-container{
+.dark-mode .summary-container,
+.dark-mode .response-text,
+.dark-mode .display-summary {
   background-color: var(--background-btn);
   color: var(--text);
+
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: wheat; 
+    border-radius: 2px; 
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: rgb(0, 0, 0); 
+  }
 }
-// .dark-mode .display-summary{
-//   background-color: var(--background-btn);
-//   color: var(--text);
-// }
+
+
 .dark-mode #darkmode-on{
   color: var(--text);
   display: flex;
@@ -120,4 +134,22 @@ body.dark-mode {
   border: 2px solid wheat; 
   border-radius: 8px;                
   padding: 10px;
+}
+
+
+/* Scrollbar Styling */
+html.dark-mode::-webkit-scrollbar, 
+body.dark-mode::-webkit-scrollbar {
+  width: 5px; 
+}
+
+html.dark-mode::-webkit-scrollbar-thumb, 
+body.dark-mode::-webkit-scrollbar-thumb {
+  background-color: wheat; 
+  border-radius: 2px;
+}
+
+html.dark-mode::-webkit-scrollbar-corner, 
+body.dark-mode::-webkit-scrollbar-corner {
+  background-color: black; 
 }

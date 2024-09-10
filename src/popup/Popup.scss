@@ -17,7 +17,6 @@ body {
   background-color: $background-color;
   color: $text-color;
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 .header {
@@ -81,6 +80,9 @@ textarea {
  height: 136vh;
 }
 }
+
+
+
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
   width: 5px;
