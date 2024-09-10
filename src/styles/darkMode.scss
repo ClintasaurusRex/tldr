@@ -100,10 +100,26 @@ body.dark-mode {
   background-color: var(--background-btn);
   color: var(--text);
 }
-.dark-mode .summary-container{
+.dark-mode .summary-container,
+.dark-mode .response-text,
+.dark-mode .display-summary {
   background-color: var(--background-btn);
   color: var(--text);
+
+  &::-webkit-scrollbar {
+    width: 5px; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: wheat; 
+    border-radius: 2px; 
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: rgb(0, 0, 0); 
+  }
 }
+
 
 .dark-mode #darkmode-on{
   color: var(--text);
