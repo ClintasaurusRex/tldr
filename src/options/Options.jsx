@@ -12,7 +12,7 @@ const Options = () => {
       <h1 id='tldr-options'>T.L.D.R. Options</h1>
       <div className="options-list">
         <div className="option-item">
-          <label htmlFor="darkMode">Enable Dark Mode:</label>
+          <label htmlFor="darkMode">Enable Night Mode:</label>
           <input
             type="checkbox"
             id="darkMode"
@@ -59,7 +59,7 @@ const Options = () => {
           </select>
         </div>
 
-      
+
 
         <div className="option-item">
           <label htmlFor="autoSave">Enable Auto Save:</label>
@@ -93,7 +93,7 @@ const Options = () => {
         </div>
       </div>
 
-      {darkMode && <h2 id='darkmode-on'>Dark Mode On</h2>}
+      {darkMode && <h2 id='darkmode-on'>Night Mode On</h2>}
     </div>
   );
 };
