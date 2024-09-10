@@ -94,3 +94,15 @@ h1 {
   }
 }
 
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 5px; 
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  border-radius: 2px;
+}
+
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+  background-color: $background-color; 
+}

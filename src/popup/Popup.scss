@@ -16,6 +16,7 @@ body {
   font-family: $font-family;
   background-color: $background-color;
   color: $text-color;
+  max-width: 100%;
 }
 
 .header {
@@ -78,4 +79,20 @@ textarea {
 .main-content {
  height: 136vh;
 }
+}
+
+
+
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 5px; 
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background-color: #38d6ad;
+  border-radius: 2px;
+}
+
+html::-webkit-scrollbar-corner, body::-webkit-scrollbar-corner {
+  background-color: $background-color; 
 }
