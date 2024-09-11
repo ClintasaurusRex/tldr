@@ -99,7 +99,13 @@ body.dark-mode {
 .dark-mode #text-input {
   background-color: var(--background-btn);
   color: var(--text);
+
+  &:focus {
+    border-color: wheat; 
+    outline: none; 
+  }
 }
+
 .dark-mode .summary-container,
 .dark-mode .response-text,
 .dark-mode .display-summary {

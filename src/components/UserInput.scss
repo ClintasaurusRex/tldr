@@ -5,4 +5,10 @@
 }
 #text-input {
   width: 97%;
+ 
+
+  &:focus {
+    border-color: $primary-color; 
+    outline: none; 
+  }
 }
