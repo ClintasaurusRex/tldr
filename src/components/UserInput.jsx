@@ -1,18 +1,15 @@
-import './UserInput.scss';
-import { useEffect } from "react";
+import "./UserInput.scss";
+import useFontSize from "../helpers/useFontSize";
 
 const UserInput = function (props) {
-  const {
-    userInput,
-    setUserInput,
-    handleUserInput,
-    loading
-  } = props;
+  const { userInput, setUserInput, handleUserInput, loading } = props;
+  const { fontSize } = useFontSize();
 
   return (
     <div>
-      <section className='text-area'>
+      <section className="text-area">
         <textarea
+          style={{ fontSize: fontSize }}
           id="text-input"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
@@ -20,8 +17,13 @@ const UserInput = function (props) {
           rows="5"
           cols="50"
         />
-        <button id="send-prompt" onClick={handleUserInput} disabled={loading || !userInput}>
-          {loading ? 'Processing...' : 'Send Prompt'}
+        <button
+          id="send-prompt"
+          style={{ fontSize: fontSize }}
+          onClick={handleUserInput}
+          disabled={loading || !userInput}
+        >
+          {loading ? "Processing..." : "Send Prompt"}
         </button>
       </section>
     </div>

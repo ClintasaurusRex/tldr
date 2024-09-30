@@ -1,8 +1,11 @@
 import useDarkMode from "../helpers/useDarkMode";
+import useFontSize from "../helpers/useFontSize";
 import "./Options.scss";
 
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
+
+  const { fontSizeChange, fontSize } = useFontSize();
 
   return (
     <div className="options-container">
@@ -41,14 +44,14 @@ const Options = () => {
             <option value="fr">French</option>
             <option value="de">German</option>
             <option value="zh">Chinese</option>
-            <option value="jp">Japanese</option> {/* New language option */}
-            <option value="ru">Russian</option> {/* New language option */}
+            <option value="jp">Japanese</option>
+            <option value="ru">Russian</option>
           </select>
         </div>
 
         <div className="option-item">
           <label htmlFor="fontSize">Font Size:</label>
-          <select id="fontSize" name="fontSize">
+          <select id="fontSize" name="fontSize" value={fontSize} onChange={fontSizeChange}>
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
@@ -68,7 +71,7 @@ const Options = () => {
             <option value="10">Every 10 minutes</option>
             <option value="30">Every 30 minutes</option>
             <option value="60">Every hour</option>
-            <option value="120">Every 2 hours</option> {/* New option */}
+            <option value="120">Every 2 hours</option>
           </select>
         </div>
 

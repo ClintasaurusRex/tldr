@@ -1,20 +1,16 @@
+import useFontSize from "../helpers/useFontSize.js";
+import useSavedSummaries from "../helpers/useSavedSummaries.js";
 
-import useSavedSummaries from '../helpers/useSavedSummaries.js';
-
-import './SummaryList.scss';
+import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const {
-    handleDelete,
-    summaries,
-    downloadSummary,
-    handleCopy,
-    copiedSummaryId,
-  } = useSavedSummaries();
+  const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
+    useSavedSummaries();
 
+  const { fontSize } = useFontSize();
 
   return (
-    <div className="summary-list">
+    <div className="summary-list" style={{ fontSize: fontSize }}>
       <h2>Saved Summaries</h2>
       {Object.keys(summaries).length === 0 ? (
         <h2>No summaries available.</h2>
@@ -22,16 +18,28 @@ const SummaryList = () => {
         <ul>
           {Object.values(summaries).map(({ url, summary, id }) => (
             <li key={url}>
-              <h3 id='summary-url'>{url}</h3>
-              <p id='summary-value'>{summary}</p>
+              <h3 id="summary-url">{url}</h3>
+              <p id="summary-value">{summary}</p>
               <div className="saved-summary-btns">
-                <button id="summary-buttons" onClick={() => handleDelete(id)}>
+                <button
+                  id="summary-buttons"
+                  style={{ fontSize: fontSize }}
+                  onClick={() => handleDelete(id)}
+                >
                   Delete
                 </button>
-                <button id="summary-buttons" onClick={() => handleCopy(summary, id)}>
+                <button
+                  id="summary-buttons"
+                  style={{ fontSize: fontSize }}
+                  onClick={() => handleCopy(summary, id)}
+                >
                   Copy to Clipboard
                 </button>
-                <button id="summary-buttons" onClick={() => downloadSummary(url, summary)}>
+                <button
+                  id="summary-buttons"
+                  style={{ fontSize: fontSize }}
+                  onClick={() => downloadSummary(url, summary)}
+                >
                   Download
                 </button>
               </div>
