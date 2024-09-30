@@ -1,15 +1,15 @@
-import useDarkMode from '../helpers/useDarkMode';
-import './Options.scss';
+import useDarkMode from "../helpers/useDarkMode";
+import useFontSize from "../helpers/useFontSize";
+import "./Options.scss";
 
 const Options = () => {
-  const {
-    darkMode,
-    darkModeChange,
-  } = useDarkMode();
+  const { fontSize, fontSizeChange } = useFontSize();
+
+  const { darkMode, darkModeChange } = useDarkMode();
 
   return (
     <div className="options-container">
-      <h1 id='tldr-options'>T.L.D.R. Options</h1>
+      <h1 id="tldr-options">T.L.D.R. Options</h1>
       <div className="options-list">
         <div className="option-item">
           <label htmlFor="darkMode">Enable Night Mode:</label>
@@ -59,8 +59,6 @@ const Options = () => {
           </select>
         </div>
 
-
-
         <div className="option-item">
           <label htmlFor="autoSave">Enable Auto Save:</label>
           <input type="checkbox" id="autoSave" name="autoSave" />
@@ -93,7 +91,7 @@ const Options = () => {
         </div>
       </div>
 
-      {darkMode && <h2 id='darkmode-on'>Night Mode On</h2>}
+      {darkMode && <h2 id="darkmode-on">Night Mode On</h2>}
     </div>
   );
 };
