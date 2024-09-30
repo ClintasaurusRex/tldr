@@ -19,7 +19,7 @@ const DisplaySummary = function (props) {
 
   return (
     <div style={{ fontSize: fontSize }}>
-      <section className="display-summary">
+      <section className="display-summary" style={{ fontSize: fontSize }}>
         <h2 style={{ fontSize: fontSize }}>Summary</h2>
         <article id="summary-response" style={{ fontSize: fontSize }}>
           {summary}
