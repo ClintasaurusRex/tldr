@@ -27,14 +27,28 @@ const DisplaySummary = function (props) {
         <br />
         <br />
         <div className="rewrite-copybtns">
-          <button onClick={handleRewrite} disabled={loading} className="button">
+          <button
+            style={{ fontSize: fontSize }}
+            onClick={handleRewrite}
+            disabled={loading}
+            className="button"
+          >
             {loading ? "Rewriting..." : "Rewrite"}
           </button>
-          <button onClick={() => copyToClipboard(summary, setCopyMessage)} className="button">
+          <button
+            style={{ fontSize: fontSize }}
+            onClick={() => copyToClipboard(summary, setCopyMessage)}
+            className="button"
+          >
             Copy to Clipboard
           </button>
           {copyMessage && (
-            <div className={`message_copy ${copyMessage ? "" : "hide"}`}>{copyMessage}</div>
+            <div
+              style={{ fontSize: fontSize }}
+              className={`message_copy ${copyMessage ? "" : "hide"}`}
+            >
+              {copyMessage}
+            </div>
           )}
         </div>
       </section>
