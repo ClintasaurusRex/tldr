@@ -7,6 +7,8 @@ const SummaryList = () => {
   const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
     useSavedSummaries();
 
+  const { fontSize } = useFontSize();
+
   return (
     <div className="summary-list">
       <h2>Saved Summaries</h2>
@@ -17,7 +19,9 @@ const SummaryList = () => {
           {Object.values(summaries).map(({ url, summary, id }) => (
             <li key={url}>
               <h3 id="summary-url">{url}</h3>
-              <p id="summary-value">{summary}</p>
+              <p id="summary-value" style={{ fontSize: fontSize }}>
+                {summary}
+              </p>
               <div className="saved-summary-btns">
                 <button id="summary-buttons" onClick={() => handleDelete(id)}>
                   Delete

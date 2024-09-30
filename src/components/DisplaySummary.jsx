@@ -5,7 +5,7 @@ import "./DisplaySummary.scss";
 
 const DisplaySummary = function (props) {
   const { summary, handleRewrite, loading, copyMessage, setCopyMessage } = props;
-  const { fontSizeChange, fontSize } = useFontSize();
+  const { fontSize } = useFontSize();
 
   useEffect(() => {
     if (copyMessage) {
@@ -18,9 +18,9 @@ const DisplaySummary = function (props) {
   }, [copyMessage, setCopyMessage]);
 
   return (
-    <div>
+    <div style={{ fontSize: fontSize }}>
       <section className="display-summary">
-        <h2>Summary</h2>
+        <h2 style={{ fontSize: fontSize }}>Summary</h2>
         <article id="summary-response" style={{ fontSize: fontSize }}>
           {summary}
         </article>

@@ -1,16 +1,9 @@
-// import React, { useContext } from "react";
 import useDarkMode from "../helpers/useDarkMode";
-// import { FontSizeContext } from "../context/FontSizeContext";
 import useFontSize from "../helpers/useFontSize";
 import "./Options.scss";
 
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
-  // const { fontSize, setFontSize } = useContext(FontSizeContext);
-
-  // const handleFontSizeChange = (event) => {
-  //   setFontSize(event.target.value);
-  // };
 
   const { fontSizeChange, fontSize } = useFontSize();
 
