@@ -1,17 +1,11 @@
+import useFontSize from "../helpers/useFontSize.js";
+import useSavedSummaries from "../helpers/useSavedSummaries.js";
 
-import useSavedSummaries from '../helpers/useSavedSummaries.js';
-
-import './SummaryList.scss';
+import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const {
-    handleDelete,
-    summaries,
-    downloadSummary,
-    handleCopy,
-    copiedSummaryId,
-  } = useSavedSummaries();
-
+  const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
+    useSavedSummaries();
 
   return (
     <div className="summary-list">
@@ -22,8 +16,8 @@ const SummaryList = () => {
         <ul>
           {Object.values(summaries).map(({ url, summary, id }) => (
             <li key={url}>
-              <h3 id='summary-url'>{url}</h3>
-              <p id='summary-value'>{summary}</p>
+              <h3 id="summary-url">{url}</h3>
+              <p id="summary-value">{summary}</p>
               <div className="saved-summary-btns">
                 <button id="summary-buttons" onClick={() => handleDelete(id)}>
                   Delete

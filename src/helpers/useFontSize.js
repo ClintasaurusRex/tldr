@@ -15,9 +15,9 @@ const useFontSize = () => {
       case "medium":
         return "16px";
       case "large":
-        return "20px";
-      case "x-large":
         return "24px";
+      case "x-large":
+        return "50px";
       default:
         return "16px";
     }
