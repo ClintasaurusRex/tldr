@@ -1,13 +1,14 @@
 import useFontSize from "../helpers/useFontSize.js";
 import useSavedSummaries from "../helpers/useSavedSummaries.js";
+import useSound from '../helpers/useSound'; 
 
 import "./SummaryList.scss";
 
 const SummaryList = () => {
   const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
     useSavedSummaries();
-
   const { fontSize } = useFontSize();
+  const { playSound } = useSound(); 
 
   return (
     <div className="summary-list" style={{ fontSize: fontSize }}>
@@ -24,21 +25,21 @@ const SummaryList = () => {
                 <button
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
-                  onClick={() => handleDelete(id)}
+                  onClick={() => { handleDelete(id); playSound(); }} 
                 >
                   Delete
                 </button>
                 <button
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
-                  onClick={() => handleCopy(summary, id)}
+                  onClick={() => { handleCopy(summary, id); playSound(); }}  
                 >
                   Copy to Clipboard
                 </button>
                 <button
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
-                  onClick={() => downloadSummary(url, summary)}
+                  onClick={() => { downloadSummary(url, summary); playSound(); }} 
                 >
                   Download
                 </button>
