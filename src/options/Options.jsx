@@ -9,7 +9,7 @@ const Options = () => {
   const { fontSizeChange, fontSize } = useFontSize();
 
   const [summaryLength, setSummaryLength] = useState(
-    localStorage.getItem("summaryLength") || "medium"
+    localStorage.getItem("summaryLength") // || "medium"
   );
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const Options = () => {
     const selectedLength = event.target.value;
     setSummaryLength(selectedLength);
     localStorage.setItem("summaryLength", selectedLength);
+    console.log("Summary length changed to:", event.target.value);
   };
 
   return (

@@ -7,7 +7,7 @@ const useOpenAISummarizer = () => {
   const [responseText, setResponseText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const summarizeContent = async (text, summaryLength = "medium") => {
+  const summarizeContent = async (text, summaryLength = "short") => {
     setLoading(true);
     let prompt;
     let maxTokens;
@@ -20,14 +20,14 @@ const useOpenAISummarizer = () => {
         wordLimit = 25;
         break;
       case "medium":
-        prompt = `Please summarize the following text in no more than 100 words: ${text}`;
+        prompt = `Please summarize the following text in no more than 50 words: ${text}`;
         maxTokens = 150;
-        wordLimit = 100;
+        wordLimit = 50;
         break;
       case "long":
-        prompt = `Please summarize the following text in no more than 200 words: ${text}`;
+        prompt = `Please summarize the following text in no more than 100 words: ${text}`;
         maxTokens = 300;
-        wordLimit = 200;
+        wordLimit = 100;
         break;
       default:
         prompt = `Please summarize the following text: ${text}`;
