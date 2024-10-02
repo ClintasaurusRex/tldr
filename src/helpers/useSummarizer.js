@@ -78,6 +78,14 @@ const useSummarizer = function () {
       }
     };
 
+    //   const textarea = document.getElementById("text-input");
+    //   textarea.addEventListener("keypress", handleKeyPress);
+
+    //   return () => {
+    //     textarea.removeEventListener("keypress", handleKeyPress);
+    //   };
+    // }, [loading, userInput, handleUserInput]);
+
     const textarea = document.getElementById("text-input");
     if (textarea) {
       textarea.addEventListener("keypress", handleKeyPress);

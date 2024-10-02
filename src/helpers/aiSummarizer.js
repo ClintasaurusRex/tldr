@@ -91,6 +91,11 @@ const useOpenAISummarizer = () => {
       setSummary(summaryText);
     } catch (error) {
       console.error("Error fetching the summary:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      }
     } finally {
       setLoading(false);
     }
@@ -113,7 +118,7 @@ const useOpenAISummarizer = () => {
               content: prompt,
             },
           ],
-          maxTokens: maxTokens, // changed this
+          max_tokens: maxTokens, // changed this
         },
         {
           headers: {
