@@ -7,13 +7,39 @@ const useOpenAISummarizer = () => {
   const [responseText, setResponseText] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const summarizeContent = async (text, maxTokens = 1500) => {
+  const summarizeContent = async (text, summaryLength = "short") => {
     setLoading(true);
+    let prompt;
+    let maxTokens;
+    let wordLimit;
+
+    switch (summaryLength) {
+      case "short":
+        prompt = `Please summarize the following text in no more than 25 words: ${text}`;
+        maxTokens = 50;
+        wordLimit = 25;
+        break;
+      case "medium":
+        prompt = `Please summarize the following text in no more than 100 words: ${text}`;
+        maxTokens = 150;
+        wordLimit = 100;
+        break;
+      case "long":
+        prompt = `Please summarize the following text in no more than 200 words: ${text}`;
+        maxTokens = 300;
+        wordLimit = 200;
+        break;
+      default:
+        prompt = `Please summarize the following text: ${text}`;
+        maxTokens = 150;
+        wordLimit = 100;
+    }
+
     try {
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-4",
+          model: "gpt-4o-2024-08-06",
           messages: [
             {
               role: "system",
@@ -21,9 +47,10 @@ const useOpenAISummarizer = () => {
             },
             {
               role: "user",
-              content: `Please summarize the following text: ${text}`,
+              content: prompt,
             },
           ],
+          // `Please summarize the following text: ${text}`
           max_tokens: maxTokens,
         },
         {
@@ -33,15 +60,23 @@ const useOpenAISummarizer = () => {
           },
         }
       );
+
+      let summaryText = response.data.choices[0].message.content;
+
+      // Post-process the summary to enforce the word limit
+      const words = summaryText.split(" ");
+      if (words.length > wordLimit) {
+        summaryText = words.slice(0, wordLimit).join(" ") + "...";
+      }
+
       chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let currentUrl = tabs[0].url;
-        // console.log(currentUrl);
 
         chrome.runtime.sendMessage(
           {
             action: "saveSummary",
             url: currentUrl,
-            summary: response.data.choices[0].message.content,
+            summary: summaryText,
           },
           function (response) {
             if (response.success) {
@@ -53,9 +88,14 @@ const useOpenAISummarizer = () => {
         );
       });
 
-      setSummary(response.data.choices[0].message.content);
+      setSummary(summaryText);
     } catch (error) {
       console.error("Error fetching the summary:", error);
+      if (error.response) {
+        console.error("Response data:", error.response.data);
+        console.error("Response status:", error.response.status);
+        console.error("Response headers:", error.response.headers);
+      }
     } finally {
       setLoading(false);
     }
@@ -67,7 +107,7 @@ const useOpenAISummarizer = () => {
       const response = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
-          model: "gpt-4",
+          model: "gpt-4o-2024-08-06", // model: "gpt-4o-2024-08-06"
           messages: [
             {
               role: "system",
@@ -75,10 +115,10 @@ const useOpenAISummarizer = () => {
             },
             {
               role: "user",
-              content: `Please summarize the following text: ${prompt}`,
+              content: prompt,
             },
           ],
-          max_tokens: maxTokens,
+          max_tokens: maxTokens, // changed this
         },
         {
           headers: {
@@ -104,3 +144,4 @@ const useOpenAISummarizer = () => {
   };
 };
 export default useOpenAISummarizer;
+// `Please summarize the following text: ${prompt}`

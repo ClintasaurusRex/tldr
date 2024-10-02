@@ -8,7 +8,7 @@ const SummaryList = () => {
   const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
     useSavedSummaries();
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(); 
+  const { playSound } = useSound(0.2); 
 
   return (
     <div className="summary-list" style={{ fontSize: fontSize }}>

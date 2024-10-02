@@ -2,21 +2,27 @@ import useOpenAISummarizer from "./aiSummarizer.js";
 import React, { useState, useEffect } from "react";
 
 const useSummarizer = function () {
-  const {
-    summary,
-    responseText,
-    loading,
-    summarizeContent,
-    sendPromptToChatGPT,
-  } = useOpenAISummarizer();
+  const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } =
+    useOpenAISummarizer();
   const [rewrite, setRewrite] = useState(false);
   const [copyMessage, setCopyMessage] = useState("");
   const [userInput, setUserInput] = useState(""); // State to hold user input
 
+  const [summaryLength, setSummaryLength] = useState(
+    localStorage.getItem("summaryLength") || "short"
+  );
+
+  const handleSummaryLengthChange = (event) => {
+    localStorage.setItem("summaryLength", event.target.value);
+    setSummaryLength(event.target.value);
+    console.log("Summary length set to:", event.target.value);
+  };
+
   // Handle the rewrite action
   const handleRewrite = () => {
     setRewrite(true);
-    summarizeContent(summary);
+    const currentSummaryLength = localStorage.getItem("summaryLength");
+    summarizeContent(summary, currentSummaryLength);
   };
 
   // Handle summarization of the highlighted text
@@ -29,7 +35,10 @@ const useSummarizer = function () {
         },
         (results) => {
           if (results && results[0] && results[0].result) {
-            summarizeContent(results[0].result); // Summarize the highlighted text
+            const selectedText = results[0].result;
+            // Access the latest summaryLength
+            const currentSummaryLength = localStorage.getItem("summaryLength"); // got rid of state used storage
+            summarizeContent(selectedText, currentSummaryLength); // Use the latest value of summaryLength
           } else {
             console.error("No text selected.");
           }
@@ -69,12 +78,21 @@ const useSummarizer = function () {
       }
     };
 
-    const textarea = document.getElementById("text-input");
-    textarea.addEventListener("keypress", handleKeyPress);
+    //   const textarea = document.getElementById("text-input");
+    //   textarea.addEventListener("keypress", handleKeyPress);
 
-    return () => {
-      textarea.removeEventListener("keypress", handleKeyPress);
-    };
+    //   return () => {
+    //     textarea.removeEventListener("keypress", handleKeyPress);
+    //   };
+    // }, [loading, userInput, handleUserInput]);
+
+    const textarea = document.getElementById("text-input");
+    if (textarea) {
+      textarea.addEventListener("keypress", handleKeyPress);
+      return () => {
+        textarea.removeEventListener("keypress", handleKeyPress);
+      };
+    }
   }, [loading, userInput, handleUserInput]);
 
   return {
@@ -92,6 +110,9 @@ const useSummarizer = function () {
     userInput,
     setUserInput,
     setCopyMessage,
+    summaryLength,
+    setSummaryLength,
+    handleSummaryLengthChange,
   };
 };
 

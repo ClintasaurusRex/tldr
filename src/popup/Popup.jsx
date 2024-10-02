@@ -1,8 +1,8 @@
-import React from 'react';
-import './Popup.scss';
-import PopupItems from '../components/PopupItems'; 
-import useDarkMode from '../helpers/useDarkMode';
-import '../styles/base.scss';
+// import React from 'react';
+import "./Popup.scss";
+import PopupItems from "../components/PopupItems"; 
+import useDarkMode from "../helpers/useDarkMode";
+import "../styles/base.scss";
 
 // Import the sound file
 import buttonSoundFile from '../assets/sounds/ding.mp3';
@@ -19,9 +19,8 @@ const Popup = () => {
   };
 
   return (
-    <div className={`Popup ${darkMode ? 'dark-mode' : ''}`}>
-      {/* Pass handleButtonSound to PopupItems */}
-      <PopupItems onButtonClick={handleButtonSound} />
+    <div className={`Popup ${darkMode ? "dark-mode" : ""}`}>
+      <PopupItems />
     </div>
   );
 };

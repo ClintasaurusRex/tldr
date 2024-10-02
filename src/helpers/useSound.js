@@ -1,10 +1,10 @@
 import dingSoundFile from '../assets/sounds/ding.mp3';
 
-const useSound = () => {
+const useSound = (volume = 1) => {
+const soundEffect = new Audio(dingSoundFile);
 
-  const soundEffect = new Audio(dingSoundFile);
+  soundEffect.volume = volume;  
 
-  
   const playSound = () => {
     chrome.storage.sync.get(['soundEnabled'], function (result) {
       if (result.soundEnabled) {

@@ -6,10 +6,10 @@ import useFontSize from '../helpers/useFontSize';
 import './PopupItems.scss';
 import useSound from '../helpers/useSound';
 
-const PopupItems = ({ onButtonClick }) => {
+const PopupItems = () => {
   const { openAboutPage, openOptionsPage, openDonationsPage, selectedText } = usePages();
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(); 
+  const { playSound } = useSound(0.2); 
 
  
   return (
@@ -44,8 +44,7 @@ const PopupItems = ({ onButtonClick }) => {
 
         
         <section className="buttons">
-          
-           <Summarizer onButtonClick={playSound} />
+          <Summarizer />
         </section>
 
         <section className="saved-summaries">

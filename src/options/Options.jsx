@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import useDarkMode from '../helpers/useDarkMode';
-import useFontSize from '../helpers/useFontSize';
-import './Options.scss';
+import useDarkMode from "../helpers/useDarkMode";
+import useFontSize from "../helpers/useFontSize";
+import { useEffect, useState } from "react";
+import "./Options.scss";
+import useSummarizer from "../helpers/useSummarizer";
 
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
   const { fontSizeChange, fontSize } = useFontSize();
-  const [isSoundEnabled, setIsSoundEnabled] = useState(true); // State for sound option
+  const { summaryLength, handleSummaryLengthChange } = useSummarizer();
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true); 
 
-  // Loads the sound preference when the options page loads
   useEffect(() => {
     chrome.storage.sync.get(['soundEnabled'], function (result) {
       if (result.soundEnabled !== undefined) {
@@ -23,6 +24,11 @@ const Options = () => {
     setIsSoundEnabled(isChecked);
     chrome.storage.sync.set({ soundEnabled: isChecked }); // Save preference in Chrome storage
   };
+
+ 
+ // have to do a hook about the up section
+
+
 
   return (
     <div className="options-container">
@@ -40,22 +46,8 @@ const Options = () => {
         </div>
 
         <div className="option-item">
-          <label htmlFor="summaryLength">Summary Length:</label>
-          <select id="summaryLength" name="summaryLength">
-            <option value="short">Short</option>
-            <option value="medium">Medium</option>
-            <option value="long">Long</option>
-          </select>
-        </div>
-
-        <div className="option-item">
           <label htmlFor="fontSize">Font Size:</label>
-          <select
-            id="fontSize"
-            name="fontSize"
-            value={fontSize}
-            onChange={fontSizeChange}
-          >
+          <select id="fontSize" name="fontSize" value={fontSize} onChange={fontSizeChange}>
             <option value="small">Small</option>
             <option value="medium">Medium</option>
             <option value="large">Large</option>
@@ -63,7 +55,6 @@ const Options = () => {
           </select>
         </div>
 
-        
         <div className="option-item">
           <label htmlFor="soundEffect">Enable Sound Effects:</label>
           <input
@@ -74,6 +65,56 @@ const Options = () => {
             onChange={handleSoundToggle}
           />
         </div>
+
+        {/* <div className="option-item">
+          <label htmlFor="notifications">Enable Notifications:</label>
+          <input type="checkbox" id="notifications" name="notifications" />
+        </div> */}
+
+        <div className="option-item">
+          <label htmlFor="summaryLength">Summary Length:</label>
+          <select
+            id="summaryLength"
+            name="summaryLength"
+            value={summaryLength}
+            onChange={handleSummaryLengthChange}
+          >
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+          </select>
+        </div>
+
+        {/* <div className="option-item">
+          <label htmlFor="autoSave">Enable Auto Save:</label>
+          <input type="checkbox" id="autoSave" name="autoSave" />
+        </div> */}
+
+        {/* <div className="option-item">
+          <label htmlFor="dataRefresh">Data Refresh Rate:</label>
+          <select id="dataRefresh" name="dataRefresh">
+            <option value="5">Every 5 minutes</option>
+            <option value="10">Every 10 minutes</option>
+            <option value="30">Every 30 minutes</option>
+            <option value="60">Every hour</option>
+            <option value="120">Every 2 hours</option>
+          </select>
+        </div> */}
+
+        {/* <div className="option-item">
+          <label htmlFor="soundEffects">Enable Sound Effects:</label>
+          <input type="checkbox" id="soundEffects" name="soundEffects" />
+        </div> */}
+
+        {/* <div className="option-item">
+          <label htmlFor="autoUpdate">Enable Auto Update:</label>
+          <input type="checkbox" id="autoUpdate" name="autoUpdate" />
+        </div> */}
+
+        {/* <div className="option-item">
+          <label htmlFor="privacyMode">Enable Privacy Mode:</label>
+          <input type="checkbox" id="privacyMode" name="privacyMode" />
+        </div> */}
       </div>
 
       {darkMode && <h2 id="darkmode-on">Night Mode On</h2>}
