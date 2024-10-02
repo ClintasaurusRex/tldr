@@ -17,7 +17,9 @@ const Options = () => {
   }, [summaryLength]);
 
   const handleSummaryLengthChange = (event) => {
-    setSummaryLength(event.target.value);
+    const selectedLength = event.target.value;
+    setSummaryLength(selectedLength);
+    localStorage.setItem("summaryLength", selectedLength);
   };
 
   return (

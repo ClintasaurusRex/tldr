@@ -1,20 +1,21 @@
 import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
+import { useEffect, useState } from "react";
 
 const SummarizeBtns = function (props) {
   const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
   const { fontSize } = useFontSize();
 
   const [summaryLength, setSummaryLength] = useState(
-    localStorage.getItem("summaryLength") || "medium"
-  ); //
+    localStorage.getItem("summaryLength") || "short"
+  ); // added trying to get the summary length to work
 
   useEffect(() => {
     const storedSummaryLength = localStorage.getItem("summaryLength");
     if (storedSummaryLength) {
       setSummaryLength(storedSummaryLength);
     }
-  }, []); //
+  }, []); // added trying to get the summary length to work
 
   return (
     <div className="summarize-btns">
