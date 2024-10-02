@@ -13,6 +13,7 @@ const useSummarizer = function () {
   );
 
   const handleSummaryLengthChange = (event) => {
+    localStorage.setItem("summaryLength", event.target.value);
     setSummaryLength(event.target.value);
     console.log("Summary length set to:", event.target.value);
   };
@@ -20,7 +21,8 @@ const useSummarizer = function () {
   // Handle the rewrite action
   const handleRewrite = () => {
     setRewrite(true);
-    summarizeContent(summary, summaryLength);
+    const currentSummaryLength = localStorage.getItem("summaryLength");
+    summarizeContent(summary, currentSummaryLength);
   };
 
   // Handle summarization of the highlighted text
@@ -33,8 +35,10 @@ const useSummarizer = function () {
         },
         (results) => {
           if (results && results[0] && results[0].result) {
-            summarizeContent(results[0].result, summaryLength); // Summarize the highlighted text
-            console.log("summary length", summaryLength);
+            const selectedText = results[0].result;
+            // Access the latest summaryLength
+            const currentSummaryLength = localStorage.getItem("summaryLength"); // got rid of state used storage
+            summarizeContent(selectedText, currentSummaryLength); // Use the latest value of summaryLength
           } else {
             console.error("No text selected.");
           }

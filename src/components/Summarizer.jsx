@@ -20,7 +20,6 @@ const Summarizer = () => {
     setUserInput,
     setCopyMessage,
     summaryLength,
-    setSummaryLength,
   } = useSummarizer();
 
   const { fontSize } = useFontSize();
