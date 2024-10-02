@@ -42,6 +42,10 @@ const config = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
       },
+      {
+        test: /\.(mp3|wav)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   resolve: {
@@ -52,7 +56,6 @@ const config = {
     path: path.resolve("dist"),
   },
   plugins: [
-    ,
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
