@@ -15,6 +15,11 @@ chrome.runtime.onMessage.addListener((request) => {
   }
 });
 
+// chrome.storage.sync.get(["summaryLength"], function (result) {
+//   const selectedSummaryLength = result.summaryLength || "short"; // default to short if not set
+//   useOpenAISummarizer().summarizeContent(textToSummarize, selectedSummaryLength);
+// });
+
 // function injectContentScript(tabId) {
 //   chrome.scripting.executeScript({
 //     target: { tabId: tabId },
