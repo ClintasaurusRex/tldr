@@ -5,7 +5,7 @@ import ResponseApi from "./ResponseApi.jsx";
 import useSummarizer from "../helpers/useSummarizer.js";
 import useFontSize from "../helpers/useFontSize.js";
 
-const Summarizer = () => {
+const Summarizer = ({ onButtonClick }) => {
   const {
     handleRewrite,
     handleSummarizeSelection,
@@ -25,14 +25,14 @@ const Summarizer = () => {
   return (
     <div style={{ fontSize: fontSize }}>
       <SummarizeBtns
-        handleSummarizeSelection={handleSummarizeSelection}
-        handleSummarizeEntirePageWithChrome={handleSummarizeEntirePageWithChrome}
+        handleSummarizeSelection={() => { handleSummarizeSelection(); onButtonClick(); }}
+        handleSummarizeEntirePageWithChrome={() => { handleSummarizeEntirePageWithChrome(); onButtonClick(); }}
         loading={loading}
       />
       {summary && (
         <DisplaySummary
           summary={summary}
-          handleRewrite={handleRewrite}
+          handleRewrite={() => { handleRewrite(); onButtonClick(); }}
           loading={loading}
           copyMessage={copyMessage}
           setCopyMessage={setCopyMessage}
@@ -42,7 +42,7 @@ const Summarizer = () => {
       <UserInput
         userInput={userInput}
         setUserInput={setUserInput}
-        handleUserInput={handleUserInput}
+        handleUserInput={() => { handleUserInput(); onButtonClick(); }}
         loading={loading}
       />
     </div>
