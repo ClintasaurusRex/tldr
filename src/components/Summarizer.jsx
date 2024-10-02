@@ -22,6 +22,7 @@ const Summarizer = () => {
   } = useSummarizer();
 
   const { fontSize } = useFontSize();
+
   const [summaryLength, setSummaryLength] = useState(
     localStorage.getItem("summaryLength") || "medium"
   );
