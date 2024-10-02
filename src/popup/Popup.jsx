@@ -1,6 +1,6 @@
 import React from 'react';
 import './Popup.scss';
-import PopupItems from '../components/PopupItems'; // Make sure PopupItems has a default export
+import PopupItems from '../components/PopupItems'; 
 import useDarkMode from '../helpers/useDarkMode';
 import '../styles/base.scss';
 
