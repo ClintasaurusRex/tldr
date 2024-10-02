@@ -7,8 +7,27 @@ import useSummarizer from "../helpers/useSummarizer";
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
   const { fontSizeChange, fontSize } = useFontSize();
-
   const { summaryLength, handleSummaryLengthChange } = useSummarizer();
+  const [isSoundEnabled, setIsSoundEnabled] = useState(true); 
+
+
+  useEffect(() => {
+    chrome.storage.sync.get(['soundEnabled'], function (result) {
+      if (result.soundEnabled !== undefined) {
+        setIsSoundEnabled(result.soundEnabled);
+      }
+    });
+  }, []);
+
+  // Handle sound toggle change
+  const handleSoundToggle = (e) => {
+    const isChecked = e.target.checked;
+    setIsSoundEnabled(isChecked);
+    chrome.storage.sync.set({ soundEnabled: isChecked }); // Save preference in Chrome storage
+  };
+
+ 
+ // have to do a hook about the up section
 
   return (
     <div className="options-container">
@@ -33,6 +52,17 @@ const Options = () => {
             <option value="large">Large</option>
             <option value="x-large">Extra Large</option>
           </select>
+        </div>
+
+        <div className="option-item">
+          <label htmlFor="soundEffect">Enable Sound Effects:</label>
+          <input
+            type="checkbox"
+            id="soundEffect"
+            name="soundEffect"
+            checked={isSoundEnabled}
+            onChange={handleSoundToggle}
+          />
         </div>
 
         {/* <div className="option-item">

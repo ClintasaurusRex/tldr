@@ -9,7 +9,7 @@ import useSound from '../helpers/useSound';
 const PopupItems = ({ onButtonClick }) => {
   const { openAboutPage, openOptionsPage, openDonationsPage, selectedText } = usePages();
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(); 
+  const { playSound } = useSound(0.2); 
 
  
   return (

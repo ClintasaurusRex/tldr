@@ -8,13 +8,15 @@ const SummarizeBtns = function (props) {
   const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
   const { fontSize } = useFontSize();
   const { summaryLength } = useSummarizer();
+  const { playSound } = useSound(0.2); 
+  
 
   return (
     <div className="summarize-btns">
       {/* Button to Summarize Highlighted Text */}
       <button
         style={{ fontSize: fontSize }}
-        onClick={() => handleSummarizeSelection(summaryLength)}
+        onClick={() => { handleSummarizeSelection(); playSound(); }} 
         disabled={loading}
       >
         {loading ? "Summarizing Selection..." : "Summarize Selection"}
