@@ -7,7 +7,7 @@ import "./DisplaySummary.scss";
 const DisplaySummary = function (props) {
   const { summary, handleRewrite, loading, copyMessage, setCopyMessage } = props;
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(); 
+  const { playSound } = useSound(0.2); 
 
   useEffect(() => {
     if (copyMessage) {

@@ -1,9 +1,11 @@
 import "./UserInput.scss";
 import useFontSize from "../helpers/useFontSize";
+import useSound from "../helpers/useSound"; 
 
 const UserInput = function (props) {
   const { userInput, setUserInput, handleUserInput, loading } = props;
   const { fontSize } = useFontSize();
+  const { playSound } = useSound(0.2); 
 
   return (
     <div>
@@ -20,7 +22,7 @@ const UserInput = function (props) {
         <button
           id="send-prompt"
           style={{ fontSize: fontSize }}
-          onClick={handleUserInput}
+          onClick={() => { handleUserInput(); playSound(); }}  
           disabled={loading || !userInput}
         >
           {loading ? "Processing..." : "Send Prompt"}
