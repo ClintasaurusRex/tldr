@@ -20,14 +20,14 @@ const useOpenAISummarizer = () => {
         wordLimit = 25;
         break;
       case "medium":
-        prompt = `Please summarize the following text in no more than 50 words: ${text}`;
+        prompt = `Please summarize the following text in no more than 100 words: ${text}`;
         maxTokens = 150;
-        wordLimit = 50;
+        wordLimit = 100;
         break;
       case "long":
-        prompt = `Please summarize the following text in no more than 100 words: ${text}`;
+        prompt = `Please summarize the following text in no more than 200 words: ${text}`;
         maxTokens = 300;
-        wordLimit = 100;
+        wordLimit = 200;
         break;
       default:
         prompt = `Please summarize the following text: ${text}`;

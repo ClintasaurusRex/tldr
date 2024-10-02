@@ -2,26 +2,14 @@ import useDarkMode from "../helpers/useDarkMode";
 import useFontSize from "../helpers/useFontSize";
 import { useEffect, useState } from "react";
 import "./Options.scss";
+import useSummarizer from "../helpers/useSummarizer";
 
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
 
   const { fontSizeChange, fontSize } = useFontSize();
 
-  const [summaryLength, setSummaryLength] = useState(
-    localStorage.getItem("summaryLength") // || "medium"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("summaryLength", summaryLength);
-  }, [summaryLength]);
-
-  const handleSummaryLengthChange = (event) => {
-    const selectedLength = event.target.value;
-    setSummaryLength(selectedLength);
-    localStorage.setItem("summaryLength", selectedLength);
-    console.log("Summary length changed to:", event.target.value);
-  };
+  const { summaryLength, handleSummaryLengthChange } = useSummarizer();
 
   return (
     <div className="options-container">

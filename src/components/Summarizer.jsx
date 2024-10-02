@@ -19,20 +19,22 @@ const Summarizer = () => {
     userInput,
     setUserInput,
     setCopyMessage,
+    summaryLength,
+    setSummaryLength,
   } = useSummarizer();
 
   const { fontSize } = useFontSize();
 
-  const [summaryLength, setSummaryLength] = useState(
-    localStorage.getItem("summaryLength") || "medium"
-  );
+  // const [summaryLength, setSummaryLength] = useState(
+  //   localStorage.getItem("summaryLength") || "medium"
+  // );
 
-  useEffect(() => {
-    const storedSummaryLength = localStorage.getItem("summaryLength");
-    if (storedSummaryLength) {
-      setSummaryLength(storedSummaryLength);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedSummaryLength = localStorage.getItem("summaryLength");
+  //   if (storedSummaryLength) {
+  //     setSummaryLength(storedSummaryLength);
+  //   }
+  // }, []);
 
   return (
     <div style={{ fontSize: fontSize }}>
