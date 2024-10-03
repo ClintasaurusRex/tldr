@@ -5,7 +5,7 @@ import useSound from '../helpers/useSound';
 import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const { handleDelete, summaries, downloadSummary, handleCopy, copiedSummaryId } =
+  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId } = 
     useSavedSummaries();
   const { fontSize } = useFontSize();
   const { playSound } = useSound(0.2); 
@@ -13,6 +13,17 @@ const SummaryList = () => {
   return (
     <div className="summary-list" style={{ fontSize: fontSize }}>
       <h2>Saved Summaries</h2>
+
+      {/* Button to clear all summaries */}
+      <div className="clear-all">
+        <button
+          style={{ fontSize: fontSize }}
+          onClick={() => { handleDeleteAll(); playSound(); }}  // Call handleDeleteAll on click
+        >
+          Delete All Summaries
+        </button>
+      </div>
+
       {Object.keys(summaries).length === 0 ? (
         <h2>No summaries available.</h2>
       ) : (

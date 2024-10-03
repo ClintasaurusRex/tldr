@@ -9,7 +9,7 @@ const useSavedSummaries = function () {
     getSummaries()
       .then((items) => {
         const copy = { ...items };
-        delete copy.selectedTextForAI;
+        delete copy.selectedTextForAI; // Assuming this is something you don't want
         setSummaries(copy);
       })
       .catch((error) => {
@@ -27,6 +27,18 @@ const useSavedSummaries = function () {
       });
   };
 
+  const handleDeleteAll = () => {
+    const summaryUrls = Object.keys(summaries); 
+
+    Promise.all(summaryUrls.map((url) => deleteSummary(url)))  // Delete each summary
+      .then(() => {
+        setSummaries({});  // Clear the local state
+      })
+      .catch((error) => {
+        console.error("Error deleting all summaries:", error);
+      });
+  };
+
   const downloadSummary = (url, summary) => {
     const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], {
       type: "text/plain",
@@ -34,11 +46,10 @@ const useSavedSummaries = function () {
 
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "TLDRsummary.txt"; // We can customize the file name if you want
+    link.download = "TLDRsummary.txt"; 
     link.click();
   };
 
-  // Track which summary was copied
   const [copiedSummaryId, setCopiedSummaryId] = useState(null);
 
   const handleCopy = (summary, id) => {
@@ -57,10 +68,12 @@ const useSavedSummaries = function () {
     summaries,
     setSummaries,
     handleDelete,
+    handleDeleteAll,  
     fetchSummaries,
     downloadSummary,
     handleCopy,
     copiedSummaryId,
   };
 };
+
 export default useSavedSummaries;
