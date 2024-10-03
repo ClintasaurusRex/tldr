@@ -3,34 +3,17 @@ import useFontSize from "../helpers/useFontSize";
 import { useEffect, useState } from "react";
 import "./Options.scss";
 import useSummarizer from "../helpers/useSummarizer";
+import { useSoundSettings } from "../helpers/useSound"; 
+
 
 const Options = () => {
   const { darkMode, darkModeChange } = useDarkMode();
   const { fontSizeChange, fontSize } = useFontSize();
   const { summaryLength, handleSummaryLengthChange } = useSummarizer();
-  const [isSoundEnabled, setIsSoundEnabled] = useState(true); 
+  const { isSoundEnabled, toggleSound } = useSoundSettings();
 
-  useEffect(() => {
-    chrome.storage.sync.get(['soundEnabled'], function (result) {
-      if (result.soundEnabled !== undefined) {
-        setIsSoundEnabled(result.soundEnabled);
-      }
-    });
-  }, []);
-
-  // Handle sound toggle change
-  const handleSoundToggle = (e) => {
-    const isChecked = e.target.checked;
-    setIsSoundEnabled(isChecked);
-    chrome.storage.sync.set({ soundEnabled: isChecked }); // Save preference in Chrome storage
-  };
-
- 
- // have to do a hook about the up section
-
-
-
-  return (
+  
+ return (
     <div className="options-container">
       <h1 id="tldr-options">T.L.D.R. Options</h1>
       <div className="options-list">
@@ -62,7 +45,7 @@ const Options = () => {
             id="soundEffect"
             name="soundEffect"
             checked={isSoundEnabled}
-            onChange={handleSoundToggle}
+            onChange={(e) => toggleSound(e.target.checked)}
           />
         </div>
 
