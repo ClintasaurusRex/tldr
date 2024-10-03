@@ -50,7 +50,6 @@ const useOpenAISummarizer = () => {
               content: prompt,
             },
           ],
-          // `Please summarize the following text: ${text}`
           max_tokens: maxTokens,
         },
         {

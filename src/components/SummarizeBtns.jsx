@@ -1,12 +1,10 @@
 import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
-import useSummarizer from "../helpers/useSummarizer";
 import useSound from "../helpers/useSound";
 
 const SummarizeBtns = function (props) {
   const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
   const { fontSize } = useFontSize();
-  const { summaryLength } = useSummarizer();
   const { playSound } = useSound(0.2);
 
   return (
@@ -15,7 +13,7 @@ const SummarizeBtns = function (props) {
       <button
         style={{ fontSize: fontSize }}
         onClick={() => {
-          handleSummarizeSelection(summaryLength);
+          handleSummarizeSelection();
           playSound();
         }}
         disabled={loading}

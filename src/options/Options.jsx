@@ -26,6 +26,20 @@ const Options = () => {
         </div>
 
         <div className="option-item">
+          <label htmlFor="summaryLength">Summary Length:</label>
+          <select
+            id="summaryLength"
+            name="summaryLength"
+            value={summaryLength}
+            onChange={handleSummaryLengthChange}
+          >
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+          </select>
+        </div>
+
+        <div className="option-item">
           <label htmlFor="fontSize">Font Size:</label>
           <select id="fontSize" name="fontSize" value={fontSize} onChange={fontSizeChange}>
             <option value="small">Small</option>
@@ -44,20 +58,6 @@ const Options = () => {
             checked={isSoundEnabled}
             onChange={(e) => toggleSound(e.target.checked)}
           />
-        </div>
-
-        <div className="option-item">
-          <label htmlFor="summaryLength">Summary Length:</label>
-          <select
-            id="summaryLength"
-            name="summaryLength"
-            value={summaryLength}
-            onChange={handleSummaryLengthChange}
-          >
-            <option value="short">Short</option>
-            <option value="medium">Medium</option>
-            <option value="long">Long</option>
-          </select>
         </div>
       </div>
       {darkMode && <h2 id="darkmode-on">Night Mode On</h2>}
