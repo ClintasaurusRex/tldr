@@ -1,5 +1,5 @@
 import useOpenAISummarizer from "./aiSummarizer.js";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useSummarizer = function () {
   const { summary, responseText, loading, summarizeContent, sendPromptToChatGPT } =
@@ -77,14 +77,6 @@ const useSummarizer = function () {
         handleUserInput();
       }
     };
-
-    //   const textarea = document.getElementById("text-input");
-    //   textarea.addEventListener("keypress", handleKeyPress);
-
-    //   return () => {
-    //     textarea.removeEventListener("keypress", handleKeyPress);
-    //   };
-    // }, [loading, userInput, handleUserInput]);
 
     const textarea = document.getElementById("text-input");
     if (textarea) {

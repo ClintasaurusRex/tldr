@@ -1,17 +1,14 @@
-import React from 'react';
-import Summarizer from './Summarizer';
-import SummaryList from './SummaryList';
-import usePages from '../helpers/usePages';
-import useFontSize from '../helpers/useFontSize';
-import './PopupItems.scss';
-import useSound from '../helpers/useSound';
+import React from "react";
+import Summarizer from "./Summarizer";
+import SummaryList from "./SummaryList";
+import usePages from "../helpers/usePages";
+import useFontSize from "../helpers/useFontSize";
+import "./PopupItems.scss";
 
 const PopupItems = () => {
   const { openAboutPage, openOptionsPage, openDonationsPage, selectedText } = usePages();
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(0.2); 
 
- 
   return (
     <div className="container">
       <div className="header">
@@ -42,7 +39,6 @@ const PopupItems = () => {
           </p>
         </section>
 
-        
         <section className="buttons">
           <Summarizer />
         </section>
@@ -53,6 +49,6 @@ const PopupItems = () => {
       </main>
     </div>
   );
-}
+};
 
 export default PopupItems;

@@ -1,22 +1,21 @@
 import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
-import { useEffect, useState } from "react";
-import useSummarizer from "../helpers/useSummarizer";
-import useSound from "../helpers/useSound"; 
+import useSound from "../helpers/useSound";
 
 const SummarizeBtns = function (props) {
   const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
   const { fontSize } = useFontSize();
-  const { summaryLength } = useSummarizer();
-  const { playSound } = useSound(0.2); 
-  
+  const { playSound } = useSound(0.2);
 
   return (
     <div className="summarize-btns">
       {/* Button to Summarize Highlighted Text */}
       <button
         style={{ fontSize: fontSize }}
-        onClick={() => { handleSummarizeSelection(summaryLength); playSound(); }} 
+        onClick={() => {
+          handleSummarizeSelection();
+          playSound();
+        }}
         disabled={loading}
       >
         {loading ? "Summarizing Selection..." : "Summarize Selection"}
@@ -25,7 +24,10 @@ const SummarizeBtns = function (props) {
       {/* Button to Summarize the Entire Page */}
       <button
         style={{ fontSize: fontSize }}
-        onClick={() => { handleSummarizeEntirePageWithChrome(); playSound(); }} 
+        onClick={() => {
+          handleSummarizeEntirePageWithChrome();
+          playSound();
+        }}
         disabled={loading}
       >
         {loading ? "Summarizing Entire Page..." : "Summarize Entire Page"}

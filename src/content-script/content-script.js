@@ -14,19 +14,3 @@ chrome.runtime.onMessage.addListener((request) => {
     sendPromptToChatGPT(request.text);
   }
 });
-
-// chrome.storage.sync.get(["summaryLength"], function (result) {
-//   const selectedSummaryLength = result.summaryLength || "short"; // default to short if not set
-//   useOpenAISummarizer().summarizeContent(textToSummarize, selectedSummaryLength);
-// });
-
-// function injectContentScript(tabId) {
-//   chrome.scripting.executeScript({
-//     target: { tabId: tabId },
-//     files: ["content-script.js"],
-//   });
-// }
-
-// chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-//   injectContentScript(tabs[0].id);
-// });
