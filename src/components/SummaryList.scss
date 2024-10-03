@@ -1,4 +1,4 @@
-@import '../styles/base';
+@import "../styles/base";
 @import "../styles/darkMode.scss";
 
 .summary-list {
@@ -73,9 +73,19 @@
     }
   }
 }
+.clear-all {
+  display: flex;
+  justify-content: space-between;
+
+  #delete-all-btn {
+    font-size: large;
+    height: 36px;
+    margin-top: 17px;
+  }
+}
 
 .clear-all {
-  button{
+  button {
     background-color: $button-bg-color;
     color: $text-color;
     border: none;
@@ -88,8 +98,7 @@
       background-color: $button-hover-bg-color;
     }
   }
-
-  }
+}
 
 @media (max-width: 768px) {
   .summary-list {
