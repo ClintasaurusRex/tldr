@@ -6,12 +6,12 @@
   "action": {
    "default_title": "T.L.D.R",
    "default_popup": "popup/popup.html",
-   "default_icon": "images/tldr-icon.png"
+   "default_icon": "images/alternate.png"
   },
   "icons": {
-    "16": "images/tldr-icon.png",
-    "48": "images/tldr-icon.png",
-    "128": "images/tldr-icon.png"
+    "16": "images/alternate.png",
+    "48": "images/alternate.png",
+    "128": "images/alternate.png"
   },
   "options_page": "options/options.html",
   "background": {
