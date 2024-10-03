@@ -1,6 +1,5 @@
 import useDarkMode from "../helpers/useDarkMode";
 import useFontSize from "../helpers/useFontSize";
-import { useEffect, useState } from "react";
 import "./Options.scss";
 import useSummarizer from "../helpers/useSummarizer";
 import { useSoundSettings } from "../helpers/useSound";
