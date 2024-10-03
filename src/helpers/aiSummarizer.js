@@ -144,4 +144,3 @@ const useOpenAISummarizer = () => {
   };
 };
 export default useOpenAISummarizer;
-// `Please summarize the following text: ${prompt}`
