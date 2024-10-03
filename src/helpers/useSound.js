@@ -1,4 +1,4 @@
-import dingSoundFile from '../assets/sounds/ding.mp3';
+import dingSoundFile from '../assets/sounds/mixkit-old-camera-shutter-click-1137.wav';
 import { useState, useEffect } from 'react';
 
 const useSound = (volume = 1) => {
