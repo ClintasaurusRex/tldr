@@ -74,6 +74,23 @@
   }
 }
 
+.clear-all {
+  button{
+    background-color: $button-bg-color;
+    color: $text-color;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $button-hover-bg-color;
+    }
+  }
+
+  }
+
 @media (max-width: 768px) {
   .summary-list {
     padding: 10px;

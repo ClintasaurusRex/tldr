@@ -14,11 +14,11 @@ const SummaryList = () => {
     <div className="summary-list" style={{ fontSize: fontSize }}>
       <h2>Saved Summaries</h2>
 
-      {/* Button to clear all summaries */}
+      
       <div className="clear-all">
         <button
           style={{ fontSize: fontSize }}
-          onClick={() => { handleDeleteAll(); playSound(); }}  // Call handleDeleteAll on click
+          onClick={() => { handleDeleteAll(); playSound(); }}  
         >
           Delete All Summaries
         </button>
