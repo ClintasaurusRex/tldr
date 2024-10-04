@@ -1,45 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Our Journey</title>
-  <link rel="stylesheet" href="donations.css"> 
-</head>
-<body>
-  <div class="donation-container">
-    <h1>Help Us Grow!</h1>
-    <p>We’re two bootcamp graduates working hard to build amazing things. Your support helps us continue our learning journey and work on exciting new projects.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support Our Journey</title>
+    <link rel="stylesheet" href="donations.css" />
+  </head>
+  <body>
+    <div class="donation-container">
+      <h1>Help Us Grow!</h1>
+      <p>
+        We’re two bootcamp graduates working hard to build amazing things. Your support helps us
+        continue our learning journey and work on exciting new projects.
+      </p>
 
-    <div class="friendly-image">
-      <img src="../images/don-mug.png" alt="Friendly image of a warm coffee mug and a laptop" />
-    </div>
+      <div class="friendly-image">
+        <img src="../images/don-mug.png" alt="Friendly image of a warm coffee mug and a laptop" />
+      </div>
 
-    <div class="donation-section">
-      <h2>Choose a Donation Amount</h2>
-      <ul class="donation-amounts">
-        <li>$5 - Buy Us Coffee ☕️</li>
-        <li>$25 - Support Our Development 💻</li>
-        <li>$50 - Help Us Reach New Heights 🚀</li>
-        <li>$100 - Be Our Hero! 💙</li>
-        <li>Custom Amount</li>
-      </ul>
+      <div class="donation-section">
+        <h2>Choose a Donation Amount</h2>
+        <ul class="donation-amounts">
+          <li>$5 - Buy Us Coffee ☕️</li>
+          <li>$25 - Support Our Development 💻</li>
+          <li>$50 - Help Us Reach New Heights 🚀</li>
+          <li>$100 - Be Our Hero! 💙</li>
+          <li>Custom Amount</li>
+        </ul>
 
-      <div class="paypal-placeholder">
-        <!-- PayPal button placeholder -->
-        <p>Donate securely through PayPal</p>
-        <form action="https://www.paypal.com/donate" method="post" target="_top">
-          <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID" />
-          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="Donate with PayPal button" alt="Donate with PayPal" style="width: 250px; height: auto;" />
-          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-        </form>
+        <!-- Add QR code here -->
+        <div class="qr-code">
+          <h3>Scan the QR code to donate:</h3>
+          <img src="../images/qr-code.png" alt="QR code for donation" />
+        </div>
+
+        <div class="paypal-placeholder">
+          <p>Donate securely through PayPal</p>
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <!-- Replace with your PayPal button's ID -->
+            <input type="hidden" name="hosted_button_id" value="WHPDPW7CGUK78" />
+            <!-- PayPal Donate Button -->
+            <input
+              type="image"
+              src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+              border="0"
+              name="submit"
+              title="Donate with PayPal button"
+              alt="Donate with PayPal"
+              style="width: 250px; height: auto"
+            />
+            <img
+              alt=""
+              border="0"
+              src="https://www.paypal.com/en_US/i/scr/pixel.gif"
+              width="1"
+              height="1"
+            />
+          </form>
+        </div>
+      </div>
+
+      <div class="thank-you-message">
+        <h2>Thank You for Being Part of Our Journey!</h2>
+        <p>
+          Every contribution, no matter how small, brings us closer to making a difference. Your
+          support means the world to us! 🚀
+        </p>
       </div>
     </div>
-
-    <div class="thank-you-message">
-      <h2>Thank You for Being Part of Our Journey!</h2>
-      <p>Every contribution, no matter how small, brings us closer to making a difference. Your support means the world to us! 🚀</p>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
