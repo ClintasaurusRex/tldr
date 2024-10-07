@@ -57,7 +57,8 @@ const useSummarizer = function () {
         },
         (results) => {
           if (results && results[0] && results[0].result) {
-            summarizeContent(results[0].result, "medium"); // Summarize the extracted text
+            const currentSummaryLength = localStorage.getItem("summaryLength" || "medium");
+            summarizeContent(results[0].result, currentSummaryLength); // Summarize the extracted text
           }
         }
       );
