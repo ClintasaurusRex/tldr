@@ -47,8 +47,8 @@ The TLDR Chrome Extension is a powerful tool designed to help users quickly unde
 
 ```const config = {
     API_KEY:
-      "YOUR CHAT GPT API KEY",
-    API_URL: "YOUR CHAT API URL",
+      "YOUR CHATGPT API KEY",
+    API_URL: "YOUR CHATGPT API URL",
   };
   
   export default config;
