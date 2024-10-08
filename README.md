@@ -74,5 +74,8 @@ The TLDR Chrome Extension is a powerful tool designed to help users quickly unde
 
 ## Options
 
-- **Summary Length**: Adjust the length of the summaries.
-- **Dark Mode**: Toggle dark mode for the extension interface.
+- **Summary Length**: Adjust the length of the summaries produced.
+- **Night Mode**: Toggle night mode for the extension interface.
+- **Change Font size**: Adjust Font Size for those who have a hard time reading small fonts.
+- **Disable Sound Effects**: Disable sound effects, for those who want a quieter experience.
+

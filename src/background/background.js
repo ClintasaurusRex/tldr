@@ -53,7 +53,7 @@
     // Create a context menu item for text selection
     chrome.contextMenus.create({
       id: "sendToChatGPT",
-      title: "Send to the extension",
+      title: "Send to TLDR 🚀",
       contexts: ["selection"],
     });
   });
