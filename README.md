@@ -23,9 +23,9 @@ The TLDR Chrome Extension is a powerful tool designed to help users quickly unde
 
 ![Main Display with text](src/static/images/main_display_with_text_to_summarize.png)
 
-![Summary Display](src/static/images/Summary_display.png)
+![Summary Display](src/static/images/summary.png)
 
-![Chat GPT Prompt](src/static/images/chat_gpt_prompt_and_answer.png)
+![Chat GPT Prompt](src/static/images/response.png)
 
 ![Saved Summaries](src/static/images/saved_summaries.png)
 
@@ -43,13 +43,25 @@ The TLDR Chrome Extension is a powerful tool designed to help users quickly unde
     npm install
     ```
 
-3. Build the extension:
+3. Create a config.js file in directory with your 
+
+```const config = {
+    API_KEY:
+      "YOUR CHAT GPT API KEY",
+    API_URL: "YOUR CHAT API URL",
+  };
+  
+  export default config;
+```
+
+
+4. Build the extension:
     ```sh
     npm run build
     ```
 
 
-4. Load the extension in Chrome:
+5. Load the extension in Chrome:
     - Open Chrome and navigate to `chrome://extensions/`.
     - Enable "Developer mode" by clicking the toggle switch in the top right corner.
     - Click the "Load unpacked" button and select the `dist` directory from your project.
