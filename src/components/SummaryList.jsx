@@ -1,14 +1,15 @@
 import useFontSize from "../helpers/useFontSize.js";
 import useSavedSummaries from "../helpers/useSavedSummaries.js";
 import useSound from "../helpers/useSound";
-
 import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId } =
-    useSavedSummaries();
+  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId } = useSavedSummaries();
   const { fontSize } = useFontSize();
   const { playSound } = useSound(0.2);
+
+  // Add a log to check the summaries state
+  console.log("Rendering summaries: ", summaries); 
 
   return (
     <div className="summary-list" style={{ fontSize: fontSize }}>
@@ -30,16 +31,18 @@ const SummaryList = () => {
         <h2>No summaries available.</h2>
       ) : (
         <ul>
-          {Object.values(summaries).map(({ url, summary, id }) => (
-            <li key={url}>
-              <h3 id="summary-url">{url}</h3>
-              <p id="summary-value">{summary}</p>
+          {Object.values(summaries).map(({ id, url, summary, title }) => (
+            <li key={id || url}>
+              <h3 id="summary-title" style={{ fontSize: fontSize }}>
+                {title || url}
+              </h3>
+              <p id="summary-value" style={{ fontSize: fontSize }}>{summary}</p>
               <div className="saved-summary-btns">
                 <button
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
                   onClick={() => {
-                    handleDelete(id);
+                    handleDelete(id || url);
                     playSound();
                   }}
                 >
@@ -49,7 +52,7 @@ const SummaryList = () => {
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
                   onClick={() => {
-                    handleCopy(summary, id);
+                    handleCopy(summary, id || url);
                     playSound();
                   }}
                 >

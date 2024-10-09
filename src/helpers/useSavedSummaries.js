@@ -9,18 +9,20 @@ const useSavedSummaries = function () {
     getSummaries()
       .then((items) => {
         const copy = { ...items };
-        delete copy.selectedTextForAI; // Assuming this is something you don't want
+        delete copy.selectedTextForAI; // If you're excluding a specific item
         setSummaries(copy);
+        console.log("Fetched Summaries: ", copy); // Debugging
       })
       .catch((error) => {
         console.error("Error retrieving summaries:", error);
       });
   };
 
-  const handleDelete = (url) => {
-    deleteSummary(url)
+  const handleDelete = (id) => {
+    deleteSummary(id)
       .then(() => {
-        fetchSummaries();
+        fetchSummaries(); // Refresh the state
+        console.log("Summary deleted: ", id);
       })
       .catch((error) => {
         console.error("Error deleting summary:", error);
@@ -28,11 +30,12 @@ const useSavedSummaries = function () {
   };
 
   const handleDeleteAll = () => {
-    const summaryUrls = Object.keys(summaries); 
+    const summaryIds = Object.keys(summaries);
 
-    Promise.all(summaryUrls.map((url) => deleteSummary(url)))  // Delete each summary
+    Promise.all(summaryIds.map((id) => deleteSummary(id)))  // Delete each summary
       .then(() => {
         setSummaries({});  // Clear the local state
+        console.log("Deleted all summaries");
       })
       .catch((error) => {
         console.error("Error deleting all summaries:", error);
@@ -59,16 +62,15 @@ const useSavedSummaries = function () {
 
   useEffect(() => {
     fetchSummaries();
-    onStorageChange((changes) => {
+    onStorageChange(() => {
       fetchSummaries();
     });
   }, []);
 
   return {
     summaries,
-    setSummaries,
     handleDelete,
-    handleDeleteAll,  
+    handleDeleteAll,
     fetchSummaries,
     downloadSummary,
     handleCopy,
