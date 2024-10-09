@@ -20,7 +20,7 @@ const SummaryList = () => {
   };
 
   const handleSaveTitleClick = (id) => {
-    updateTitle(id, newTitle);  // Call updateTitle to save the new title
+    updateTitle(id, newTitle);  // Save the new title
     setEditingTitleId(null);    // Exit edit mode
   };
 
@@ -49,34 +49,39 @@ const SummaryList = () => {
 
             return (
               <li key={id}>
-                {editingTitleId === id ? (
-                  <div>
-                    <input
-                      type="text"
-                      value={newTitle}
-                      onChange={(e) => setNewTitle(e.target.value)}
-                      style={{ fontSize: fontSize }}
-                    />
-                    <button
-                      onClick={() => handleSaveTitleClick(id)}
-                      style={{ fontSize: fontSize }}
-                    >
-                      Save Title
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <h3 id="summary-title" style={{ fontSize: fontSize }}>
-                      {title || url}
-                    </h3>
-                    <button
-                      onClick={() => handleEditClick(id, title || url)}
-                      style={{ fontSize: fontSize }}
-                    >
-                      Edit Title
-                    </button>
-                  </div>
-                )}
+                <div className="summary-header">
+                  {editingTitleId === id ? (
+                    <>
+                      <input
+                        className="edit-title-input"
+                        type="text"
+                        value={newTitle}
+                        onChange={(e) => setNewTitle(e.target.value)}
+                        style={{ fontSize: fontSize }}
+                      />
+                      <button
+                        className="save-title-btn"
+                        onClick={() => handleSaveTitleClick(id)}
+                        style={{ fontSize: fontSize }}
+                      >
+                        Save
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <h3 id="summary-title" style={{ fontSize: fontSize }}>
+                        {title || url}
+                      </h3>
+                      <button
+                        className="edit-title-btn"
+                        onClick={() => handleEditClick(id, title || url)}
+                        style={{ fontSize: fontSize }}
+                      >
+                        Edit
+                      </button>
+                    </>
+                  )}
+                </div>
 
                 <p id="summary-value" style={{ fontSize: fontSize }}>
                   {summary}

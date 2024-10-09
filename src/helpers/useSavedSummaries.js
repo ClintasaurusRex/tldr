@@ -42,19 +42,19 @@ const useSavedSummaries = function () {
   const downloadSummary = (id, summaryData) => {
     const { url, title = "", summary } = summaryData; // Default title to empty string if not available
 
-    // Create the content for the text file
-    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;
+   
+    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;   // Create the content for the text file
 
-    // Create a blob for the text content
-    const blob = new Blob([textContent], { type: "text/plain" });
+    
+    const blob = new Blob([textContent], { type: "text/plain" }); // Create a blob for the text content
 
-    // Define the file name
+    
     const fileName = `TLDRsummary-${title || url}.txt`; // Use title or URL as the file name
 
-    // Create a temporary download link
+    
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = fileName; // Set the file name
+    link.download = fileName; 
     link.click();
   };
 
@@ -88,7 +88,7 @@ const useSavedSummaries = function () {
     downloadSummary,
     handleCopy,
     copiedSummaryId,
-    updateTitle,  // Added function to update title
+    updateTitle,  
   };
 };
 

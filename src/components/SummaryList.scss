@@ -119,3 +119,42 @@
     }
   }
 }
+
+
+.save-title-btn, 
+.edit-title-btn {
+  background-color: $button-bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-title-btn:hover, 
+.edit-title-btn:hover {
+  background-color: $button-hover-bg-color;
+}
+
+.edit-title-input {
+  width: 50%;
+  height: 25px;
+  background-color: $button-bg-color;
+  color: $text-color;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  &:focus {
+    border-color: $primary-color; 
+    outline: none; 
+  }
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
