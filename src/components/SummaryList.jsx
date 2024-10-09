@@ -1,15 +1,28 @@
+import { useState } from "react";
 import useFontSize from "../helpers/useFontSize.js";
 import useSavedSummaries from "../helpers/useSavedSummaries.js";
 import useSound from "../helpers/useSound";
 import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId } = useSavedSummaries();
+  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId, updateTitle } =
+    useSavedSummaries();
   const { fontSize } = useFontSize();
   const { playSound } = useSound(0.2);
 
-  // Add a log to check the summaries state
-  console.log("Rendering summaries: ", summaries); 
+  // Local state to track the title being edited
+  const [editingTitleId, setEditingTitleId] = useState(null);
+  const [newTitle, setNewTitle] = useState("");
+
+  const handleEditClick = (id, currentTitle) => {
+    setEditingTitleId(id);
+    setNewTitle(currentTitle);  // Initialize with the current title
+  };
+
+  const handleSaveClick = (id) => {
+    updateTitle(id, newTitle);  // Save the updated title
+    setEditingTitleId(null);    // Exit edit mode
+  };
 
   return (
     <div className="summary-list" style={{ fontSize: fontSize }}>
@@ -31,18 +44,45 @@ const SummaryList = () => {
         <h2>No summaries available.</h2>
       ) : (
         <ul>
-          {Object.values(summaries).map(({ id, url, summary, title }) => (
-            <li key={id || url}>
-              <h3 id="summary-title" style={{ fontSize: fontSize }}>
-                {title || url}
-              </h3>
+          {Object.entries(summaries).map(([id, { summary, title }]) => (
+            <li key={id}>
+              {/* Editable Title Section */}
+              {editingTitleId === id ? (
+                <div>
+                  <input
+                    type="text"
+                    value={newTitle}
+                    onChange={(e) => setNewTitle(e.target.value)}
+                    style={{ fontSize: fontSize }}
+                  />
+                  <button
+                    onClick={() => handleSaveClick(id)}
+                    style={{ fontSize: fontSize }}
+                  >
+                    Save
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <h3 id="summary-title" style={{ fontSize: fontSize }}>
+                    {title || id} {/* Display title or fallback to ID */}
+                  </h3>
+                  <button
+                    onClick={() => handleEditClick(id, title || id)}
+                    style={{ fontSize: fontSize }}
+                  >
+                    Edit
+                  </button>
+                </div>
+              )}
+
               <p id="summary-value" style={{ fontSize: fontSize }}>{summary}</p>
               <div className="saved-summary-btns">
                 <button
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
                   onClick={() => {
-                    handleDelete(id || url);
+                    handleDelete(id);
                     playSound();
                   }}
                 >
@@ -52,7 +92,7 @@ const SummaryList = () => {
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
                   onClick={() => {
-                    handleCopy(summary, id || url);
+                    handleCopy(summary, id);
                     playSound();
                   }}
                 >
@@ -62,7 +102,7 @@ const SummaryList = () => {
                   id="summary-buttons"
                   style={{ fontSize: fontSize }}
                   onClick={() => {
-                    downloadSummary(url, summary);
+                    downloadSummary(id, summary);
                     playSound();
                   }}
                 >

@@ -1,4 +1,4 @@
-import { getSummaries, deleteSummary, onStorageChange } from "./storage";
+import { getSummaries, deleteSummary, onStorageChange, saveSummary } from "./storage";
 import React, { useEffect, useState } from "react";
 import { copyToClipboard } from "./colinho";
 
@@ -9,9 +9,8 @@ const useSavedSummaries = function () {
     getSummaries()
       .then((items) => {
         const copy = { ...items };
-        delete copy.selectedTextForAI; // If you're excluding a specific item
-        setSummaries(copy);
-        console.log("Fetched Summaries: ", copy); // Debugging
+        delete copy.selectedTextForAI;
+        setSummaries(copy); // Store both title and summary
       })
       .catch((error) => {
         console.error("Error retrieving summaries:", error);
@@ -21,8 +20,7 @@ const useSavedSummaries = function () {
   const handleDelete = (id) => {
     deleteSummary(id)
       .then(() => {
-        fetchSummaries(); // Refresh the state
-        console.log("Summary deleted: ", id);
+        fetchSummaries();
       })
       .catch((error) => {
         console.error("Error deleting summary:", error);
@@ -31,25 +29,33 @@ const useSavedSummaries = function () {
 
   const handleDeleteAll = () => {
     const summaryIds = Object.keys(summaries);
-
-    Promise.all(summaryIds.map((id) => deleteSummary(id)))  // Delete each summary
+    Promise.all(summaryIds.map((id) => deleteSummary(id)))
       .then(() => {
-        setSummaries({});  // Clear the local state
-        console.log("Deleted all summaries");
+        setSummaries({});
       })
       .catch((error) => {
         console.error("Error deleting all summaries:", error);
       });
   };
 
-  const downloadSummary = (url, summary) => {
-    const blob = new Blob([`URL: ${url}\nSummary: ${summary}`], {
+  const updateTitle = (id, newTitle) => {
+    const updatedSummary = { ...summaries[id], title: newTitle };
+    saveSummary(id, updatedSummary)
+      .then(() => {
+        fetchSummaries(); // Refresh summaries with new title
+      })
+      .catch((error) => {
+        console.error("Error updating title:", error);
+      });
+  };
+
+  const downloadSummary = (id, summary) => {
+    const blob = new Blob([`ID: ${id}\nSummary: ${summary}`], {
       type: "text/plain",
     });
-
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "TLDRsummary.txt"; 
+    link.download = "TLDRsummary.txt";
     link.click();
   };
 
@@ -71,6 +77,7 @@ const useSavedSummaries = function () {
     summaries,
     handleDelete,
     handleDeleteAll,
+    updateTitle,
     fetchSummaries,
     downloadSummary,
     handleCopy,
