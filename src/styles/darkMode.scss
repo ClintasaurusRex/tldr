@@ -97,7 +97,7 @@ body.dark-mode {
   background-color: var(--background-btn);
 }
 .dark-mode #text-input {
-  background-color: var(--background-btn);
+  background-color: var(--secondary);
   color: var(--text);
 
   &:focus {
@@ -159,3 +159,26 @@ html.dark-mode::-webkit-scrollbar-corner,
 body.dark-mode::-webkit-scrollbar-corner {
   background-color: black; 
 }
+
+.dark-mode .summary-list ul li h3 {
+ 
+    color: wheat;
+ 
+}
+
+.dark-mode .edit-title-input {
+  width: 50%;
+  height: 25px;
+  background-color: var(--secondary) ;
+  color: wheat ;
+  border: 1px solid ;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 10px;
+  &:focus {
+    border-color: wheat; 
+    outline: none; 
+  }
+} 
+
+
