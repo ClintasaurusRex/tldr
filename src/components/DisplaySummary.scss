@@ -47,11 +47,13 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
+  
+  .message_copy.hide {
+    opacity: 0;
+  }
 }
 
-.message_copy.hide {
-  opacity: 0;
-}
+
 .summary-container {
   margin-left: 5px;
 }

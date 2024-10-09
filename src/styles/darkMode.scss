@@ -94,7 +94,8 @@ body.dark-mode {
 }
 .dark-mode #summary-buttons {
   color: var(--text);
-  background-color: var(--background-btn);
+  background-color: #303030;
+  
 }
 .dark-mode #text-input {
   background-color: var(--secondary);
@@ -180,5 +181,9 @@ body.dark-mode::-webkit-scrollbar-corner {
     outline: none; 
   }
 } 
+
+.dark-mode .message_copy {
+ color: wheat
+}
 
 
