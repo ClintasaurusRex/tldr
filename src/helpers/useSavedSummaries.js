@@ -10,7 +10,14 @@ const useSavedSummaries = function () {
       .then((items) => {
         const copy = { ...items };
         delete copy.selectedTextForAI;
-        setSummaries(copy); // Store both title and summary
+        
+        // Ensure each summary has a timestamp, if not already present
+        for (const key in copy) {
+          if (!copy[key].timestamp) {
+            copy[key].timestamp = new Date().getTime();  // Add a timestamp if missing
+          }
+        }
+        setSummaries(copy);
       })
       .catch((error) => {
         console.error("Error retrieving summaries:", error);
@@ -28,24 +35,14 @@ const useSavedSummaries = function () {
   };
 
   const handleDeleteAll = () => {
-    const summaryIds = Object.keys(summaries);
-    Promise.all(summaryIds.map((id) => deleteSummary(id)))
+    const summaryIds = Object.keys(summaries); 
+
+    Promise.all(summaryIds.map((id) => deleteSummary(id)))  // Delete each summary
       .then(() => {
-        setSummaries({});
+        setSummaries({});  // Clear the local state
       })
       .catch((error) => {
         console.error("Error deleting all summaries:", error);
-      });
-  };
-
-  const updateTitle = (id, newTitle) => {
-    const updatedSummary = { ...summaries[id], title: newTitle };
-    saveSummary(id, updatedSummary)
-      .then(() => {
-        fetchSummaries(); // Refresh summaries with new title
-      })
-      .catch((error) => {
-        console.error("Error updating title:", error);
       });
   };
 
@@ -53,9 +50,10 @@ const useSavedSummaries = function () {
     const blob = new Blob([`ID: ${id}\nSummary: ${summary}`], {
       type: "text/plain",
     });
+
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "TLDRsummary.txt";
+    link.download = "TLDRsummary.txt"; 
     link.click();
   };
 
@@ -66,22 +64,38 @@ const useSavedSummaries = function () {
     setTimeout(() => setCopiedSummaryId(null), 3000);
   };
 
+  const updateTitle = (id, newTitle) => {
+    const updatedSummaries = { ...summaries };
+    if (updatedSummaries[id]) {
+      updatedSummaries[id].title = newTitle || updatedSummaries[id].url;  // Default to URL if title is empty
+      saveSummary(id, updatedSummaries[id])
+        .then(() => {
+          setSummaries(updatedSummaries);
+          console.log("Title updated for ID:", id);
+        })
+        .catch((error) => {
+          console.error("Error updating title:", error);
+        });
+    }
+  };
+
   useEffect(() => {
     fetchSummaries();
-    onStorageChange(() => {
+    onStorageChange((changes) => {
       fetchSummaries();
     });
   }, []);
 
   return {
     summaries,
+    setSummaries,
     handleDelete,
-    handleDeleteAll,
-    updateTitle,
+    handleDeleteAll,  
     fetchSummaries,
     downloadSummary,
     handleCopy,
     copiedSummaryId,
+    updateTitle
   };
 };
 

@@ -45,11 +45,12 @@ export const onStorageChange = (callback) => {
 // Save summary and title in local storage (stores an object as the value)
 export const saveSummary = (id, summaryData) => {
   return new Promise((resolve, reject) => {
-    chrome.storage.local.set({ [id]: summaryData }, function () {
+    const dataWithTimestamp = { ...summaryData, timestamp: new Date().getTime() }; // Add timestamp
+    chrome.storage.local.set({ [id]: dataWithTimestamp }, function () {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }
-      resolve(); // Confirms that the summaryData was saved
+      resolve();
     });
   });
 };
