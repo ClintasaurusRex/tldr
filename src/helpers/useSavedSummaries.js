@@ -1,4 +1,4 @@
-import { getSummaries, deleteSummary, onStorageChange, saveSummary } from "./storage";
+import { getSummaries, deleteSummary, onStorageChange } from "./storage";
 import React, { useEffect, useState } from "react";
 import { copyToClipboard } from "./colinho";
 
@@ -9,14 +9,7 @@ const useSavedSummaries = function () {
     getSummaries()
       .then((items) => {
         const copy = { ...items };
-        delete copy.selectedTextForAI;
-        
-        // Ensure each summary has a timestamp, if not already present
-        for (const key in copy) {
-          if (!copy[key].timestamp) {
-            copy[key].timestamp = new Date().getTime();  // Add a timestamp if missing
-          }
-        }
+        delete copy.selectedTextForAI; // Assuming this is something you don't want
         setSummaries(copy);
       })
       .catch((error) => {
@@ -24,8 +17,8 @@ const useSavedSummaries = function () {
       });
   };
 
-  const handleDelete = (id) => {
-    deleteSummary(id)
+  const handleDelete = (url) => {
+    deleteSummary(url)
       .then(() => {
         fetchSummaries();
       })
@@ -35,9 +28,9 @@ const useSavedSummaries = function () {
   };
 
   const handleDeleteAll = () => {
-    const summaryIds = Object.keys(summaries); 
+    const summaryUrls = Object.keys(summaries);
 
-    Promise.all(summaryIds.map((id) => deleteSummary(id)))  // Delete each summary
+    Promise.all(summaryUrls.map((url) => deleteSummary(url)))  // Delete each summary
       .then(() => {
         setSummaries({});  // Clear the local state
       })
@@ -46,14 +39,22 @@ const useSavedSummaries = function () {
       });
   };
 
-  const downloadSummary = (id, summary) => {
-    const blob = new Blob([`ID: ${id}\nSummary: ${summary}`], {
-      type: "text/plain",
-    });
+  const downloadSummary = (id, summaryData) => {
+    const { url, title = "", summary } = summaryData; // Default title to empty string if not available
 
+    // Create the content for the text file
+    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;
+
+    // Create a blob for the text content
+    const blob = new Blob([textContent], { type: "text/plain" });
+
+    // Define the file name
+    const fileName = `TLDRsummary-${title || url}.txt`; // Use title or URL as the file name
+
+    // Create a temporary download link
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "TLDRsummary.txt"; 
+    link.download = fileName; // Set the file name
     link.click();
   };
 
@@ -65,18 +66,10 @@ const useSavedSummaries = function () {
   };
 
   const updateTitle = (id, newTitle) => {
-    const updatedSummaries = { ...summaries };
-    if (updatedSummaries[id]) {
-      updatedSummaries[id].title = newTitle || updatedSummaries[id].url;  // Default to URL if title is empty
-      saveSummary(id, updatedSummaries[id])
-        .then(() => {
-          setSummaries(updatedSummaries);
-          console.log("Title updated for ID:", id);
-        })
-        .catch((error) => {
-          console.error("Error updating title:", error);
-        });
-    }
+    const updatedSummary = { ...summaries[id], title: newTitle }; // Update the title in the summary
+    chrome.storage.local.set({ [id]: updatedSummary }, () => {
+      fetchSummaries(); // Refresh the summaries after the title is updated
+    });
   };
 
   useEffect(() => {
@@ -90,12 +83,12 @@ const useSavedSummaries = function () {
     summaries,
     setSummaries,
     handleDelete,
-    handleDeleteAll,  
+    handleDeleteAll,
     fetchSummaries,
     downloadSummary,
     handleCopy,
     copiedSummaryId,
-    updateTitle
+    updateTitle,  // Added function to update title
   };
 };
 
