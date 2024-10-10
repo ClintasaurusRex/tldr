@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
 import useSound from "../helpers/useSound";
+import Modal from "./Modal";
 
 const SummarizeBtns = function (props) {
   const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
@@ -12,12 +13,14 @@ const SummarizeBtns = function (props) {
   const [selectionClickCount, setSelectionClickCount] = useState(0);
   const [pageClickCount, setPageClickCount] = useState(0);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleSelectionClick = () => {
     const newCount = selectionClickCount + 1;
     setSelectionClickCount(newCount);
 
     if (newCount % 2 === 0) {
-      alert("Thank you for using our service! Consider making a donation to support us.");
+      setIsModalOpen(true); // Show the modal
       setSelectionClickCount(0); // Reset the count after every two clicks
       return; // Exit the function to prevent summarization
     }
@@ -31,7 +34,7 @@ const SummarizeBtns = function (props) {
     setPageClickCount(newCount);
 
     if (newCount % 2 === 0) {
-      alert("Thank you for using our service! Consider making a donation to support us.");
+      setIsModalOpen(true); // Show the modal
       setPageClickCount(0); // Reset the count after every two clicks
       return; // Exit the function to prevent summarization
     }
@@ -51,6 +54,13 @@ const SummarizeBtns = function (props) {
       <button style={{ fontSize: fontSize }} onClick={handlePageClick} disabled={loading}>
         {loading ? "Summarizing Entire Page..." : "Summarize Entire Page"}
       </button>
+
+      {/* Modal for donation message */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <p className="modal-msg">
+          Thank you for using our service! Consider making a donation to support us.
+        </p>
+      </Modal>
     </div>
   );
 };
