@@ -1,4 +1,4 @@
-import { getSummaries, deleteSummary, onStorageChange } from "./storage";
+import { getSummaries, deleteSummary, onStorageChange, saveSummary } from "./storage";
 import React, { useEffect, useState } from "react";
 import { copyToClipboard } from "./colinho";
 
@@ -8,17 +8,35 @@ const useSavedSummaries = function () {
   const fetchSummaries = () => {
     getSummaries()
       .then((items) => {
-        const copy = { ...items };
-        delete copy.selectedTextForAI; // Assuming this is something you don't want
-        setSummaries(copy);
+        console.log("Fetched summaries:", items);  // Log fetched summaries for debugging
+
+        // Ensure that each summary has a 'createdAt' property
+        const updatedItems = Object.entries(items).map(([id, summary]) => {
+          if (!summary.createdAt) {
+            summary.createdAt = Date.now();  // Assign a timestamp if missing
+            saveSummary(id, summary);  // Save the updated summary back to storage
+          }
+          return { id, ...summary };
+        });
+
+        // Sort summaries by `createdAt`
+        const sortedSummaries = updatedItems.sort((a, b) => b.createdAt - a.createdAt);
+
+        // Convert back to an object
+        const sortedObject = sortedSummaries.reduce((acc, summary) => {
+          acc[summary.id] = summary;
+          return acc;
+        }, {});
+
+        setSummaries(sortedObject);
       })
       .catch((error) => {
         console.error("Error retrieving summaries:", error);
       });
   };
 
-  const handleDelete = (url) => {
-    deleteSummary(url)
+  const handleDelete = (id) => {
+    deleteSummary(id)
       .then(() => {
         fetchSummaries();
       })
@@ -28,11 +46,11 @@ const useSavedSummaries = function () {
   };
 
   const handleDeleteAll = () => {
-    const summaryUrls = Object.keys(summaries);
+    const summaryIds = Object.keys(summaries);
 
-    Promise.all(summaryUrls.map((url) => deleteSummary(url)))  // Delete each summary
+    Promise.all(summaryIds.map((id) => deleteSummary(id)))
       .then(() => {
-        setSummaries({});  // Clear the local state
+        setSummaries({});
       })
       .catch((error) => {
         console.error("Error deleting all summaries:", error);
@@ -40,21 +58,17 @@ const useSavedSummaries = function () {
   };
 
   const downloadSummary = (id, summaryData) => {
-    const { url, title = "", summary } = summaryData; // Default title to empty string if not available
+    const { url, title = "", summary } = summaryData;
 
-   
-    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;   // Create the content for the text file
+    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;
 
-    
-    const blob = new Blob([textContent], { type: "text/plain" }); // Create a blob for the text content
+    const blob = new Blob([textContent], { type: "text/plain" });
 
-    
-    const fileName = `TLDRsummary-${title || url}.txt`; // Use title or URL as the file name
+    const fileName = `TLDRsummary-${title || url}.txt`;
 
-    
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = fileName; 
+    link.download = fileName;
     link.click();
   };
 
@@ -66,7 +80,7 @@ const useSavedSummaries = function () {
   };
 
   const updateTitle = (id, newTitle) => {
-    const updatedSummary = { ...summaries[id], title: newTitle }; // Update the title in the summary
+    const updatedSummary = { ...summaries[id], title: newTitle };
     chrome.storage.local.set({ [id]: updatedSummary }, () => {
       fetchSummaries(); // Refresh the summaries after the title is updated
     });
@@ -74,7 +88,7 @@ const useSavedSummaries = function () {
 
   useEffect(() => {
     fetchSummaries();
-    onStorageChange((changes) => {
+    onStorageChange(() => {
       fetchSummaries();
     });
   }, []);
@@ -88,7 +102,7 @@ const useSavedSummaries = function () {
     downloadSummary,
     handleCopy,
     copiedSummaryId,
-    updateTitle,  
+    updateTitle,
   };
 };
 

@@ -7,11 +7,28 @@ export const getSummaries = () => {
       if (chrome.runtime.lastError) {
         reject(chrome.runtime.lastError);
       } else {
-        resolve(items); // Returns all items in local storage
+        // Convert string summaries to object format if needed
+        const fixedItems = Object.keys(items).reduce((acc, key) => {
+          let summaryData = items[key];
+
+          // If the summary is a string, convert it to an object
+          if (typeof summaryData === 'string') {
+            summaryData = {
+              summary: summaryData,
+              createdAt: Date.now(), // Use current time for legacy summaries
+            };
+          }
+
+          acc[key] = summaryData;
+          return acc;
+        }, {});
+
+        resolve(fixedItems); // Return the updated summaries
       }
     });
   });
 };
+
 
 // Delete a specific summary from local storage by URL (used as the key)
 export const deleteSummary = (url) => {
@@ -45,8 +62,8 @@ export const onStorageChange = (callback) => {
 // Save summary and title in local storage (stores an object as the value)
 export const saveSummary = (id, summaryData) => {
   return new Promise((resolve, reject) => {
-    const dataWithTimestamp = { ...summaryData, timestamp: new Date().getTime() }; //timestamp
-    chrome.storage.local.set({ [id]: dataWithTimestamp }, function () {
+    const timestampedData = { ...summaryData, createdAt: Date.now() }; // Add timestamp
+    chrome.storage.sync.set({ [id]: timestampedData }, function () {
       if (chrome.runtime.lastError) {
         return reject(chrome.runtime.lastError);
       }

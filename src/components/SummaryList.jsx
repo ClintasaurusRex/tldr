@@ -17,13 +17,11 @@ const SummaryList = () => {
   const handleEditClick = (id, currentTitle) => {
     setEditingTitleId(id);
     setNewTitle(currentTitle); // Initialize with the current title or empty string
-    playSound(); 
   };
 
   const handleSaveTitleClick = (id) => {
     updateTitle(id, newTitle);  // Save the new title
     setEditingTitleId(null);    // Exit edit mode
-    playSound(); 
   };
 
   return (
@@ -63,7 +61,10 @@ const SummaryList = () => {
                       />
                       <button
                         className="save-title-btn"
-                        onClick={() => handleSaveTitleClick(id)}
+                        onClick={() => {
+                          handleSaveTitleClick(id);
+                          playSound();
+                        }}
                         style={{ fontSize: fontSize }}
                       >
                         Save
@@ -76,7 +77,10 @@ const SummaryList = () => {
                       </h3>
                       <button
                         className="edit-title-btn"
-                        onClick={() => handleEditClick(id, title || url)}
+                        onClick={() => {
+                          handleEditClick(id, title || url);
+                          playSound();
+                        }}
                         style={{ fontSize: fontSize }}
                       >
                         Edit
