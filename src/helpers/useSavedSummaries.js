@@ -12,7 +12,8 @@ const useSavedSummaries = function () {
 
         // Ensure that each summary has a 'createdAt' property
         const updatedItems = Object.entries(items).map(([id, summary]) => {
-          if (!summary.createdAt) {
+          // Ensure that we're not saving the highlighted text automatically
+          if (!summary.createdAt && summary.summary) {
             summary.createdAt = Date.now();  // Assign a timestamp if missing
             saveSummary(id, summary);  // Save the updated summary back to storage
           }
@@ -86,8 +87,10 @@ const useSavedSummaries = function () {
     });
   };
 
+  // Fetch summaries only on explicit action
   useEffect(() => {
-    fetchSummaries();
+    fetchSummaries(); // Only fetch when the user wants to see the summaries
+
     onStorageChange(() => {
       fetchSummaries();
     });

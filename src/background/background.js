@@ -1,7 +1,6 @@
 /* eslint-disable func-style */
 
 (function () {
-  // this is an IIFE (google if needed)
   // Declare the variable to store selected text within the IIFE
   let selectedText = "";
 
@@ -42,10 +41,6 @@
     return result;
   }
 
-  // Example usage
-  const randomId = generateRandomId(10); // Generates a random ID with a length of 10
-  console.log(randomId);
-
   // Listener for when the extension is installed
   chrome.runtime.onInstalled.addListener(() => {
     console.log("Content Summarizer Extension Installed");
@@ -61,10 +56,14 @@
   // Listener for context menu item clicks
   chrome.contextMenus.onClicked.addListener((info, tab) => {
     if (info.menuItemId === "sendToChatGPT") {
-      // Store the selected text and open the extension popup
+      // Store the selected text and send it to the summarizer container only
+      const selectedText = info.selectionText;
       chrome.storage.local.set(
-        { selectedTextForAI: info.selectionText },
+        { selectedTextForAI: selectedText },
         () => {
+          // Send the selected text only to the summarizer (not saving to summary list)
+          chrome.runtime.sendMessage({ action: "summarize", text: selectedText });
+          // Open the popup without saving it to the summary list
           chrome.action.openPopup();
         }
       );
@@ -107,5 +106,4 @@
     injectContentScript(tabs[0].id);
   });
 })();
-
 
