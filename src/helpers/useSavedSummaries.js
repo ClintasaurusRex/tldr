@@ -30,31 +30,27 @@ const useSavedSummaries = function () {
   const handleDeleteAll = () => {
     const summaryUrls = Object.keys(summaries);
 
-    Promise.all(summaryUrls.map((url) => deleteSummary(url)))  // Delete each summary
+    Promise.all(summaryUrls.map((url) => deleteSummary(url))) // Delete each summary
       .then(() => {
-        setSummaries({});  // Clear the local state
+        setSummaries({}); // Clear the local state
       })
       .catch((error) => {
         console.error("Error deleting all summaries:", error);
       });
   };
 
-  const downloadSummary = (id, summaryData) => {
+  const downloadSummary = (id) => {
     const { url, title = "", summary } = summaryData; // Default title to empty string if not available
 
-   
-    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`;   // Create the content for the text file
+    const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`; // Create the content for the text file
 
-    
     const blob = new Blob([textContent], { type: "text/plain" }); // Create a blob for the text content
 
-    
     const fileName = `TLDRsummary-${title || url}.txt`; // Use title or URL as the file name
 
-    
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = fileName; 
+    link.download = fileName;
     link.click();
   };
 
@@ -88,7 +84,7 @@ const useSavedSummaries = function () {
     downloadSummary,
     handleCopy,
     copiedSummaryId,
-    updateTitle,  
+    updateTitle,
   };
 };
 
