@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { copyToClipboard } from "../helpers/colinho";
 import useFontSize from "../helpers/useFontSize";
-import useSound from '../helpers/useSound'; 
+import useSound from "../helpers/useSound";
 import "./DisplaySummary.scss";
 
 const DisplaySummary = function (props) {
   const { summary, handleRewrite, loading, copyMessage, setCopyMessage } = props;
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(0.2); 
+  const { playSound } = useSound(0.2);
 
   useEffect(() => {
     if (copyMessage) {
@@ -31,7 +31,10 @@ const DisplaySummary = function (props) {
         <div className="rewrite-copybtns">
           <button
             style={{ fontSize: fontSize }}
-            onClick={() => { handleRewrite(); playSound(); }}  
+            onClick={() => {
+              handleRewrite();
+              playSound();
+            }}
             disabled={loading}
             className="button"
           >
@@ -39,7 +42,10 @@ const DisplaySummary = function (props) {
           </button>
           <button
             style={{ fontSize: fontSize }}
-            onClick={() => { copyToClipboard(summary, setCopyMessage); playSound(); }}  
+            onClick={() => {
+              copyToClipboard(summary, setCopyMessage);
+              playSound();
+            }}
             className="button"
           >
             Copy to Clipboard
