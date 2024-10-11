@@ -1,52 +1,54 @@
-import useFontSize from "../helpers/useFontSize";
+// import React, { useState } from "react";
 import "./SummarizeBtns.scss";
-// import useModal from "../helpers/useModal";
+import useFontSize from "../helpers/useFontSize";
+// import useSound from "../helpers/useSound";
 import Modal from "./Modal";
-// import usePages from "../helpers/usePages";
-import useSummarizer from "../helpers/useSummarizer";
-import useSound from "../helpers/useSound";
-import { useState } from "react";
+import useModal from "../helpers/useModal";
 
-const SummarizeBtns = function () {
+const SummarizeBtns = function (props) {
+  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
   const { fontSize } = useFontSize();
-  // const { handleSelectionClick, handlePageClick, isModalOpen, setIsModalOpen } = useModal();
 
-  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } =
-    useSummarizer();
+  const { isModalOpen, setIsModalOpen, handleSelectionClick, handlePageClick } = useModal(
+    handleSummarizeSelection,
+    handleSummarizeEntirePageWithChrome
+  );
 
-  const { playSound } = useSound(0.2);
-  const [selectionClickCount, setSelectionClickCount] = useState(0);
-  const [pageClickCount, setPageClickCount] = useState(0);
+  // const { playSound } = useSound(0.2);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // // State to track the number of clicks for each button
+  // const [selectionClickCount, setSelectionClickCount] = useState(0);
+  // const [pageClickCount, setPageClickCount] = useState(0);
 
-  const handleSelectionClick = () => {
-    const newCount = selectionClickCount + 1;
-    setSelectionClickCount(newCount);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-    if (newCount % 2 === 0) {
-      setIsModalOpen(true);
-      setSelectionClickCount(0);
-      return;
-    }
+  // const handleSelectionClick = () => {
+  //   const newCount = selectionClickCount + 1;
+  //   setSelectionClickCount(newCount);
 
-    handleSummarizeSelection();
-    playSound();
-  };
+  //   if (newCount % 2 === 0) {
+  //     setIsModalOpen(true); // Show the modal
+  //     setSelectionClickCount(0); // Reset the count after every two clicks
+  //     return; // Exit the function to prevent summarization
+  //   }
 
-  const handlePageClick = () => {
-    const newCount = pageClickCount + 1;
-    setPageClickCount(newCount);
+  //   handleSummarizeSelection();
+  //   playSound();
+  // };
 
-    if (newCount % 2 === 0) {
-      setIsModalOpen(true);
-      setPageClickCount(0);
-      return;
-    }
+  // const handlePageClick = () => {
+  //   const newCount = pageClickCount + 1;
+  //   setPageClickCount(newCount);
 
-    handleSummarizeEntirePageWithChrome();
-    playSound();
-  };
+  //   if (newCount % 2 === 0) {
+  //     setIsModalOpen(true); // Show the modal
+  //     setPageClickCount(0); // Reset the count after every two clicks
+  //     return; // Exit the function to prevent summarization
+  //   }
+
+  //   handleSummarizeEntirePageWithChrome();
+  //   playSound();
+  // };
 
   return (
     <div className="summarize-btns">

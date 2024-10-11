@@ -1,14 +1,12 @@
 import useSound from "../helpers/useSound";
 import { useState } from "react";
-import useSummarizer from "./useSummarizer";
+// import useSummarizer from "./useSummarizer";
 
-const useModal = () => {
-  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome } = useSummarizer();
-
+const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome) => {
   const { playSound } = useSound(0.2);
+
   const [selectionClickCount, setSelectionClickCount] = useState(0);
   const [pageClickCount, setPageClickCount] = useState(0);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSelectionClick = () => {
@@ -38,11 +36,12 @@ const useModal = () => {
     handleSummarizeEntirePageWithChrome();
     playSound();
   };
+
   return {
-    handleSelectionClick,
-    handlePageClick,
     isModalOpen,
     setIsModalOpen,
+    handleSelectionClick,
+    handlePageClick,
   };
 };
 export default useModal;
