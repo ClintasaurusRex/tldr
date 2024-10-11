@@ -1,10 +1,10 @@
 import React from "react";
-import { openDonationsPage } from "../helpers/usePages";
+import usePages from "../helpers/usePages";
 import "./Modal.scss";
 
 const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
-  // const { openDonationsPage } = usePages();
+  const { openDonationsPage } = usePages();
 
   return (
     <div className="modal-overlay">
