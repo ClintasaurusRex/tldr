@@ -20,9 +20,9 @@ const SummarizeBtns = function (props) {
     setSelectionClickCount(newCount);
 
     if (newCount % 2 === 0) {
-      setIsModalOpen(true); // Show the modal
-      setSelectionClickCount(0); // Reset the count after every two clicks
-      return; // Exit the function to prevent summarization
+      setIsModalOpen(true);
+      setSelectionClickCount(0);
+      return;
     }
 
     handleSummarizeSelection();
@@ -34,9 +34,9 @@ const SummarizeBtns = function (props) {
     setPageClickCount(newCount);
 
     if (newCount % 2 === 0) {
-      setIsModalOpen(true); // Show the modal
-      setPageClickCount(0); // Reset the count after every two clicks
-      return; // Exit the function to prevent summarization
+      setIsModalOpen(true);
+      setPageClickCount(0);
+      return;
     }
 
     handleSummarizeEntirePageWithChrome();
