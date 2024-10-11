@@ -1,4 +1,4 @@
-import { getSummaries, deleteSummary, onStorageChange } from "./storage";
+import { getSummaries, deleteSummary, onStorageChange, summaryData } from "./storage";
 import React, { useEffect, useState } from "react";
 import { copyToClipboard } from "./colinho";
 
@@ -40,6 +40,13 @@ const useSavedSummaries = function () {
   };
 
   const downloadSummary = (id) => {
+    // Changed the function to use summaries[id], relying on the local state
+    const summaryData = summaries[id];
+    if (!summaryData) {
+      console.error("Summary not found for id:", id);
+      return;
+    }
+
     const { url, title = "", summary } = summaryData; // Default title to empty string if not available
 
     const textContent = `ID: ${id}\nURL: ${url}\nTitle: ${title}\nSummary: ${summary}`; // Create the content for the text file
