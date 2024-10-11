@@ -2,7 +2,7 @@ import useFontSize from "../helpers/useFontSize";
 import "./SummarizeBtns.scss";
 // import useModal from "../helpers/useModal";
 import Modal from "./Modal";
-import usePages from "../helpers/usePages";
+// import usePages from "../helpers/usePages";
 import useSummarizer from "../helpers/useSummarizer";
 import useSound from "../helpers/useSound";
 import { useState } from "react";
@@ -10,9 +10,9 @@ import { useState } from "react";
 const SummarizeBtns = function () {
   const { fontSize } = useFontSize();
   // const { handleSelectionClick, handlePageClick, isModalOpen, setIsModalOpen } = useModal();
-  const { loading } = usePages();
 
-  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome } = useSummarizer();
+  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } =
+    useSummarizer();
 
   const { playSound } = useSound(0.2);
   const [selectionClickCount, setSelectionClickCount] = useState(0);
