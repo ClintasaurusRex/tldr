@@ -65,7 +65,8 @@ const SummarizeBtns = function (props) {
       {/* Modal for donation message */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <p className="modal-msg">
-          Thank you for using our service! Consider making a donation to support us.
+          Thank you for using our service! Consider making a donation to support us so we can
+          continue to provide this service.
         </p>
       </Modal>
     </div>
