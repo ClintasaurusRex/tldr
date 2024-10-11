@@ -1,15 +1,20 @@
-import React, { useState } from "react";
-import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
-import useSound from "../helpers/useSound";
+import "./SummarizeBtns.scss";
+// import useModal from "../helpers/useModal";
 import Modal from "./Modal";
+import usePages from "../helpers/usePages";
+import useSummarizer from "../helpers/useSummarizer";
+import useSound from "../helpers/useSound";
+import { useState } from "react";
 
-const SummarizeBtns = function (props) {
-  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome, loading } = props;
+const SummarizeBtns = function () {
   const { fontSize } = useFontSize();
-  const { playSound } = useSound(0.2);
+  // const { handleSelectionClick, handlePageClick, isModalOpen, setIsModalOpen } = useModal();
+  const { loading } = usePages();
 
-  // State to track the number of clicks for each button
+  const { handleSummarizeSelection, handleSummarizeEntirePageWithChrome } = useSummarizer();
+
+  const { playSound } = useSound(0.2);
   const [selectionClickCount, setSelectionClickCount] = useState(0);
   const [pageClickCount, setPageClickCount] = useState(0);
 
