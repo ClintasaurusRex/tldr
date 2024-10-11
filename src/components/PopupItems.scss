@@ -5,6 +5,7 @@
   justify-content: space-evenly;
   font-size: $font-size-base;
   margin-top: 30px;
+  margin-left: 10px;
 
   a {
     color: #029d9a;
@@ -88,20 +89,20 @@
   }
 }
 #donate-btn {
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-radius: 10px;
-  border: 1px solid rgb(1, 98, 2);
-  animation: backgroundAnimation 2s infinite alternate;
+  border: 2px solid #55b700; // Initial border color
+  animation: borderPulse 2s infinite alternate;
 }
 
-@keyframes backgroundAnimation {
+@keyframes borderPulse {
   0% {
-    background-color: #55b700;
+    border-color: #55b700;
   }
   50% {
-    background-color: #0db604;
+    border-color: #0db604;
   }
   100% {
-    background-color: #01720c;
+    border-color: #01720c;
   }
 }
