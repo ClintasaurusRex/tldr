@@ -1,6 +1,5 @@
 import useSound from "../helpers/useSound";
 import { useState } from "react";
-// import useSummarizer from "./useSummarizer";
 
 const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome) => {
   const { playSound } = useSound(0.2);
