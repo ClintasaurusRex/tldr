@@ -54,3 +54,19 @@ export const saveSummary = (id, summaryData) => {
     });
   });
 };
+
+export const incrementAndCheckUsageCount = (threshold) => {
+  return new Promise((resolve, reject) => {
+    chrome.storage.local.get("usageCount", (result) => {
+      const currentCount = result.usageCount || 0;
+      const newCount = currentCount + 1;
+      chrome.storage.local.set({ usageCount: newCount }, () => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(newCount >= threshold);
+        }
+      });
+    });
+  });
+};

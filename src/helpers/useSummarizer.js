@@ -13,7 +13,7 @@ const useSummarizer = function () {
   );
 
   const handleSummaryLengthChange = (event) => {
-    localStorage.setItem("summaryLength", event.target.value);
+    localItem("summaryLength", event.target.value);
     setSummaryLength(event.target.value);
     console.log("Summary length set to:", event.target.value);
   };

@@ -1,116 +1,118 @@
-
 :root {
-    --page-bg: #2c2f33;
-    --container-bg: #23272a;
-    --text-color: #dcdcdc;
-    --heading-color: #ffffff;
-    --paragraph-color: #c1c1c1;
-    --input-bg: #40444b;
-    --hover-bg: #7289da;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    --accent-color: #ff6f61; 
-  }
-  
-  body {
-    background-color: var(--page-bg);
-    color: var(--text-color);
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-  
+  --page-bg: #2c2f33;
+  --container-bg: #23272a;
+  --text-color: #dcdcdc;
+  --heading-color: #ffffff;
+  --paragraph-color: #c1c1c1;
+  --input-bg: #40444b;
+  --hover-bg: #7289da;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --accent-color: #ff6f61;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.donation-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--container-bg);
+  border-radius: 15px;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+h1,
+h2 {
+  color: #38d6ad;
+  margin-bottom: 20px;
+  font-family: "Trebuchet MS", sans-serif;
+}
+
+p {
+  color: var(--paragraph-color);
+  font-size: 1.3em;
+  margin-bottom: 20px;
+}
+
+.friendly-image img {
+  width: 200px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.donation-amounts {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.donation-amounts li {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+  width: 180px;
+}
+
+.donation-amounts li:hover {
+  background-color: var(--hover-bg);
+}
+
+.paypal-placeholder {
+  margin-top: 20px;
+}
+
+.paypal-placeholder p {
+  color: var(--text-color);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.thank-you-message {
+  margin-top: 50px;
+  color: var(--accent-color);
+  font-size: 1.3em;
+}
+
+.thank-you-message p {
+  font-size: 1.1em;
+  color: var(--paragraph-color);
+}
+
+@media (max-width: 768px) {
   .donation-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 30px;
-    background-color: var(--container-bg);
-    border-radius: 15px;
-    box-shadow: var(--box-shadow);
-    text-align: center;
+    margin: 20px;
+    padding: 15px;
   }
-  
-  h1, h2 {
-    color: #38d6ad;
-    margin-bottom: 20px;
-    font-family: 'Trebuchet MS', sans-serif;
+
+  h1 {
+    font-size: 2em;
   }
-  
-  p {
-    color: var(--paragraph-color);
-    font-size: 1.3em;
-    margin-bottom: 20px;
+
+  p,
+  .donation-amounts li {
+    font-size: 1em;
   }
-  
+
   .friendly-image img {
     width: 200px;
-    height: auto;
-    margin: 20px 0;
-    border-radius: 10px;
-
   }
-  
-  .donation-amounts {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  .donation-amounts li {
-    background-color: var(--input-bg);
-    color: var(--text-color);
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 15px;
-    width: 180px;
-  }
-  
-  .donation-amounts li:hover {
-    background-color: var(--hover-bg);
-  }
-  
-  .paypal-placeholder {
-    margin-top: 20px;
-  }
-  
-  .paypal-placeholder p {
-    color: var(--text-color);
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .thank-you-message {
-    margin-top: 50px;
-    color: var(--accent-color);
-    font-size: 1.3em;
-  }
-  
-  .thank-you-message p {
-    font-size: 1.1em;
-    color: var(--paragraph-color);
-  }
-  
-  @media (max-width: 768px) {
-    .donation-container {
-      margin: 20px;
-      padding: 15px;
-    }
-  
-    h1 {
-      font-size: 2em;
-    }
-  
-    p, .donation-amounts li {
-      font-size: 1em;
-    }
-  
-    .friendly-image img {
-      width: 200px;
-    }
-  }
-  
+}
+.thank-you-message {
+  text-align: center;
+}

@@ -1,5 +1,5 @@
-@import '../styles/darkMode.scss';
-@import '../styles/base';
+@import "../styles/darkMode.scss";
+@import "../styles/base";
 
 .summarize-btns {
   display: flex;
@@ -16,4 +16,12 @@
   margin-bottom: -22px;
   font-size: $font-size-heading;
   color: $heading-color;
+}
+.modal-msg {
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: black;
+  width: 94%;
+  margin-left: 7px;
 }

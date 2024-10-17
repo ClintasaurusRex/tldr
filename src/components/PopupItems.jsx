@@ -21,7 +21,7 @@ const PopupItems = () => {
         <a href="#" onClick={openAboutPage}>
           About
         </a>
-        <a href="#" onClick={openDonationsPage}>
+        <a id="donate-btn" href="#" onClick={openDonationsPage}>
           Donate
         </a>
       </div>
