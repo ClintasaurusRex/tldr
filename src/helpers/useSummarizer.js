@@ -110,16 +110,3 @@ const useSummarizer = function () {
 };
 
 export default useSummarizer;
-
-const handleSummarize = async () => {
-  // ... existing summarization code ...
-
-  const showDonationAlert = await incrementAndCheckUsageCount(10); // Set threshold to 10 uses
-  if (showDonationAlert) {
-    // Show donation alert
-    alert(
-      "You've used our summarizer 10 times! Please consider making a donation to support our work."
-    );
-    // You can also use a more sophisticated alert or modal here
-  }
-};

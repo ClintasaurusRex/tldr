@@ -1,5 +1,5 @@
 import { getSummaries, deleteSummary, onStorageChange } from "./storage";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { copyToClipboard } from "./colinho";
 
 const useSavedSummaries = function () {
