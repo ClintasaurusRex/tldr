@@ -26,7 +26,7 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
     const newCount = pageClickCount + 1;
     setPageClickCount(newCount);
 
-    if (newCount % 2 === 0) {
+    if (newCount % 10 === 0) {
       setIsModalOpen(true);
       setPageClickCount(0);
       return;
