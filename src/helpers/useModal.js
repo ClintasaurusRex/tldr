@@ -9,7 +9,6 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Load counts from storage when the component mounts
     chrome.storage.local.get(["selectionClickCount", "pageClickCount"], (result) => {
       setSelectionClickCount(result.selectionClickCount || 0);
       setPageClickCount(result.pageClickCount || 0);
