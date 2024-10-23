@@ -24,7 +24,7 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
   const shouldShowModal = () => {
     const now = Date.now();
     const twelveHours = 12 * 60 * 60 * 1000;
-    // const fiveMinutes = 30 * 1000;
+    // const fiveMinutes = 30 * 1000; this is actually 30 seconds
 
     return new Promise((resolve) => {
       chrome.storage.local.get("lastModalTimestamp", (result) => {
