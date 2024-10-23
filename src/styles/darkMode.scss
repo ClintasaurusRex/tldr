@@ -187,3 +187,16 @@ body.dark-mode::-webkit-scrollbar-corner {
 }
 
 
+.dark-mode .modal-msg {
+  border: 2px solid wheat;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--background-btn);
+  width: 94%;
+  margin-left: 7px;
+}
+
+.dark-mode .modal-content {
+
+  background-color: var(--background-btn);
+}

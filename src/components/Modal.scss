@@ -1,15 +1,65 @@
+@import "../styles/base.scss";
+
 .modal-overlay {
   position: fixed;
-  top: 11.1em;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
+
+.modal-content {
+  background-color: $container-bg-color;
+  color: $text-color;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  max-width: $container-width;
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.modal-msg {
+  border: 2px solid #38d6ad;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: $container-bg-color;
+  width: 94%;
+  margin-left: 7px;
+}
+
 .modal-btns {
-  display: flex;
-  justify-content: space-evenly;
+  @include flex-center(row, space-evenly, center);
   padding: 1em;
+}
+
+.modal-close-btn {
+  @extend .button;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.modal-close-btn:hover {
+  background-color: $button-hover-bg-color;
+}
+
+.modal-btns button {
+  @extend .button;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.modal-btns button:hover {
+  background-color: $button-hover-bg-color;
+}
+
+.modal-btns a {
+  color: $text-color;
+  text-decoration: none;
 }
