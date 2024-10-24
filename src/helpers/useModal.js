@@ -1,5 +1,5 @@
 import useSound from "../helpers/useSound";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome) => {
   const { playSound } = useSound(0.2);
@@ -8,49 +8,33 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
   const [pageClickCount, setPageClickCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    chrome.storage.local.get(["selectionClickCount", "pageClickCount"], (result) => {
-      setSelectionClickCount(result.selectionClickCount || 0);
-      setPageClickCount(result.pageClickCount || 0);
-    });
-  }, []);
-
-  const updateCountInStorage = (key, count) => {
-    chrome.storage.local.set({ [key]: count });
-  };
-
-  // This is the timestamp so the modal only pops up every twelve hours, Ill keep the original code in a textfile incase we want to change it
-
   const shouldShowModal = () => {
-    const now = Date.now();
-    // const twelveHours = 12 * 60 * 60 * 1000;
-    const thirtySeconds = 30 * 1000; // this is actually 30 seconds
+    const now = new Date();
+    const lastModalDate = localStorage.getItem("lastModalDate");
+    // const twelveSeconds = 30 * 1000; // 30 seconds in milliseconds
+    const thirtySeconds = 30 * 1000; // 30 seconds in milliseconds
 
-    return new Promise((resolve) => {
-      chrome.storage.local.get("lastModalTimestamp", (result) => {
-        const lastModalTimestamp = result.lastModalTimestamp || 0;
-        if (now - lastModalTimestamp >= thirtySeconds) {
-          chrome.storage.local.set({ lastModalTimestamp: now });
-          resolve(true);
-        } else {
-          resolve(false);
-        }
-      });
-    });
+    if (lastModalDate) {
+      const lastDate = new Date(lastModalDate);
+      const timeDifference = now - lastDate; // Difference in milliseconds
+      if (timeDifference >= thirtySeconds) {
+        localStorage.setItem("lastModalDate", now.toISOString());
+        return true;
+      }
+      return false;
+    } else {
+      localStorage.setItem("lastModalDate", now.toISOString());
+      return true;
+    }
   };
 
-  const handleSelectionClick = async () => {
+  const handleSelectionClick = () => {
     const newCount = selectionClickCount + 1;
     setSelectionClickCount(newCount);
-    updateCountInStorage("selectionClickCount", newCount);
 
-    if (newCount % 2 === 0) {
-      const showModal = await shouldShowModal();
-      if (showModal) {
-        setIsModalOpen(true);
-      }
-      setSelectionClickCount(0);
-      updateCountInStorage("selectionClickCount", 0);
+    if (newCount % 1 === 0 && shouldShowModal()) {
+      setIsModalOpen(true);
+      handleSummarizeSelection();
       return;
     }
 
@@ -58,18 +42,13 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
     playSound();
   };
 
-  const handlePageClick = async () => {
+  const handlePageClick = () => {
     const newCount = pageClickCount + 1;
     setPageClickCount(newCount);
-    updateCountInStorage("pageClickCount", newCount);
 
-    if (newCount % 10 === 0) {
-      const showModal = await shouldShowModal();
-      if (showModal) {
-        setIsModalOpen(true);
-      }
-      setPageClickCount(0);
-      updateCountInStorage("pageClickCount", 0);
+    if (newCount % 1 === 0 && shouldShowModal()) {
+      setIsModalOpen(true);
+      handleSummarizeEntirePageWithChrome();
       return;
     }
 
