@@ -223,17 +223,17 @@ body.dark-mode::-webkit-scrollbar-corner {
 .dark-mode #donate-btn:hover {
   transform: scale(2.0); 
   color: #00f85b; 
-  animation: textPulse 1s infinite alternate; 
+  animation: textPulseDarkMode 1s infinite alternate; // Use a unique animation name
 }
 
-@keyframes textPulse {
+@keyframes textPulseDarkMode {
   0% {
-    color:wheat;
+    color: wheat;
   }
   50% {
-    color:brown;
+    color: brown;
   }
   100% {
-    color:wheat;
+    color: wheat;
   }
 }
