@@ -200,3 +200,40 @@ body.dark-mode::-webkit-scrollbar-corner {
 
   background-color: var(--background-btn);
 }
+
+.dark-mode #donate-btn:hover {
+  transform: scale(2.0); 
+  color: #00f85b;
+  animation: textPulse 1s infinite alternate;
+}
+
+@keyframes textPulse {
+  0% {
+    color:#00f85b;
+  }
+  50% {
+    color:aqua;
+  }
+  100% {
+    color:#00f85b;
+  }
+}
+
+
+.dark-mode #donate-btn:hover {
+  transform: scale(2.0); 
+  color: #00f85b; 
+  animation: textPulse 1s infinite alternate; 
+}
+
+@keyframes textPulse {
+  0% {
+    color:wheat;
+  }
+  50% {
+    color:brown;
+  }
+  100% {
+    color:wheat;
+  }
+}
