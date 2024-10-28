@@ -1,7 +1,5 @@
-// import React, { useState } from "react";
 import "./SummarizeBtns.scss";
 import useFontSize from "../helpers/useFontSize";
-// import useSound from "../helpers/useSound";
 import Modal from "./Modal";
 import useModal from "../helpers/useModal";
 
