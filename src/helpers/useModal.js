@@ -11,13 +11,13 @@ const useModal = (handleSummarizeSelection, handleSummarizeEntirePageWithChrome)
   const shouldShowModal = () => {
     const now = new Date();
     const lastModalDate = localStorage.getItem("lastModalDate");
-    // const twelveSeconds = 30 * 1000; // 30 seconds in milliseconds
-    const thirtySeconds = 30 * 1000; // 30 seconds in milliseconds
+    const twelvehrs = 12 * 60 * 60 * 1000; // 12 hrs
+    // const thirtySeconds = 30 * 1000; // 30 seconds in milliseconds for testing
 
     if (lastModalDate) {
       const lastDate = new Date(lastModalDate);
-      const timeDifference = now - lastDate; // Difference in milliseconds
-      if (timeDifference >= thirtySeconds) {
+      const timeDifference = now - lastDate;
+      if (timeDifference >= twelvehrs) {
         localStorage.setItem("lastModalDate", now.toISOString());
         return true;
       }
