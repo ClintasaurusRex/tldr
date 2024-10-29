@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "The TLDR Extension is a browser extension designed to help users quickly summarize and manage text content from web pages. ",
   "action": {
-   "default_title": "T.L.D.R",
-   "default_popup": "popup/popup.html",
-   "default_icon": "images/alternate.png"
+    "default_title": "T.L.D.R",
+    "default_popup": "popup/popup.html",
+    "default_icon": "images/alternate.png"
   },
   "icons": {
     "16": "images/alternate.png",
@@ -23,19 +23,6 @@
       "js": ["content-script/content-script.js"]
     }
   ],
-  "permissions": [
-    "alarms",
-    "contextMenus",
-    "notifications",
-    "search",
-    "storage",
-    "tabs",
-    "scripting",
-    "activeTab"
-  ],
-  "host_permissions": [
-    "https://api.openai.com/*",
-    "*://*/*"
-  ]
-
+  "permissions": ["contextMenus", "notifications", "storage", "tabs", "scripting", "activeTab"],
+  "host_permissions": ["https://api.openai.com/*", "*://*/*"]
 }
