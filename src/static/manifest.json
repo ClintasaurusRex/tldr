@@ -23,6 +23,6 @@
       "js": ["content-script/content-script.js"]
     }
   ],
-  "permissions": ["contextMenus", "notifications", "storage", "tabs", "scripting", "activeTab"],
+  "permissions": ["contextMenus", "storage", "tabs", "scripting", "activeTab"],
   "host_permissions": ["https://api.openai.com/*", "*://*/*"]
 }
