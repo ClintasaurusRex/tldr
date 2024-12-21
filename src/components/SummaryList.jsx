@@ -1,29 +1,49 @@
 import useFontSize from "../helpers/useFontSize.js";
 import useSavedSummaries from "../helpers/useSavedSummaries.js";
 import useSound from "../helpers/useSound";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./SummaryList.scss";
 
 const SummaryList = () => {
-  const { handleDelete, handleDeleteAll, summaries, downloadSummary, handleCopy, copiedSummaryId, updateTitle } =
-    useSavedSummaries();
+  const {
+    handleDelete,
+    handleDeleteAll,
+    summaries,
+    downloadSummary,
+    handleCopy,
+    copiedSummaryId,
+    updateTitle,
+  } = useSavedSummaries();
   const { fontSize } = useFontSize();
   const { playSound } = useSound(0.2);
 
   const [editingTitleId, setEditingTitleId] = useState(null);
   const [newTitle, setNewTitle] = useState("");
+  const [hasShownAlert, setHasShownAlert] = useState(false);
+
+  const checkSummaryCount = () => {
+    const summaryCount = Object.keys(summaries).length;
+    if (summaryCount === 2 && !hasShownAlert) {
+      alert("You have reached 2 saved summaries!");
+      setHasShownAlert(true);
+    }
+  };
+
+  useEffect(() => {
+    checkSummaryCount();
+  }, [summaries]);
 
   const handleEditClick = (id, currentTitle) => {
     setEditingTitleId(id);
     setNewTitle(currentTitle); // Initialize with the current title or empty string
-    playSound(); 
+    playSound();
   };
 
   const handleSaveTitleClick = (id) => {
-    updateTitle(id, newTitle);  // Save the new title
-    setEditingTitleId(null);    // Exit edit mode
-    playSound(); 
+    updateTitle(id, newTitle); // Save the new title
+    setEditingTitleId(null); // Exit edit mode
+    playSound();
   };
 
   return (
