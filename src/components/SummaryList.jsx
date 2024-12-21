@@ -20,13 +20,12 @@ const SummaryList = () => {
 
   const [editingTitleId, setEditingTitleId] = useState(null);
   const [newTitle, setNewTitle] = useState("");
-  const [hasShownAlert, setHasShownAlert] = useState(false);
+  const [showLimitPopup, setShowLimitPopup] = useState(false);
 
   const checkSummaryCount = () => {
     const summaryCount = Object.keys(summaries).length;
-    if (summaryCount === 2 && !hasShownAlert) {
-      alert("You have reached 2 saved summaries!");
-      setHasShownAlert(true);
+    if (summaryCount === 2 && !showLimitPopup) {
+      setShowLimitPopup(true);
     }
   };
 
@@ -140,7 +139,20 @@ const SummaryList = () => {
                     Download
                   </button>
                 </div>
-
+                {showLimitPopup && (
+                  <div className="popup-message">
+                    <p>
+                      You have reached 20 saved summaries! Please downlaod and delete to make room.
+                    </p>
+                    <button
+                      className="popup-message-button"
+                      onClick={() => setShowLimitPopup(false)}
+                      style={{ fontSize: fontSize }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                )}
                 {copiedSummaryId === id && <div className="copy-message">Copied!</div>}
               </li>
             );

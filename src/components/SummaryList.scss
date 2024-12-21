@@ -120,8 +120,7 @@
   }
 }
 
-
-.save-title-btn, 
+.save-title-btn,
 .edit-title-btn {
   background-color: $button-bg-color;
   color: $text-color;
@@ -132,7 +131,7 @@
   transition: background-color 0.3s ease;
 }
 
-.save-title-btn:hover, 
+.save-title-btn:hover,
 .edit-title-btn:hover {
   background-color: $button-hover-bg-color;
 }
@@ -147,8 +146,8 @@
   padding: 8px;
   margin-bottom: 10px;
   &:focus {
-    border-color: $primary-color; 
-    outline: none; 
+    border-color: $primary-color;
+    outline: none;
   }
 }
 
@@ -160,7 +159,20 @@
 }
 
 .summary-list ul li h3 {
- 
-    color: $primary-color;
- 
+  color: $primary-color;
+}
+
+.popup-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  z-index: 1000;
+}
+.popup-message-button {
+  border-radius: 6px;
 }
