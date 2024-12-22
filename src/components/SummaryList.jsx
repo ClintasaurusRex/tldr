@@ -25,7 +25,7 @@ const SummaryList = () => {
   // Summary list pop up message telling user to download or delete
   const checkSummaryCount = () => {
     const summaryCount = Object.keys(summaries).length;
-    if (summaryCount === 2 && !showLimitPopup) {
+    if (summaryCount === 15 && !showLimitPopup) {
       setShowLimitPopup(true);
     }
   };
