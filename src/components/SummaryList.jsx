@@ -20,8 +20,9 @@ const SummaryList = () => {
 
   const [editingTitleId, setEditingTitleId] = useState(null);
   const [newTitle, setNewTitle] = useState("");
-  const [showLimitPopup, setShowLimitPopup] = useState(false);
+  const [showLimitPopup, setShowLimitPopup] = useState(false); // Summary list pop up message telling user to download or delete
 
+  // Summary list pop up message telling user to download or delete
   const checkSummaryCount = () => {
     const summaryCount = Object.keys(summaries).length;
     if (summaryCount === 2 && !showLimitPopup) {
