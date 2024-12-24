@@ -143,7 +143,7 @@ const SummaryList = () => {
                 {showLimitPopup && (
                   <div className="popup-message">
                     <p>
-                      You have reached 20 saved summaries! Please downlaod and delete to make room.
+                      You have reached 15 saved summaries! Please downlaod and delete to make room.
                     </p>
                     <button
                       className="popup-message-button"
