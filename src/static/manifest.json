@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "T.L.D.R",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The TLDR Extension is a browser extension designed to help users quickly summarize and manage text content from web pages. ",
   "action": {
     "default_title": "T.L.D.R",
