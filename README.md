@@ -2,7 +2,7 @@
 
 ## Overview
 
-The TLDR Chrome Extension is a powerful tool designed to help users quickly understand and manage web content. With this extension, users can easily summarize selected text, store and manage their summaries, and access a variety of additional features to enhance their browsing experience.
+The TLDR Chrome Extension is a powerful tool designed to help users quickly understand and manage web content. With this extension, users can easily summarize selected text, store and manage their summaries, and access a variety of additional features to enhance their browsing experience. You can download it, to your Chrome Browswer here: https://chromewebstore.google.com/detail/tldr/fdoabojpkjopijhpfhapkddbafljjfff
 
 ## Features
 
